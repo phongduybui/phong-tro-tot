@@ -7,28 +7,43 @@
     -webkit-backgound-size: cover;
     background-size: cover;
 }
+
 .carousel-caption {
-    bottom: 220px;
+    top: 50%;
+    transform: translateY(-50%);
+    // bottom: 220px;
 }
 .carousel-caption h3 {
+    display: inline-block;
     font-size: 45px;
-    // text-transform: uppercase;
+    text-transform: uppercase;
     letter-spacing: 2px;
-    margin-top: 25px;
+    // margin-top: 25px;
     color: #fff;
     font-family: 'Open Sans', sans-serif;
 }
+.typewriter {
+    overflow: hidden; /* Ensures the content is not revealed until the animation */
+    border-right: .15em solid #fff; /* The typwriter cursor */
+    white-space: nowrap; /* Keeps the content on a single line */
+    margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+    animation: 
+        typing 3.5s steps(30, end),
+        blink-caret .5s step-end infinite;
+}
+
 .carousel-caption p {
     width: 60%;
     margin: auto;
-    font-size: 18px;
+    font-size: 20px;
     line-height: 1.9;
-    letter-spacing: 5px;
+    letter-spacing: 6px;
     color: #fff;
     font-family: 'Open Sans', sans-serif;
     
 }
 .carousel-caption a {
+    display: flex;
     text-transform: uppercase;
     padding: 10px 30px;
     color: #fff;
@@ -69,10 +84,25 @@
     font-family: 'Open Sans', sans-serif;
     font-size: 18px;
 }
+.nav-link {
+    padding: 8px 16px !important;
+}
 
 .fa-search {
     color: #fff;
     font-size: 27px;
+}
+
+/* The typing effect */
+@keyframes typing {
+    from { width: 0 }
+    to { width: 70% }
+}
+  
+  /* The typewriter cursor effect */
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: #fff }
 }
 
 @media only screen and (max-width: 767px){
