@@ -8,6 +8,8 @@ const port = 3000;
 
 //Config static file (img, css...)
 app.use(express.static(path.join(__dirname, 'public')));
+app.use("/src/app", express.static(__dirname + '/app'));
+app.use("/src/public", express.static(__dirname + '/public'));
 
 app.use(express.urlencoded({
     extended: true
@@ -25,7 +27,6 @@ app.set('view engine', 'hbs');
 
 //Config views folders
 app.set('views', path.join(__dirname, 'resources/views'));
-// console.log(path.join(__dirname, 'resources/views'));
 
 app.get('/', function (req, res) {
     res.render('home');

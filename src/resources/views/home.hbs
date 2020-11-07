@@ -1,4 +1,3 @@
-
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -13,18 +12,37 @@
                 alt="Second slide">
             <div class="carousel-caption d-none d-md-block">
                 <h3 class="typewriter">Manage Acommodation</h3>
-                <p class="animate__animated animate__fadeInUp">WE ARE CREATIVE</p>
-                <button type="button" class="btn btn-light animate__animated animate__fadeInUp animate__delay-1s">Explore</button>
+                <p class="animate__animated animate__fadeInUp animate__delay-1s">WE ARE CREATIVE</p>
+                <button type="button"
+                    class="btn btn-outline-light animate__animated animate__fadeInUp animate__delay-4s">Explore</button>
+                <div class="scroll-container">
+                    <div class="scroll-down">
+                        <div class="chevron"></div>
+                        <div class="chevron"></div>
+                        <div class="chevron"></div>
+                        <span class="text-scroll">Scroll down</span>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="carousel-item">
             <div class="img-cover"></div>
             <img class="d-block w-100 carousel-img"
                 src="https://images.wallpaperscraft.com/image/interior_design_furniture_living_room_style_70162_1400x1050.jpg">
-           <div class="carousel-caption d-none d-md-block">
-                <h3 class="animate__animated animate__fadeInUp">Find Partner</h3>
-                <p class="animate__animated animate__fadeInUp animate__delay-1s">WE ARE CREATIVE</p>
-                <button type="button" class="btn btn-light animate__animated animate__fadeInUp animate__delay-1s">About Us</button>
+            <div class="carousel-caption d-none d-md-block">
+                <h3 class="animate__animated animate__fadeInUp animate__delay-1s">Find Partner</h3>
+                <p class="animate__animated animate__fadeInUp animate__delay-2s">WE ARE CREATIVE</p>
+                <button type="button"
+                    class="btn btn-outline-light animate__animated animate__fadeInUp animate__delay-3s">About
+                    Us</button>
+                <div class="scroll-container">
+                    <div class="scroll-down">
+                        <div class="chevron"></div>
+                        <div class="chevron"></div>
+                        <div class="chevron"></div>
+                        <span class="text-scroll">Scroll down</span>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="carousel-item">
@@ -32,9 +50,18 @@
             <img class="d-block w-100 carousel-img"
                 src="https://images.wallpaperscraft.com/image/interior_design_sofa_coffee_tables_113658_1400x1050.jpg">
             <div class="carousel-caption d-none d-md-block">
-                <h3 class="animate__animated animate__backInDown">Find Acommodation</h3>
-                <p class="animate__animated animate__fadeInUp animate__delay-1s">WE ARE CREATIVE</p>
-                <button type="button" class="btn btn-light animate__animated animate__fadeInUp animate__delay-1s">Contact</button>
+                <h3 class="animate__animated animate__backInDown animate__delay-1s">Find Acommodation</h3>
+                <p class="animate__animated animate__fadeInUp animate__delay-2s">WE ARE CREATIVE</p>
+                <button type="button"
+                    class="btn btn-outline-light animate__animated animate__fadeInUp animate__delay-3s">Contact</button>
+                <div class="scroll-container">
+                    <div class="scroll-down">
+                        <div class="chevron"></div>
+                        <div class="chevron"></div>
+                        <div class="chevron"></div>
+                        <span class="text-scroll">Scroll down</span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -47,3 +74,92 @@
         <span class="sr-only">Next</span>
     </a>
 </div>
+
+{{!-- <div class="container">
+    <div class="search-title">Search</div>
+</div> --}}
+
+<div class="container map-search">
+    <div class="search-bar-container">
+        <div class="search-bar">
+            <input class="form-control mr-sm-2 select-bar search-keyword" type="search" placeholder="Search by keyword" aria-label="Search">
+
+            <select id="province" class="custom-select select-bar">
+            </select>
+    
+            <select id="district" class="custom-select select-bar">
+                <option selected>District</option>
+            </select>
+    
+            <select id="ward" class="custom-select select-bar">
+                <option selected>Ward</option>
+            </select>
+    
+            <select id="price" class="custom-select select-bar">
+                <option selected>Price (VND)</option>
+                <option value="1">< 1 milion</option>
+                <option value="2">1 - 2 milion</option>
+                <option value="2">2 - 3 milion</option>
+                <option value="2">3 - 5 milion</option>
+                <option value="2">5 - 7 milion </option>
+                <option value="2">7 - 10 milion</option>
+                <option value="2">> 10 milion </option>
+            </select>
+          <div class="area-range">
+              <div class="area-desc">
+                  <i class="fas fa-chart-area"></i>
+                  <span class="span-area">Area(m)</span>
+              </div>
+                <div class="range">
+                    <div class="sliderValue">
+                        <span class="area-span">100</span>
+                    </div>
+                    <div class="field">
+                        <div class="value left">0</div>
+                        <input class="area-input" type="range" min="10" max="200" value="100" steps="1">
+                        <div class="value right">200</div>
+                    </div>
+                </div>
+          </div>
+
+            <button type="button" class="btn btn-primary btn-form-search">Search</button>
+        </div>
+    </div>
+    <div class="map">
+        <div class="mapouter">
+            <div class="gmap_canvas"><iframe width="600" height="500" id="gmap_canvas"
+                    src="https://maps.google.com/maps?q=tr%E1%BB%8D&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0"
+                    scrolling="no" marginheight="0" marginwidth="0"></iframe><a
+                    href="https://www.whatismyip-address.com/nordvpn-coupon/"></a></div>
+            <style>
+                .mapouter {
+                    position: relative;
+                    text-align: right;
+                    height: 500px;
+                    width: 600px;
+                }
+
+                .gmap_canvas {
+                    overflow: hidden;
+                    background: none !important;
+                    height: 500px;
+                    width: 615px;
+                }
+            </style>
+        </div>
+    </div>
+</div>
+
+<script>
+    const slideValue = document.querySelector(".area-span");
+    const inputSlider = document.querySelector(".area-input");
+    inputSlider.oninput = (() => {
+        let value = inputSlider.value;
+        slideValue.textContent = value;
+        slideValue.style.left = (value / 2) + "%";
+        slideValue.classList.add("show");
+    });
+    inputSlider.onblur = (() => {
+        slideValue.classList.remove("show");
+    });
+</script>
