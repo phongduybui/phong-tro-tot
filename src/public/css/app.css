@@ -16,7 +16,7 @@
   text-transform: uppercase;
   letter-spacing: 2px;
   color: #fff;
-  font-family: "Open Sans", sans-serif; }
+  font-family: "Raleway", sans-serif; }
 
 .typewriter {
   overflow: hidden;
@@ -36,7 +36,7 @@
   line-height: 1.9;
   letter-spacing: 6px;
   color: #fff;
-  font-family: "Open Sans", sans-serif; }
+  font-family: "Raleway", sans-serif; }
 
 .carousel-caption a {
   display: flex;
@@ -80,6 +80,9 @@
 
 .nav-link {
   padding: 8px 16px !important; }
+  .nav-link:hover {
+    color: #20ad96 !important;
+    border-bottom-color: #20ad96 !important; }
 
 .icon-search {
   background-color: transparent;
@@ -156,7 +159,7 @@
   content: "";
   height: 100%;
   width: 100%;
-  background: #664aff;
+  background: #20ad96;
   border: 3px solid #fff;
   z-index: -1;
   left: 32%;
@@ -202,8 +205,8 @@
   height: 20px;
   background: red;
   border-radius: 50%;
-  background: #664aff;
-  border: 1px solid #664aff;
+  background: #20ad96;
+  border: 1px solid #20ad96;
   cursor: pointer; }
 
 .range .area-input::-moz-range-thumb {
@@ -212,8 +215,8 @@
   height: 20px;
   background: red;
   border-radius: 50%;
-  background: #664aff;
-  border: 1px solid #664aff;
+  background: #20ad96;
+  border: 1px solid #20ad96;
   cursor: pointer; }
 
 .range .area-input::-moz-range-progress {
@@ -305,7 +308,12 @@
   margin-bottom: 25px; }
 
 .btn-form-search {
-  margin-top: 25px; }
+  margin-top: 25px;
+  background-color: #20ad96;
+  border-color: #20ad96; }
+  .btn-form-search:hover {
+    background-color: #318c7d;
+    border-color: #318c7d; }
 
 .area-range {
   display: flex;
@@ -334,6 +342,64 @@
 
 .search-keyword::placeholder {
   color: #495057; }
+
+.search-title {
+  text-align: center;
+  margin-bottom: 35px; }
+  .search-title-h3 {
+    font-family: "Raleway", sans-serif;
+    text-transform: uppercase;
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 32px;
+    color: #555; }
+    .search-title-h3 span {
+      text-transform: uppercase;
+      font-family: "Raleway", sans-serif;
+      font-weight: 900;
+      color: #20ad96;
+      padding-right: 10px; }
+
+.line-text {
+  text-align: center;
+  position: relative; }
+  .line-text .line-text-icon {
+    text-align: center;
+    height: 50px;
+    width: 50px;
+    border: 1px solid #000;
+    border-radius: 50%; }
+    .line-text .line-text-icon:hover {
+      background-color: #20ad96;
+      border-color: #20ad96; }
+
+.line-text-icon > i {
+  color: #fff;
+  font-size: 20px;
+  position: relative;
+  top: calc(50% - 9px); }
+
+.line-text:before {
+  content: "";
+  width: 60%;
+  height: 1px;
+  position: absolute;
+  top: 50%;
+  left: 20%;
+  transform: translateY(-50%);
+  background-color: #20ad96; }
+
+.line-text .line-text-icon {
+  display: inline-block;
+  background-color: #20ad96;
+  border-color: #20ad96;
+  position: relative;
+  z-index: 2;
+  padding: 1rem;
+  font-weight: 600; }
+
+.hello {
+  color: red; }
 
 @keyframes pulse {
   to {

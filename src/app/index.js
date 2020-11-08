@@ -58,3 +58,16 @@ $(document).ready(function (){
         }, 1070);
     });
 });
+
+
+const slideValue = document.querySelector(".area-span");
+const inputSlider = document.querySelector(".area-input");
+inputSlider.oninput = (() => {
+    let value = inputSlider.value;
+    slideValue.textContent = value;
+    slideValue.style.left = (value / 2) + "%";
+    slideValue.classList.add("show");
+});
+inputSlider.onblur = (() => {
+    slideValue.classList.remove("show");
+});

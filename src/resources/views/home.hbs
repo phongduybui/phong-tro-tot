@@ -75,9 +75,15 @@
     </a>
 </div>
 
-{{!-- <div class="container">
-    <div class="search-title">Search</div>
-</div> --}}
+<div class="container">
+    <div class="search-title">
+        <h3 class="search-title-h3"><span>Search</span>something</h3>
+        <p class="search-title-desc">Lorem ipsum dolor sit amet consectetur.</p>
+        <div class="line-text"><div class="line-text-icon"><i class="fas fa-search"></i></div></div>
+            
+        </div>
+    </div>
+</div>
 
 <div class="container map-search">
     <div class="search-bar-container">
@@ -150,16 +156,11 @@
     </div>
 </div>
 
-<script>
-    const slideValue = document.querySelector(".area-span");
-    const inputSlider = document.querySelector(".area-input");
-    inputSlider.oninput = (() => {
-        let value = inputSlider.value;
-        slideValue.textContent = value;
-        slideValue.style.left = (value / 2) + "%";
-        slideValue.classList.add("show");
-    });
-    inputSlider.onblur = (() => {
-        slideValue.classList.remove("show");
-    });
-</script>
+<div class="icon-bar">
+  <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+  <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+  <a href="#" class="google"><i class="fa fa-google"></i></a>
+  <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
+  <a href="#" class="youtube"><i class="fa fa-youtube"></i></a>
+</div>
+
