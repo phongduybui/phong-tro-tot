@@ -1,0 +1,60 @@
+@import "variables";
+@mixin flex($dir: row, $justify: flex-start, $align: flex-start){
+    display: flex;
+    flex-direction: $dir;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+.news-grid-container {
+    display: flex;
+    justify-content: space-between;
+    height: 570px;
+    width: 100%;
+}
+
+.grid-left {
+    height: 100%;
+    width: 65%;
+    @include flex(column, space-between, flex-start);
+    &-top {
+        width: 100%;
+        height: 48%;
+        @include flex(row, space-between, flex-start);
+        &-left {
+            height: 100%;
+            width: 57%;
+        }
+        &-right {
+            height: 100%;
+            width: 40%;
+        }
+    }
+    &-bot {
+        width: 100%;
+        height: 48%;
+        @include flex(row, space-between, flex-start);
+        &-left {
+            height: 100%;
+            width: 40%;
+        }
+        &-right {
+            height: 100%;
+            width: 57%;
+        }
+    }
+}
+
+.grid-right {
+    height: 100%;
+    width: 33%;
+}
+
+.w-h-100 {
+    width: 100% !important;
+    height: 100% !important;
+}
+.see-more-2 {
+    margin-bottom: 90px;
+    padding-top: 35px;
+}

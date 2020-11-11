@@ -5,6 +5,12 @@ const handlebars = require('express-handlebars');
 const app = express();
 const port = 3000;
 
+const db = require('./config/db');
+const New = require('./app/models/New');
+
+//Connect to DB
+db.connect();
+
 
 //Config static file (img, css...)
 app.use(express.static(path.join(__dirname, 'public')));
@@ -26,7 +32,7 @@ app.engine('hbs', handlebars({
 app.set('view engine', 'hbs');
 
 //Config views folders
-app.set('views', path.join(__dirname, 'resources/views'));
+app.set('views', path.join(__dirname, 'resources', 'views')); //'resources/views'
 
 app.get('/', function (req, res) {
     res.render('home');
@@ -41,6 +47,6 @@ app.get('/news', function (req, res) {
 //     res.send('');
 // });
 
-app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`));
+app.listen(port, () => console.log(`App listening at http://localhost:${port}`));
 
 
