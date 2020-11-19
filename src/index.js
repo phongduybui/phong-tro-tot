@@ -5,8 +5,12 @@ const handlebars = require('express-handlebars');
 const app = express();
 const port = 3000;
 
+//Database
 const db = require('./config/db');
 const New = require('./app/models/New');
+const { mutipleMongooseToObject } = require('./util/mongoose');
+const { mongooseToObject } = require('./util/mongoose');
+
 
 //Connect to DB
 db.connect();
@@ -34,9 +38,32 @@ app.set('view engine', 'hbs');
 //Config views folders
 app.set('views', path.join(__dirname, 'resources', 'views')); //'resources/views'
 
-app.get('/', function (req, res) {
-    res.render('home');
+app.get('/', function (req, res, next) {
+    New.find({})
+        .then(news => {
+            res.render('home', {
+                news: mutipleMongooseToObject(news),
+                isHome: true
+            });
+        })
+        .catch(next);
 });
+
+app.get('/news/post', (req, res, next) => {
+    res.render('news/post');
+});
+
+app.get('/news/:slug', (req, res, next) => {
+    New.findOne({ slug: req.params.slug })
+        .then(oneNew => {
+            res.render('news/show', {
+                oneNew : mongooseToObject(oneNew),
+                isNewsPage: true
+            });
+        })
+        .catch(next);
+});
+
 
 app.get('/news', function (req, res) {
     res.render('news');

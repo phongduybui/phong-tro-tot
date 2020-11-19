@@ -132,12 +132,13 @@
 .card-detail li {
     margin: 0;
     padding: 0;
+    padding-right: 15px;
 }
 .card-detail li > span {
     color: #20ad96;
     padding: 0 7px;
     font-weight: 600;
-    font-size: 16px;
+    font-size: 14px;
     
 }
 
@@ -217,9 +218,9 @@
     transition: all 1s;
 }
 .news-container {
-    display: flex;
+    /* display: flex;
     justify-content: space-between;
-    flex-wrap: wrap;
+    flex-wrap: wrap; */
     margin-bottom: 90px;
 }
 
@@ -244,3 +245,17 @@
     font-family: 'Montserrat', sans-serif;
     font-size: 13px;
 }
+
+.map-respon {
+    overflow:hidden;
+    padding-bottom:108%;
+    position:relative;
+    height:0;
+  }
+  .map-respon iframe{
+    left:0;
+    top:0;
+    height:100%;
+    width:100%;
+    position:absolute;
+  }

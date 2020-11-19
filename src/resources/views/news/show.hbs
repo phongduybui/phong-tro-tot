@@ -1,0 +1,537 @@
+<div class="detail-page-container w-100">
+    <div class="container">
+        <div class="page-title-container">
+            <div class="d-flex align-items-center justify-content-between">
+                <div class="breadcrump-wrap">
+                    <nav>
+                        <ol class="breadcrump">
+                            <li class="breadcrump-item">Home</li>
+                            <li class="breadcrump-item">News</li>
+                            <li class="breadcrump-item active">{{oneNew.title}}</li>
+                        </ol>
+                    </nav>
+                </div>
+                <ul class="item-tools">
+                    <li class="item-tool">
+                        <span class="item-tool-favorite"><i class="fas fa-heart"></i></i></span>
+                    </li>
+                    <li class="item-tool">
+                        <span class="item-tool-share"><i class="fas fa-share-alt"></i></span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="d-flex align-items-center justify-content-between">
+                <h2 class="page-title">{{oneNew.title}}</h2>
+                <h2 class="price-detail">{{oneNew.priceNumber}}<span>đồng</span></h2>
+            </div>
+
+            <div class="d-flex justify-content-start">
+                <div class="card-title-top__sale sale-detail">Rental</div>
+                <div class="card-title-top__sale sale-detail">Hot</div>
+            </div>
+
+            <div class="d-flex justify-content-start">
+                <div class="card-location location-detail">
+                    <i class="fas fa-map-marker-alt"></i>
+                    {{oneNew.location}}
+                </div>
+            </div>
+        </div>
+
+        <div class="row detail-wrapper">
+            <div class="col-lg-8">
+                <div class="slider-thumbnail-img mr-1">
+                    <script src="/src/app/jssor.slider-28.0.0.min.js" type="text/javascript"></script>
+                    <script type="text/javascript">
+                        window.jssor_1_slider_init = function () {
+
+                            var jssor_1_SlideshowTransitions = [
+                                { $Duration: 800, x: 0.3, $During: { $Left: [0.3, 0.7] }, $Easing: { $Left: $Jease$.$InCubic, $Opacity: $Jease$.$Linear }, $Opacity: 2 },
+                                { $Duration: 800, x: -0.3, $SlideOut: true, $Easing: { $Left: $Jease$.$InCubic, $Opacity: $Jease$.$Linear }, $Opacity: 2 },
+                                { $Duration: 800, x: -0.3, $During: { $Left: [0.3, 0.7] }, $Easing: { $Left: $Jease$.$InCubic, $Opacity: $Jease$.$Linear }, $Opacity: 2 },
+                                { $Duration: 800, x: 0.3, $SlideOut: true, $Easing: { $Left: $Jease$.$InCubic, $Opacity: $Jease$.$Linear }, $Opacity: 2 },
+                                { $Duration: 800, y: 0.3, $During: { $Top: [0.3, 0.7] }, $Easing: { $Top: $Jease$.$InCubic, $Opacity: $Jease$.$Linear }, $Opacity: 2 },
+                                { $Duration: 800, y: -0.3, $SlideOut: true, $Easing: { $Top: $Jease$.$InCubic, $Opacity: $Jease$.$Linear }, $Opacity: 2 },
+                                { $Duration: 800, y: -0.3, $During: { $Top: [0.3, 0.7] }, $Easing: { $Top: $Jease$.$InCubic, $Opacity: $Jease$.$Linear }, $Opacity: 2 },
+                                { $Duration: 800, y: 0.3, $SlideOut: true, $Easing: { $Top: $Jease$.$InCubic, $Opacity: $Jease$.$Linear }, $Opacity: 2 },
+                                { $Duration: 800, x: 0.3, $Cols: 2, $During: { $Left: [0.3, 0.7] }, $ChessMode: { $Column: 3 }, $Easing: { $Left: $Jease$.$InCubic, $Opacity: $Jease$.$Linear }, $Opacity: 2 },
+                                { $Duration: 800, x: 0.3, $Cols: 2, $SlideOut: true, $ChessMode: { $Column: 3 }, $Easing: { $Left: $Jease$.$InCubic, $Opacity: $Jease$.$Linear }, $Opacity: 2 },
+                                { $Duration: 800, y: 0.3, $Rows: 2, $During: { $Top: [0.3, 0.7] }, $ChessMode: { $Row: 12 }, $Easing: { $Top: $Jease$.$InCubic, $Opacity: $Jease$.$Linear }, $Opacity: 2 },
+                                { $Duration: 800, y: 0.3, $Rows: 2, $SlideOut: true, $ChessMode: { $Row: 12 }, $Easing: { $Top: $Jease$.$InCubic, $Opacity: $Jease$.$Linear }, $Opacity: 2 },
+                                { $Duration: 800, y: 0.3, $Cols: 2, $During: { $Top: [0.3, 0.7] }, $ChessMode: { $Column: 12 }, $Easing: { $Top: $Jease$.$InCubic, $Opacity: $Jease$.$Linear }, $Opacity: 2 },
+                                { $Duration: 800, y: -0.3, $Cols: 2, $SlideOut: true, $ChessMode: { $Column: 12 }, $Easing: { $Top: $Jease$.$InCubic, $Opacity: $Jease$.$Linear }, $Opacity: 2 },
+                                { $Duration: 800, x: 0.3, $Rows: 2, $During: { $Left: [0.3, 0.7] }, $ChessMode: { $Row: 3 }, $Easing: { $Left: $Jease$.$InCubic, $Opacity: $Jease$.$Linear }, $Opacity: 2 },
+                                { $Duration: 800, x: -0.3, $Rows: 2, $SlideOut: true, $ChessMode: { $Row: 3 }, $Easing: { $Left: $Jease$.$InCubic, $Opacity: $Jease$.$Linear }, $Opacity: 2 },
+                                { $Duration: 800, x: 0.3, y: 0.3, $Cols: 2, $Rows: 2, $During: { $Left: [0.3, 0.7], $Top: [0.3, 0.7] }, $ChessMode: { $Column: 3, $Row: 12 }, $Easing: { $Left: $Jease$.$InCubic, $Top: $Jease$.$InCubic, $Opacity: $Jease$.$Linear }, $Opacity: 2 },
+                                { $Duration: 800, x: 0.3, y: 0.3, $Cols: 2, $Rows: 2, $During: { $Left: [0.3, 0.7], $Top: [0.3, 0.7] }, $SlideOut: true, $ChessMode: { $Column: 3, $Row: 12 }, $Easing: { $Left: $Jease$.$InCubic, $Top: $Jease$.$InCubic, $Opacity: $Jease$.$Linear }, $Opacity: 2 },
+                                { $Duration: 800, $Delay: 20, $Clip: 3, $Assembly: 260, $Easing: { $Clip: $Jease$.$InCubic, $Opacity: $Jease$.$Linear }, $Opacity: 2 },
+                                { $Duration: 800, $Delay: 20, $Clip: 3, $SlideOut: true, $Assembly: 260, $Easing: { $Clip: $Jease$.$OutCubic, $Opacity: $Jease$.$Linear }, $Opacity: 2 },
+                                { $Duration: 800, $Delay: 20, $Clip: 12, $Assembly: 260, $Easing: { $Clip: $Jease$.$InCubic, $Opacity: $Jease$.$Linear }, $Opacity: 2 },
+                                { $Duration: 800, $Delay: 20, $Clip: 12, $SlideOut: true, $Assembly: 260, $Easing: { $Clip: $Jease$.$OutCubic, $Opacity: $Jease$.$Linear }, $Opacity: 2 }
+                            ];
+
+                            var jssor_1_options = {
+                                $AutoPlay: 1,
+                                $SlideshowOptions: {
+                                    $Class: $JssorSlideshowRunner$,
+                                    $Transitions: jssor_1_SlideshowTransitions,
+                                    $TransitionsOrder: 1
+                                },
+                                $ArrowNavigatorOptions: {
+                                    $Class: $JssorArrowNavigator$
+                                },
+                                $ThumbnailNavigatorOptions: {
+                                    $Class: $JssorThumbnailNavigator$,
+                                    $SpacingX: 5,
+                                    $SpacingY: 5
+                                }
+                            };
+
+                            var jssor_1_slider = new $JssorSlider$("jssor_1", jssor_1_options);
+
+                            /*#region responsive code begin*/
+
+                            var MAX_WIDTH = 980;
+
+                            function ScaleSlider() {
+                                var containerElement = jssor_1_slider.$Elmt.parentNode;
+                                var containerWidth = containerElement.clientWidth;
+
+                                if (containerWidth) {
+
+                                    var expectedWidth = Math.min(MAX_WIDTH || containerWidth, containerWidth);
+
+                                    jssor_1_slider.$ScaleWidth(expectedWidth);
+                                }
+                                else {
+                                    window.setTimeout(ScaleSlider, 30);
+                                }
+                            }
+
+                            ScaleSlider();
+
+                            $Jssor$.$AddEvent(window, "load", ScaleSlider);
+                            $Jssor$.$AddEvent(window, "resize", ScaleSlider);
+                            $Jssor$.$AddEvent(window, "orientationchange", ScaleSlider);
+                            /*#endregion responsive code end*/
+                        };
+                    </script>
+                    <style>
+                        /*jssor slider loading skin spin css*/
+                        .jssorl-009-spin img {
+                            animation-name: jssorl-009-spin;
+                            animation-duration: 1.6s;
+                            animation-iteration-count: infinite;
+                            animation-timing-function: linear;
+                        }
+
+                        @keyframes jssorl-009-spin {
+                            from {
+                                transform: rotate(0deg);
+                            }
+
+                            to {
+                                transform: rotate(360deg);
+                            }
+                        }
+
+                        /*jssor slider arrow skin 106 css*/
+                        .jssora106 {
+                            display: block;
+                            position: absolute;
+                            cursor: pointer;
+                        }
+
+                        .jssora106 .c {
+                            fill: #fff;
+                            opacity: .3;
+                        }
+
+                        .jssora106 .a {
+                            fill: none;
+                            stroke: #000;
+                            stroke-width: 350;
+                            stroke-miterlimit: 10;
+                        }
+
+                        .jssora106:hover .c {
+                            opacity: .5;
+                        }
+
+                        .jssora106:hover .a {
+                            opacity: .8;
+                        }
+
+                        .jssora106.jssora106dn .c {
+                            opacity: .2;
+                        }
+
+                        .jssora106.jssora106dn .a {
+                            opacity: 1;
+                        }
+
+                        .jssora106.jssora106ds {
+                            opacity: .3;
+                            pointer-events: none;
+                        }
+
+                        /*jssor slider thumbnail skin 101 css*/
+                        .jssort101 .p {
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            box-sizing: border-box;
+                            background: #000;
+                        }
+
+                        .jssort101 .p .cv {
+                            position: relative;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 100%;
+                            border: 2px solid #000;
+                            box-sizing: border-box;
+                            z-index: 1;
+                        }
+
+                        .jssort101 .a {
+                            fill: none;
+                            stroke: #fff;
+                            stroke-width: 400;
+                            stroke-miterlimit: 10;
+                            visibility: hidden;
+                        }
+
+                        .jssort101 .p:hover .cv,
+                        .jssort101 .p.pdn .cv {
+                            border: none;
+                            border-color: transparent;
+                        }
+
+                        .jssort101 .p:hover {
+                            padding: 2px;
+                        }
+
+                        .jssort101 .p:hover .cv {
+                            background-color: rgba(0, 0, 0, 6);
+                            opacity: .35;
+                        }
+
+                        .jssort101 .p:hover.pdn {
+                            padding: 0;
+                        }
+
+                        .jssort101 .p:hover.pdn .cv {
+                            border: 2px solid #fff;
+                            background: none;
+                            opacity: .35;
+                        }
+
+                        .jssort101 .pav .cv {
+                            border-color: #fff;
+                            opacity: .35;
+                        }
+
+                        .jssort101 .pav .a,
+                        .jssort101 .p:hover .a {
+                            visibility: visible;
+                        }
+
+                        .jssort101 .t {
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 100%;
+                            border: none;
+                            opacity: .6;
+                        }
+
+                        .jssort101 .pav .t,
+                        .jssort101 .p:hover .t {
+                            opacity: 1;
+                        }
+                    </style>
+                    <div id="jssor_1"
+                        style="position:relative;margin:0 auto;top:0px;left:0px;width:980px;height:480px;overflow:hidden;visibility:hidden;">
+                        <!-- Loading Screen -->
+                       
+                        <div data-u="slides"
+                            style="cursor:default;position:relative;top:0px;left:0px;width:980px;height:380px;overflow:hidden;">
+                            <div>
+                                <img data-u="image" src="/src/public/img/tro7.jpeg" />
+                                <img data-u="thumb" src="/src/public/img/tro7.jpeg" />
+                            </div>
+                            <div>
+                                <img data-u="image" src="/src/public/img/tro2.jpg" />
+                                <img data-u="thumb" src="/src/public/img/tro2.jpg" />
+                            </div>
+                            <div>
+                                <img data-u="image" src="/src/public/img/tro8.png" />
+                                <img data-u="thumb" src="/src/public/img/tro8.png" />
+                            </div>
+                            <div>
+                                <img data-u="image" src="/src/public/img/tro4.jpg" />
+                                <img data-u="thumb" src="/src/public/img/tro4.jpg" />
+                            </div>
+                            <div>
+                                <img data-u="image" src="/src/public/img/tro5.jpg" />
+                                <img data-u="thumb" src="/src/public/img/tro5.jpg" />
+                            </div>
+                            <div>
+                                <img data-u="image" src="/src/public/img/tro6.jpg" />
+                                <img data-u="thumb" src="/src/public/img/tro6.jpg" />
+                            </div>
+                            
+                        </div><a data-scale="0" href="https://www.jssor.com" style="display:none;position:absolute;">web
+                            animation</a>
+                        <!-- Thumbnail Navigator -->
+                        <div data-u="thumbnavigator" class="jssort101"
+                            style="position:absolute;left:0px;bottom:0px;width:980px;height:100px;background-color:#fff;"
+                            data-autocenter="1" data-scale-bottom="0.75">
+                            <div data-u="slides">
+                                <div data-u="prototype" class="p" style="width:190px;height:90px;">
+                                    <div data-u="thumbnailtemplate" class="t"></div>
+                                    <svg viewbox="0 0 16000 16000" class="cv">
+                                        <circle class="a" cx="8000" cy="8000" r="3238.1"></circle>
+                                        <line class="a" x1="6190.5" y1="8000" x2="9809.5" y2="8000"></line>
+                                        <line class="a" x1="8000" y1="9809.5" x2="8000" y2="6190.5"></line>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Arrow Navigator -->
+                        <div data-u="arrowleft" class="jssora106" style="width:55px;height:55px;top:162px;left:30px;"
+                            data-scale="0.75">
+                            <svg viewbox="0 0 16000 16000"
+                                style="position:absolute;top:0;left:0;width:100%;height:100%;">
+                                <circle class="c" cx="8000" cy="8000" r="6260.9"></circle>
+                                <polyline class="a" points="7930.4,5495.7 5426.1,8000 7930.4,10504.3 "></polyline>
+                                <line class="a" x1="10573.9" y1="8000" x2="5426.1" y2="8000"></line>
+                            </svg>
+                        </div>
+                        <div data-u="arrowright" class="jssora106" style="width:55px;height:55px;top:162px;right:30px;"
+                            data-scale="0.75">
+                            <svg viewbox="0 0 16000 16000"
+                                style="position:absolute;top:0;left:0;width:100%;height:100%;">
+                                <circle class="c" cx="8000" cy="8000" r="6260.9"></circle>
+                                <polyline class="a" points="8069.6,5495.7 10573.9,8000 8069.6,10504.3 "></polyline>
+                                <line class="a" x1="5426.1" y1="8000" x2="10573.9" y2="8000"></line>
+                            </svg>
+                        </div>
+                    </div>
+                    <script type="text/javascript">jssor_1_slider_init();
+                    </script>
+                </div>
+
+                <div class="overview">
+                    <div class="overview-desc">
+                        <span class="overview-title">Overview</span>
+                        <div class="product-id"><b>Property ID: </b><span>{{oneNew.motelId}}</span></div>
+                    </div>
+                    <div class="overview-detail d-flex justify-content-between">
+                        <ul class="list-unstyled flex-fill ul-item">
+                            <li class="property-overview-item"><strong>Motel</strong></li>
+                            <li class="hz-meta-label property-overview-type">Property Type</li>
+                        
+                        </ul>
+                        <ul class="list-unstyled flex-fill ul-item">
+                            <li class="property-overview-item"><i class="fas fa-person-booth"></i> <strong>{{oneNew.overview.bedroom}}</strong> </li>
+                            <li class="hz-meta-label h-beds">Bedrooms</li>
+                        </ul>
+                        <ul class="list-unstyled flex-fill ul-item">
+                            <li class="property-overview-item"><i class="fas fa-person-booth"></i> <strong>{{oneNew.overview.bathroom}}</strong></li>
+                            <li class="hz-meta-label h-baths">Bathrooms</li>
+                        </ul>
+                        <ul class="list-unstyled flex-fill ul-item">
+                            <li class="property-overview-item"><i class="fas fa-home"></i> <strong>{{oneNew.overview.mezzanine}}</strong></li>
+                            <li class="hz-meta-label h-garage">Mezzanine</li>
+                        </ul>
+                        <ul class="list-unstyled flex-fill ul-item">
+                            <li class="property-overview-item"><i class="fas fa-ruler-combined"></i>
+                                <strong>{{oneNew.overview.area}}</strong></li>
+                            <li class="hz-meta-label h-area">m<sup>2</sup></li>
+                        </ul>
+                        <ul class="list-unstyled flex-fill ul-item">
+                            <li class="property-overview-item"><i class="far fa-calendar-alt"></i> <strong>{{oneNew.overview.yearBuilt}}</strong></li>
+                            <li class="hz-meta-label h-year-built">Year Built</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="description-wrapper">
+                    <div class="description-title">Description</div>
+                    <p class="description-detail">{{oneNew.description}}</p>
+                </div>
+
+                <div class="description-wrapper">
+                    <div class="map-on-detail-page">
+                        <div class="map-back">
+                            <i class="fas fa-angle-left"></i>
+                            <span>Back</span>
+                        </div>
+                        <div class="map-respon map-respon-detail-page">
+                            <iframe src="{{oneNew.map}}" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                        </div>
+                    </div>
+                    <div class="description-title d-flex justify-content-between align-items-center">
+                        <span>Address</span>
+                        <button type="button" class="btn btn-success btn-map"><i class="fas fa-map-marked-alt" style="padding-right: 4px;"></i> Open on Google Map</button>
+                    </div>
+                    <div class="wrapper-list d-flex justify-content-between">
+                        <ul class="list-unstyled ul-item-address" style="width: 46%;">
+                            <li class="detail-address d-flex justify-content-between" ><strong>Province/City</strong> <span>{{oneNew.city}}</span></li>
+                            <li class="detail-city d-flex justify-content-between"><strong>Street</strong> <span>{{oneNew.ward}}</span></li>
+                            
+                        </ul>
+                        <ul class="list-unstyled ul-item-address" style="width: 46%;">
+                            <li class="detail-state d-flex justify-content-between" ><strong>District</strong> <span>{{oneNew.district}}</span></li>
+                            <li class="detail-area d-flex justify-content-between"><strong>Address</strong> <span>{{oneNew.address}}</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="description-wrapper">
+                    <div class="description-title feature-title">Features</div>
+                    <div class="feature-wrapper">
+                        {{#each oneNew.features}}
+
+                        <div class="feature-item"><i class="far fa-check-square"></i><span>{{this}}</span></div>
+                        
+                        {{/each}}
+                    </div>
+                </div>
+                <div class="comment-wrapper">
+                    <div class="comment-info">
+                        <h3 class="number-comment">2 Comments</h3>
+                        <div class="comment-star">
+                            <div class="star">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="star-info">(2 Reviews)</span>
+                        </div>
+                    </div>
+                    <div class="user-comment">
+                        <div class="comment-detail comment-detail-1">
+                            <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="" class="user-cmt-img">
+                            <div class="comment-user-info">
+                                <div class="comment-user-name">
+                                    <span>Trần Dần</span>
+                                    <div class="star">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star-half-alt"></i>
+                                        <i class="far fa-star"></i>
+                                    </div>
+                                </div>
+                                <span class="comment-time">April 2, 2020</span>
+                                <p class="comment-content">Chủ trọ vui tính nhưng không cho đi về khuya nên vote 4*</p>
+                            </div>
+                            
+                        </div>
+                        <div class="comment-detail comment-detail-last">
+                            <img src="https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+                                alt="" class="user-cmt-img">
+                            <div class="comment-user-info">
+                                <div class="comment-user-name">
+                                    <span>Nam Nguyễn</span>
+                                    <div class="star">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star-half-alt"></i>
+                                    </div>
+                                </div>
+                                <span class="comment-time">April 2, 2020</span>
+                                <p class="comment-content">Nhà trọ sạch sẽ. Chủ trọ nhiệt tình, thân thiện.</p>
+                            </div>
+                        
+                        </div>
+                    </div>
+                </div>
+
+                <div class="post-comment">
+                    <h4 class="post-comment-title">Add a review</h4>
+                    <div class="rating-star">
+                        <input id="star10" name="rating" type="radio" value="10" />
+                        <label for="star10"></label>
+                        <input id="star9" name="rating" type="radio" value="9" />
+                        <label for="star9" class="half"></label>
+                        <input id="star8" name="rating" type="radio" value="8" />
+                        <label for="star8"></label>
+                        <input id="star7" name="rating" type="radio" value="7" />
+                        <label for="star7" class="half"></label>
+                        <input id="star6" name="rating" type="radio" value="6" />
+                        <label for="star6"></label>
+                        <input id="star5" name="rating" type="radio" value="5" />
+                        <label for="star5" class="half"></label>
+                        <input id="star4" name="rating" type="radio" value="4" />
+                        <label for="star4"></label>
+                        <input id="star3" name="rating" type="radio" value="3" />
+                        <label for="star3" class="half"></label>
+                        <input id="star2" name="rating" type="radio" value="2" />
+                        <label for="star2"></label>
+                        <input id="star1" name="rating" type="radio" value="1" />
+                        <label for="star1" class="half"></label>
+                    </div>
+                    <div class="form-info-user">
+                        <div class="form-group form-cus">
+                            <input type="text" class="inputCus2 form-control form-control-lg"
+                            placeholder="Your Name">
+                        </div>
+                        <div class="form-group form-cus">
+                            <input type="text" class="inputCus2 form-control form-control-lg"
+                            placeholder="your@mail.com">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <textarea id="comment" class="form-control" placeholder="Write Comment" name="comment" cols="45" rows="7" aria-required="true"></textarea>
+                    </div>
+                    <button type="button" class="btn btn-success">Submit Review</button>
+                    
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="form-contact ml-1">
+                    <h3 class="contact-desc">Contact Host</h3>
+                    <div class="owner-info">
+                        <img src="{{oneNew.host.imgHost}}"
+                            alt="" class="owner-img">
+                        <div class="owner-info-detail">
+                            <p class="owner-name">{{oneNew.host.nameHost}}</p>
+                            <p class="owner-phone">{{oneNew.host.phoneNumber}}</p>
+                            <p class="owner-email">{{oneNew.host.mailHost}}</p>
+                        </div>
+                    </div>
+                    <form>
+                        <div class="form-group">
+                            <input type="text" class="inputCustomize form-control form-control-lg"
+                            placeholder="Name">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="inputCustomize form-control form-control-lg"
+                            placeholder="Email">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="inputCustomize form-control form-control-lg"
+                            placeholder="Phone">
+                        </div>
+                        <div class="form-group">
+                            <textarea id="comment" class="form-control text-area-customize" placeholder="Write Comment" name="comment" cols="45" rows="4" aria-required="true"></textarea>
+                        </div>
+                        <button type="button" class="btn btn-success btn-block">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
