@@ -65,8 +65,8 @@ app.get('/news/:slug', (req, res, next) => {
 });
 
 
-app.get('/news', function (req, res) {
-    res.render('news');
+app.get('/features/top-up', function (req, res) {
+    res.render('features/top-up');
 });
 
 // app.post('/search', (req, res) => {

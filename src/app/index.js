@@ -199,6 +199,9 @@ $(document).ready(function () {
             showNextButton: true, // show/hide a Next button
             showPreviousButton: true, // show/hide a Previous button
             toolbarExtraButtons: [
+                $('<button></button>').text('Submit').addClass('btn btn-danger submit-post-form').on('click', function(){
+                    alert("aaa");
+                })
             ] // Extra buttons to show on toolbar, array of jQuery input/buttons elements
         },
         anchorSettings: {
@@ -238,6 +241,34 @@ $(document).ready(function () {
          }
          return true;
      });
+
+
+     $(".submit-post-form").prop('disabled', true);
+     let stepIndex;
+     $(".sw-btn-next").on('click', function(){
+        stepIndex = $('#smartwizard').smartWizard("getStepIndex");
+        
+        if(stepIndex == 4){
+            $(".submit-post-form").prop('disabled', false);
+        }
+        else {
+            $(".submit-post-form").prop('disabled', true);
+        }
+     })
+
+     $(".sw-btn-prev").on('click', function(){
+        stepIndex = $('#smartwizard').smartWizard("getStepIndex");
+        
+        if(stepIndex == 4){
+            $(".submit-post-form").prop('disabled', false);
+        }
+        else {
+            $(".submit-post-form").prop('disabled', true);
+        }
+     })
+     
+    
+     
 
 });
 
@@ -530,13 +561,16 @@ $(document).ready(function() {
     $('.form-radio-payment input').on('change', function(e) {
         if($('input[name=radio]:checked', '.form-radio-payment').val() == "2"){
             $(".payment-visacard-wrapper").css('display', 'flex')
+            $(".payment-system-account").css('display', 'none')
         }
         else {
             $(".payment-visacard-wrapper").css('display', 'none')
+            $(".payment-system-account").css('display', 'flex')
+            
         }
         
      });
-
+    
 });
 /* Show Payment Visa Card */
 
@@ -581,3 +615,87 @@ $(document).ready(function() {
     
 });
 /*Get address*/
+
+
+
+/* Get total of money */
+$(document).ready(function() {
+    let unitPrice = 0;
+    let timeNews = 0;
+    let priceNumber;
+    let optionPackage = $("#package-news option:selected").val();
+    let remainAmount;
+    calculateTotal();
+
+    function calculatePayment(){
+        $("#amount-pay").text($("#total-money").text());
+        $(".paid-amount-value").text(priceNumber+" đ");
+        let existAmount = $(".exist-amount-value").text() - 0;
+        remainAmount = existAmount - priceNumber;
+        $(".remain-amount-value").text(remainAmount + " đ");
+
+        $('.form-radio-payment input').on('change', function(e) {
+            if(remainAmount < 0 && $('input[name=radio]:checked', '.form-radio-payment').val() == "1")
+            {
+                $(".info-amount-account-item-warning").show();
+            }
+            else {
+                $(".info-amount-account-item-warning").hide();
+            }
+        });
+    }
+
+    function calculateTotal(){
+        $("#package-news").on('change', function(){
+            optionPackage = $("#package-news option:selected").val();
+            $("#type-pricing-package").text($( "#package-news option:selected" ).text()+"s (*)")
+            calculateTotal();
+        })
+        if(optionPackage === "week"){
+            priceNumber = timeNews*unitPrice*0.9*7;
+        }
+        else if(optionPackage === "month"){
+            priceNumber = timeNews*unitPrice*0.8*30;
+        }
+        else {
+            priceNumber = timeNews*unitPrice;
+        }
+        $("#total-money").text(numberWithCommas(priceNumber)+" đ");
+        calculatePayment();
+    }
+
+    $("#time-news").on('change', function(){
+        timeNews = $("#time-news").val();
+        calculateTotal();
+    });
+
+    $("#normal-package").on('click',function(){
+        $("#kind-news").val("Normal");
+        $(".into-money-title").css('background-color', '#C64545');
+        unitPrice = 2000;
+        calculateTotal();
+    })
+
+    $("#vip-package").on('click',function(){
+        $("#kind-news").val("Vip");
+        $(".into-money-title").css('background-color', '#2D5772');
+        unitPrice = 20000;
+        calculateTotal();
+    })
+
+    $("#special-package").on('click',function(){
+        $("#kind-news").val("Special");
+        $(".into-money-title").css('background-color', '#5BA95D');
+        unitPrice = 30000;
+        calculateTotal();
+    })
+
+
+    function numberWithCommas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+    
+    
+})
+
+/* Get total of money */
