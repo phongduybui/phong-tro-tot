@@ -116,6 +116,9 @@
       font-weight: 300;
       font-size: 16px; }
 
+html {
+  scroll-behavior: smooth; }
+
 .carousel-navheader .carousel-item {
   height: 100vh;
   min-height: 300px;
@@ -194,7 +197,7 @@
 .navbar-light .navbar-nav .nav-link {
   color: #fff;
   font-family: 'Montserrat', sans-serif;
-  font-size: 15px; }
+  font-size: 16px; }
 
 .nav-link {
   padding: 8px 16px !important; }
@@ -442,7 +445,7 @@
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  margin-bottom: 10px !important; }
+  margin-bottom: 16px; }
 
 .btn-form-search {
   margin-top: 25px;
@@ -916,12 +919,14 @@ input[type='text'] {
   text-align: center !important; }
 
 .post-container {
-  background-color: #FFF; }
+  background-color: #F7F7F7; }
 
 .post-inner {
-  background-color: #FFF;
+  background-color: #F7F7F7;
   padding: 0;
   font-family: "Raleway", sans-serif; }
+  .post-inner input::placeholder {
+    color: #222; }
 
 .dropzone {
   border: 2px dashed #3588F8 !important;
@@ -929,12 +934,16 @@ input[type='text'] {
 
 .payment-desc-info {
   font-family: "Raleway", sans-serif;
-  font-weight: 300; }
+  font-weight: 600;
+  color: #212529;
+  font-size: 18px;
+  border-bottom: 1px dashed #ddd;
+  padding-bottom: 30px;
+  padding-left: 15px; }
 
 .inputGroup-radio-payment {
   background-color: #eee;
   display: block;
-  margin: 10px 0;
   position: relative; }
   .inputGroup-radio-payment .label-radio-payment {
     padding: 3px 30px;
@@ -1079,7 +1088,8 @@ input[type='text'] {
   max-width: 400px;
   max-height: 251px;
   height: 54vw;
-  padding: 20px; }
+  padding: 20px;
+  padding-top: 0; }
 
 #ccsingle {
   position: absolute;
@@ -1316,27 +1326,27 @@ input[type='text'] {
 #amount-pay {
   padding-left: 5px;
   color: #C64545;
-  font-weight: 500;
-  font-size: 17px; }
+  font-weight: 600;
+  font-size: 18px; }
 
 .choosing-price-input {
   width: 120px; }
 
 .into-money-wrapper {
-  padding: 10px 0;
   font-size: 18px; }
 
 .into-money-title {
   background-color: #2D5772;
   color: #fff;
   font-weight: 600;
-  padding: 0px 20px;
+  padding: 15px 80px;
   border-radius: 4px;
   text-align: center; }
 
 .bg-gradient {
   background: #FFF !important;
-  padding: 1rem 3rem 1rem; }
+  padding: 0 3rem 65px;
+  border-bottom: 1px solid #ddd; }
 
 .ul-pricing li {
   margin-bottom: 1rem; }
@@ -1362,7 +1372,9 @@ input[type='text'] {
   font-size: 19px; }
 
 .choosing-price {
-  padding: 1rem 5rem 0 !important; }
+  align-items: center; }
+  .choosing-price-item {
+    width: 32%; }
 
 .package-price::before {
   content: 'đ/ngày';
@@ -1465,7 +1477,12 @@ input[type='text'] {
     text-align: center;
     padding: 0 15px; }
     .payment-method-card-wrapper {
-      box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1); }
+      cursor: pointer;
+      box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1);
+      transition: transform .4s, color .1s; }
+      .payment-method-card-wrapper:hover {
+        transform: scale(1.07);
+        color: #cb3737; }
     .payment-method-card__img {
       padding: 30px 15px 15px; }
     .payment-method-card__title {
@@ -1519,7 +1536,62 @@ input[type='text'] {
 .transaction-detail {
   display: none; }
 
+.qr-pay-wrapper {
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  padding: 30px 50px 0px;
+  display: none;
+  margin-bottom: 15px;
+  border-bottom: none; }
+
+.qr-pay-desc {
+  font-size: 13px;
+  color: #676e76; }
+
+.nav-link.inactive {
+  color: #676e76 !important; }
+
 /* Top-up-page */
+/*Custom smart Wizard*/
+.sw-theme-default {
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.13);
+  margin-bottom: 80px;
+  background-color: #fff; }
+
+.sw-theme-default > .nav .nav-link.active {
+  color: #fff !important;
+  font-weight: 500;
+  font-size: 18px;
+  background-color: #52A3B8; }
+
+.sw-theme-default .inactive {
+  font-weight: 500;
+  font-size: 18px;
+  background-color: #F7F7F7; }
+
+.tab-pane {
+  padding: 30px 40px 20px !important; }
+
+.post-title-info {
+  font-size: 18px;
+  font-weight: 600;
+  padding-bottom: 10px; }
+
+.post-desc-info {
+  font-size: 13px;
+  color: #5c727d;
+  max-width: 300px; }
+
+.pb65 {
+  padding-bottom: 60px !important; }
+
+.submit-info {
+  padding-bottom: 30px;
+  border-bottom: 1px solid #ddd;
+  margin: 0 0 50px; }
+
+/*Custom smart Wizard*/
 @media only screen and (max-width: 767px) {
   .navbar-nav {
     background: rgba(0, 0, 0, 0.5); }

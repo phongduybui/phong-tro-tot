@@ -12,7 +12,7 @@
             <p class="top-up-desc">Our website supports the following payment methods:</p>
             <div class="row payment-method">
                 <div class="col-lg-4 payment-method-card">
-                   <div class="payment-method-card-wrapper">
+                   <div class="payment-method-card-wrapper" id="viettel-otp" data-toggle="modal" data-target="#modal-method">
                         <img src="/src/public/img/viettel_otp.png" alt="" class="payment-method-card__img">
                         <h3 class="payment-method-card__title">Viettel OTP</h3>
                         <p class="payment-method-card__desc">Load Viettel card into your phone, then enter the OTP sent to your phone to complete the payment.</p>
@@ -20,7 +20,7 @@
                 </div>
 
                  <div class="col-lg-4 payment-method-card">
-                    <div class="payment-method-card-wrapper">
+                    <div class="payment-method-card-wrapper" data-toggle="modal" data-target="#modal-method" id="mobi-sms">
                         <img src="/src/public/img/mobiphone-sms.png" alt="" class="payment-method-card__img">
                         <h3 class="payment-method-card__title">Mobiphone SMS</h3>
                         <p class="payment-method-card__desc">Load Mobifone card into your subscriber, then send a message with the corresponding syntax.</p>
@@ -28,7 +28,7 @@
                 </div>
 
                 <div class="col-lg-4 payment-method-card">
-                   <div class="payment-method-card-wrapper">
+                   <div class="payment-method-card-wrapper" data-toggle="modal" data-target="#modal-method" id="vina-sms">
                         <img src="/src/public/img/vinasms.png" alt="" class="payment-method-card__img">
                         <h3 class="payment-method-card__title">Vinaphone SMS</h3>
                         <p class="payment-method-card__desc">Load Vinaphone card into your subscriber, then send a message with the corresponding syntax.</p>
@@ -38,7 +38,7 @@
 
             <div class="row payment-method">
                 <div class="col-lg-4 payment-method-card">
-                   <div class="payment-method-card-wrapper">
+                   <div class="payment-method-card-wrapper" data-toggle="modal" data-target="#modal-method" id="atm-ibanking">
                         <img src="/src/public/img/atm.png" alt="" class="payment-method-card__img">
                         <h3 class="payment-method-card__title">ATM - iBanking</h3>
                         <p class="payment-method-card__desc">Conditions: Customers need to register for Online Payment service with ATM card or E-Banking with Bank.</p>
@@ -46,7 +46,7 @@
                 </div>
 
                  <div class="col-lg-4 payment-method-card">
-                    <div class="payment-method-card-wrapper">
+                    <div class="payment-method-card-wrapper" data-toggle="modal" data-target="#modal-method" id="debit-card">
                         <img src="/src/public/img/visa.png" alt="" class="payment-method-card__img">
                         <h3 class="payment-method-card__title">International Debit Card</h3>
                         <p class="payment-method-card__desc">Convenient payment with international cards (Credit card - Debit card): VISA, Master card, JCB,..</p>
@@ -54,7 +54,7 @@
                 </div>
 
                 <div class="col-lg-4 payment-method-card">
-                   <div class="payment-method-card-wrapper">
+                   <div class="payment-method-card-wrapper" data-toggle="modal" data-target="#modal-method" id="qr-pay">
                         <img src="/src/public/img/qrpay.png" alt="" class="payment-method-card__img">
                         <h3 class="payment-method-card__title">QR Pay</h3>
                         <p class="payment-method-card__desc">Login to the banking application, scan the QR code with QRPay to complete the payment</p>
@@ -62,7 +62,7 @@
                 </div>
             </div>
 
-           <div class="detail-payment pt-4">
+           <div class="detail-payment pt-5" id="detail-payment-id">
                 <div class="tip-payment">
                     <small><span style="color: red;">(*)</span>Tips: top up from 200,000 VND and up to receive special offers from us <3</small>
                 </div>
@@ -75,42 +75,43 @@
                         </li>
      
                         <li class="choose-price-item">
-                            <input type="radio" id="10k" name="choose-price-group">
+                            <input type="radio" id="10k" name="choose-price-group" value="10000">
                             <label for="10k" class="number-font">10.000 đ</label>
                         </li>
     
                         <li class="choose-price-item">
-                            <input type="radio" id="20k" name="choose-price-group">
+                            <input type="radio" id="20k" name="choose-price-group" value="20000">
                             <label for="20k" class="number-font">20.000 đ</label>
                         </li>
     
                         <li class="choose-price-item">
-                            <input type="radio" id="50k" name="choose-price-group">
+                            <input type="radio" id="50k" name="choose-price-group" value="50000">
                             <label for="50k" class="number-font">50.000 đ</label>
                         </li>
     
                         <li class="choose-price-item">
-                            <input type="radio" id="100k" name="choose-price-group">
+                            <input type="radio" id="100k" name="choose-price-group"
+                            value="100000">
                             <label for="100k" class="number-font">100.000 đ</label>
                         </li>
     
                         <li class="choose-price-item">
-                            <input type="radio" id="200k" name="choose-price-group">
+                            <input type="radio" id="200k" name="choose-price-group" value="200000">
                             <label for="200k" class="number-font">200.000 đ</label>
                         </li>
     
                         <li class="choose-price-item">
-                            <input type="radio" id="500k" name="choose-price-group">
+                            <input type="radio" id="500k" name="choose-price-group" value="500000">
                             <label for="500k" class="number-font">500.000 đ</label>
                         </li>
     
                         <li class="choose-price-item">
-                            <input type="radio" id="1tr" name="choose-price-group">
+                            <input type="radio" id="1tr" name="choose-price-group" value="1000000">
                             <label for="1tr" class="number-font">1.000.000 đ</label>
                         </li>
     
                         <li class="choose-price-item">
-                            <input type="radio" id="2tr" name="choose-price-group">
+                            <input type="radio" id="2tr" name="choose-price-group" value="2000000">
                             <label for="2tr" class="number-font">2.000.000 đ</label>
                         </li>
                     </ul>
@@ -127,27 +128,37 @@
                             
                                 <li class="choose-price-item d-flex justify-content-between">
                                     <div class="transaction-detail-label">Price</div>
-                                    <div class="transaction-detail-content number-font">200.000d</div>
+                                    <div class="transaction-detail-content number-font" id="price-transaction">200.000d</div>
                                 </li>
 
                                 <li class="choose-price-item d-flex justify-content-between">
                                     <div class="transaction-detail-label">Bonus</div>
-                                    <div class="transaction-detail-content number-font">+ 20.000d</div>
+                                    <div class="transaction-detail-content number-font"id="bonus-transaction">+ 20.000d</div>
                                 </li>
 
                                 <li class="choose-price-item d-flex justify-content-between">
                                     <div class="transaction-detail-label">Total</div>
-                                    <div class="transaction-detail-content number-font">220.000d</div>
+                                    <div class="transaction-detail-content number-font" id="total-transaction">220.000d</div>
                                 </li>
 
                                 <li class="choose-price-item d-flex justify-content-between">
                                     <div class="transaction-detail-label">Payment methods</div>
-                                    <div class="transaction-detail-content number-font">ATM - iBanking</div>
+                                    <div class="transaction-detail-content number-font" id="method-transaction">ATM - iBanking</div>
                                 </li>
 
                                 <li class="choose-price-item choose-price-item-last d-flex justify-content-center">
-                                    <button type="button" class="btn btn-success btn-block">Submit Payment</button>
+                                    <button type="button" class="btn btn-success btn-block" id="btn-submit-payment">Submit Your Payment</button>
                                 </li>
+                        </div>
+
+                        <div class="qr-pay-wrapper text-center">
+                            <div class="qr-pay-tutorial">Scan the QR code below with the Internet Banking app to make payment</div>
+                            <img src="https://chart.googleapis.com/chart?cht=qr&chs=256x256&chld=L%7C1&chl=00020101021226280010A0000007750110010395991252046540530370454062000005802VN5903VED6005HANOI610610000062420120164663133182918854390305VED050705VED0563045840" alt="QR code">
+                            <div class="qr-pay-desc">
+                                <p>Note: This QR code will expire after 24 hours from creation</p>
+                                <p>Invoice number: 16466313318291885439</p>
+                                <button type="button" class="btn btn-success btn-block" id="qr-pay-choose">I have completed the payment on the app</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -156,6 +167,31 @@
             
         <div/>
     </div>
+
+    
+    <!-- Modal -->
+    <div class="modal fade" id="modal-method" tabindex="-1" role="dialog" 
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="model-method-label"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body text-center">
+                    <div><img src="" id="model-method-img"></div>
+                    <small>Tips: Continue to choose the par value below and pay <span><3</span></small>
+                </div>
+                <div class="modal-footer text-center">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Reselect</button>
+                    <button type="button" class="btn btn-primary" onClick="document.getElementById('detail-payment-id').scrollIntoView();$('#modal-method').modal('hide')">Continue</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
 
     <script src="/src/app/jquery-3.5.1.min.js"></script>
     <script src="/src/app/top-up.js"></script>

@@ -7,7 +7,7 @@
                         <ol class="breadcrump">
                             <li class="breadcrump-item">Home</li>
                             <li class="breadcrump-item">News</li>
-                            <li class="breadcrump-item active">Posting news for renting a room</li>
+                            <li class="breadcrump-item active">Posting news</li>
                         </ol>
                     </nav>
                 </div>
@@ -46,99 +46,174 @@
                             <div id="step-1" class="tab-pane" role="tabpanel" aria-labelledby="step-1">
 
                                 <div id="form-step-0" role="form" data-toggle="validator" class="mb-5">
-                                    <div class="form-group">
-                                        <label for="title">Title <span style="color: red;">(*)</span></label>
-                                        <input type="text" class="form-control" id="title" placeholder="Enter title"
-                                            name="title" required>
-                                        <div class="help-block with-errors"></div>
-                                    </div>
 
 
+                                    <small style="margin-bottom: 35px; padding-left:15px" class="d-block">Tooltip: (*)
+                                        Required to
+                                        enter</small>
 
-                                    <div class="form-group form-input-custom">
-                                        <label style="width: 100%;">Rental Address <span
-                                                style="color: red;">(*)</span></label>
-                                        <select id="province" class="custom-select w33 mb25" name="province">
-                                        </select>
-
-                                        <select id="district" class="custom-select w33 mb25" name="district">
-                                            <option selected>-- District --</option>
-                                        </select>
-
-                                        <select id="ward" class="custom-select w33 mb25" name="ward">
-                                            <option selected>-- Ward --</option>
-                                        </select>
-
-                                        <div class="form-group w49">
-                                            <label for="street">Street <span style="color: red;">(*)</span></label>
-                                            <input type="text" class="form-control" id="street"
-                                                placeholder="Enter the street" name="street" required>
-                                            <div class="help-block with-errors"></div>
+                                    <div class="row w-100 submit-info">
+                                        <div class="col-4 submit-info-left">
+                                            <div class="post-title-info">Basic Description</div>
+                                            <div class="post-desc-info">This description will appear first in page.
+                                                Keeping it as a brief overview makes it easier to read.</div>
                                         </div>
 
-
-                                        <div class="form-group w49">
-                                            <label for="apartmentNumber">Apartment Number <span
-                                                    style="color: red;">(*)</span></label>
-                                            <input type="text" class="form-control" id="apartmentNumber"
-                                                placeholder="Enter apartment number" name="apartmentNumber" required>
-                                            <div class="help-block with-errors"></div>
-                                        </div>
-                                        <div class="form-group w-100">
-                                            <input type="text" class="form-control" id="address" name="address">
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text">Price <span
-                                                        style="color: red; padding-left: 4px">(*)</span></span>
+                                        <div class="col-8 submit-info-right">
+                                            <div class="mb-3 w-100">
+                                                <label for="kind-news-post">Kind of News <span
+                                                        style="color: red;">(*)</span></label>
+                                                <select class="custom-select" id="kind-news-post">
+                                                    <option selected>Choose the kind of news</option>
+                                                    <option value="cho-thue">Rental Accommodation</option>
+                                                    <option value="o-ghep">Find people to share rooms</option>
+                                                </select>
                                             </div>
-                                            <input type="number" class="form-control number-font"
-                                                style="text-align: right;" placeholder="For example: 2500000" required>
-                                            <div class="input-group-append">
-                                                <span class="input-group-text">.đ</span>
+
+                                            <div class="form-group">
+                                                <label for="title">Title <span style="color: red;">(*)</span></label>
+                                                <input type="text" class="form-control number-font" id="title"
+                                                    placeholder="Enter title" name="title" required>
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+
+                                            <div class="mb-3 w-100">
+                                                <label for="gender-allow">Gender Allowed <span
+                                                        style="color: red;">(*)</span></label>
+                                                <select class="custom-select" id="gender-allow">
+                                                    <option selected>All</option>
+                                                    <option value="male">Male</option>
+                                                    <option value="female">Female</option>
+                                                    <option value="other">Other</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Price <span style="color: red;">(*)</span></label>
+                                                <div class="input-group">
+
+                                                    <input type="number" class="number-font form-control number-font"
+                                                        style="text-align: right;" placeholder="For example: 2500000"
+                                                        required>
+                                                    <div class="input-group-append">
+                                                        <span class="input-group-text">.đ</span>
+                                                    </div>
+                                                </div>
+                                                <div class="help-block with-errors"></div>
                                             </div>
                                         </div>
-                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                    <div class="row w-100 submit-info border-bottom-0 mb-0 pb-0">
+                                        <div class="col-4 submit-info-left">
+                                            <div class="post-title-info">Declare Location</div>
+                                            <div class="post-desc-info">Declare your accommodation's location in the
+                                                following form.</div>
+                                        </div>
+                                        <div class="col-8 submit-info-right">
+                                            <div class="form-group form-input-custom mb-3">
+                                                <label style="width: 100%;">Rental Address <span
+                                                        style="color: red;">(*)</span></label>
+                                                <select id="province" class="custom-select w33" name="province">
+                                                </select>
+
+                                                <select id="district" class="custom-select w33" name="district">
+                                                    <option selected>-- District --</option>
+                                                </select>
+
+                                                <select id="ward" class="custom-select w33" name="ward">
+                                                    <option selected>-- Ward --</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="d-flex justify-content-between">
+                                                <div class="form-group w49">
+                                                    <label for="street">Street <span
+                                                            style="color: red;">(*)</span></label>
+                                                    <input type="text" class="form-control number-font" id="street"
+                                                        placeholder="Enter the street" name="street" required>
+                                                    <div class="help-block with-errors"></div>
+                                                </div>
+                                                <div class="form-group w49">
+                                                    <label for="apartmentNumber">Apartment Number <span
+                                                            style="color: red;">(*)</span></label>
+                                                    <input type="text" class="form-control number-font"
+                                                        id="apartmentNumber" placeholder="Enter apartment number"
+                                                        name="apartmentNumber" required>
+                                                    <div class="help-block with-errors"></div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group w-100">
+                                                <label for="full-address">Full Address</label>
+                                                <input type="text" class="form-control number-font" id="full-address"
+                                                    name="full-address" style="color: #222;">
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-
                             </div>
                             <div id="step-2" class="tab-pane" role="tabpanel" aria-labelledby="step-2">
 
                                 <div id="form-step-1" role="form" data-toggle="validator">
-                                    <div class="form-group form-input-custom">
-                                        <label for="info-host" style="width: 100%;">Contact Information</label>
-                                        <div class="input-group w49">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text" id="basic-addon1">Phone Number</span>
-                                            </div>
-                                            <input type="tel" class="form-control" placeholder="Enter phone number"
-                                                aria-label="Username" aria-describedby="basic-addon1">
-                                        </div>
 
-                                        <div class="input-group w49">
-                                            <input type="email" class="form-control" placeholder="Your email"
-                                                aria-label="Recipient's username" aria-describedby="basic-addon2">
-                                            <div class="input-group-append">
-                                                <span class="input-group-text" id="basic-addon2">@gmail.com</span>
+                                    <small style="margin-bottom: 35px; padding-left:15px" class="d-block">Tooltip: (*)
+                                        Required to
+                                        enter</small>
+                                    <div class="row w-100 submit-info pb65">
+                                        <div class="col-4 submit-info-left">
+                                            <div class="post-title-info">Contact Information</div>
+                                            <div class="post-desc-info">Fill in your contact information exactly here,
+                                                so that people wishing to rent or stay in contact are the most
+                                                convenient.</div>
+                                        </div>
+                                        <div class="col-8 submit-info-right">
+                                            <div class="form-group form-input-custom">
+
+                                                <div class="input-group w49">
+                                                    <label for="tel" style="width: 100%;">Phone Number</label>
+                                                    <input type="tel" class="form-control number-font"
+                                                        placeholder="Enter phone number" aria-label="Username"
+                                                        aria-describedby="basic-addon1">
+                                                </div>
+
+                                                <div class="input-group w49">
+                                                    <label for="email" style="width: 100%;">Email</label>
+                                                    <input type="email" class="form-control number-font"
+                                                        placeholder="Example: duyphong@gmail.com">
+                                                </div>
                                             </div>
                                         </div>
-
                                     </div>
 
-                                    <div class="input-group mb25">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text">Description</span>
+                                    <div class="row w-100 submit-info " style="padding-bottom: 40px;">
+                                        <div class="col-4 submit-info-left">
+                                            <div class="post-title-info">Description Information</div>
+                                            <div class="post-desc-info">Give a detailed description of your
+                                                accommodation as much as possible.</div>
                                         </div>
-                                        <textarea class="form-control" aria-label="With textarea"></textarea>
+                                        <div class="col-8 submit-info-right">
+                                            <div class="input-group mb25 d-flex flex-column">
+                                                <label for="description-detail-post">Description</label>
+                                                <textarea class="form-control number-font w-100"
+                                                    aria-label="With textarea" name="description-detail-post"
+                                                    rows="6"></textarea>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <label for="info-host" style="width: 100%;"> Upload Images:</label>
-                                    <div id="my-dropzone-id" class="dropzone">
-                                        <div class="fallback">
-                                            <input name="file" type="file" multiple />
+
+                                    <div class="row w-100 submit-info border-bottom-0 mb-0 pb-0">
+                                        <div class="col-4 submit-info-left">
+                                            <div class="post-title-info">Upload Images</div>
+                                            <div class="post-desc-info">Upload pictures of your accommodation, so people
+                                                can easily have an objective view of where they'll be renting (10 photos
+                                                limit).</div>
+                                        </div>
+                                        <div class="col-8 submit-info-right">
+                                            <label for="my-dropzone-id" style="width: 100%;"> Drop Images</label>
+                                            <div id="my-dropzone-id" class="dropzone">
+                                                <div class="fallback">
+                                                    <input name="file" type="file" multiple />
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -146,118 +221,134 @@
                             </div>
 
                             <div id="step-3" class="tab-pane" role="tabpanel" aria-labelledby="step-3">
+                                <small style="margin-bottom: 35px; padding-left:15px" class="d-block">Tooltip: (*)
+                                    Required to
+                                    enter
+                                </small>
+                                <div class="row w-100 submit-info">
+                                    <div class="col-4 submit-info-left">
+                                        <div class="post-title-info">Amenities and Features</div>
+                                        <div class="post-desc-info">Tick selected or fill out the form following the
+                                            amenities and features your accommodation has.</div>
+                                    </div>
+                                    <div class="col-8 submit-info-right">
+                                        <label for="" style="width: 100%;">Features:</label>
+                                        <div class="mb-3 d-flex justify-content-between flex-wrap">
 
-                                <label for="info-host" style="width: 100%;">Features:</label>
-                                <div class="mb-3 d-flex justify-content-between flex-wrap">
-
-                                    <form>
-                                        <label>
-                                            <input type="checkbox" name="check">
-                                            <span>Camera</span>
-                                        </label>
-                                        <label>
-                                            <input type="checkbox" name="check">
-                                            <span>Internet</span>
-                                        </label>
-                                        <label>
-                                            <input type="checkbox" name="check">
-                                            <span>Market</span>
-                                        </label>
-                                        <label>
-                                            <input type="checkbox" name="check">
-                                            <span>Free Time</span>
-                                        </label>
-                                    </form>
-                                    <div class="form-group row">
-                                        <label for="" class="col-sm-2 col-form-label p-0">Others</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" class="form-control p-0">
+                                            <form>
+                                                <label>
+                                                    <input type="checkbox" name="check">
+                                                    <span>Camera</span>
+                                                </label>
+                                                <label>
+                                                    <input type="checkbox" name="check">
+                                                    <span>Internet</span>
+                                                </label>
+                                                <label>
+                                                    <input type="checkbox" name="check">
+                                                    <span>Market</span>
+                                                </label>
+                                                <label>
+                                                    <input type="checkbox" name="check">
+                                                    <span>Free Time</span>
+                                                </label>
+                                            </form>
+                                            <div class="form-group row">
+                                                <label for="" class="col-sm-2 col-form-label p-0">Others</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" class="form-control p-0 number-font">
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <label for="">Detail <span style="color: red;">(*)</span></label>
-                                <div class="d-flex justify-content-around flex-wrap mb-2" id="form-step-2" role="form"
-                                    data-toggle="validator">
-                                    <div class="form-group mb-4 w49">
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text">Area</span>
+                                <div class="row w-100 submit-info">
+                                    <div class="col-4 submit-info-left">
+                                        <div class="post-title-info">Area and Year Built</div>
+                                        <div class="post-desc-info">Fill out the form following the area and year of
+                                            your inn building.</div>
+                                    </div>
+                                    <div class="col-8 submit-info-right">
+                                        <label for="">Detail <span style="color: red;">(*)</span></label>
+                                        <div class="d-flex justify-content-around flex-wrap mb-2" id="form-step-2"
+                                            role="form" data-toggle="validator">
+                                            <div class="form-group mb-4 w49">
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text">Area</span>
+                                                    </div>
+                                                    <input type="number" class="form-control number-font"
+                                                        style="text-align: right;" required>
+                                                    <div class="input-group-append">
+                                                        <span class="input-group-text">m<sup>2</sup></span>
+                                                    </div>
+                                                </div>
+                                                <div class="help-block with-errors"></div>
                                             </div>
-                                            <input type="number" class="form-control number-font"
-                                                style="text-align: right;" required>
-                                            <div class="input-group-append">
-                                                <span class="input-group-text">m<sup>2</sup></span>
+
+                                            <div class="form-group mb-4 w49">
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text">Year Built</span>
+                                                    </div>
+                                                    <input type="month" class="form-control number-font" required>
+                                                </div>
+                                                <div class="help-block with-errors"></div>
                                             </div>
                                         </div>
-                                        <div class="help-block with-errors"></div>
                                     </div>
-
-                                    <div class="form-group mb-4 w49">
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text">Year Built</span>
-                                            </div>
-                                            <input type="month" class="form-control" required>
-                                        </div>
-                                        <div class="help-block with-errors"></div>
-                                    </div>
-
-
-                                    <div class="mb-3 w49">
-                                        <label for="floor">Floor</label>
-                                        <select class="custom-select" id="floor">
-                                            <option selected>Number of floors</option>
-                                            <option value="0">0</option>
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                        </select>
-                                    </div>
-
-                                    <div class="mb-3 w49">
-                                        <label for="bathroom">Bathroom</label>
-                                        <select class="custom-select" id="bathroom">
-                                            <option selected>Number of bathrooms</option>
-                                            <option value="0">0</option>
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                        </select>
-                                    </div>
-
                                 </div>
 
+                                <div class="row w-100 submit-info border-bottom-0 mb-0">
+                                    <div class="col-4 submit-info-left">
+                                        <div class="post-title-info">Details Information</div>
+                                        <div class="post-desc-info">Detailed information about the number of floors and
+                                            bathrooms, bedrooms ...</div>
+                                    </div>
+                                    <div class="col-8 submit-info-right">
+                                        <div class="d-flex justify-content-between flex-wrap">
+                                            <div class="mb-3 w49">
+                                                <label for="floor">Floor</label>
+                                                <select class="custom-select" id="floor">
+                                                    <option selected>Number of floors</option>
+                                                    <option value="0">0</option>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="mb-3 w49">
+                                                <label for="bathroom">Bathroom</label>
+                                                <select class="custom-select" id="bathroom">
+                                                    <option selected>Number of bathrooms</option>
+                                                    <option value="0">0</option>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="mb-3 w-100">
+                                                <label for="bedroom">Bedroom</label>
+                                                <select class="custom-select" id="bathroom">
+                                                    <option selected>Number of Bedroom</option>
+                                                    <option value="0">0</option>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
 
                             <div id="step-4" class="tab-pane" role="tabpanel" aria-labelledby="step-4">
-                                
-                                <div class="d-flex justify-content-between align-items-center choosing-price">
-                                    <div class="">
-                                        <label for="kind-news">Kind of News</label>
-                                        <input type="text" id="kind-news" value="Choosing" disabled style="text-align: center;" class="choosing-price-input">
-                                    </div>
-                                    <div class="">
-                                        <label for="package-news">Package</label>
-                                        <select name="package-news" id="package-news" class="choosing-price-input">Choose package
-                                            <option value="day">Day</option>
-                                            <option value="week">Week</option>
-                                            <option value="month">Month</option>
-                                            
-                                        </select>
-                                    </div>
-                                    <div class="">
-                                        <label for="time-news">Number of <span id="type-pricing-package">Days (*)</span></label>
-                                        <input type="text" id="time-news" id="time-news" class="choosing-price-input number-font">
-                                    </div>
-                                </div>
-
-                                <div class="d-flex justify-content-between align-items-center" style="padding:0 5rem;">
-                                    <small style="font-style: italic; font-size:13.5px"><span style="color: red;">(*)</span> Weekly subscriptions get 10% off, monthly packages 20% off per day</small>
-                                    <div class="into-money-wrapper">
-                                        <div class="into-money-title">Total:<span id="total-money" class="number-font pl-2" style="font-weight: 500;"></span></div>
-                                    </div>
-                                </div>
+                                <small style="margin-bottom: 35px; padding-left:15px" class="d-block">Tooltip: (*)
+                                    Required to
+                                    enter</small>
 
                                 <div class="container-fluid bg-gradient">
                                     <div class="row m-auto text-center w-100">
@@ -265,7 +356,9 @@
                                         <div class="col-4 princing-item red">
                                             <div class="pricing-divider">
                                                 <h3 class="text-light type-pricing">NORMAL</h3>
-                                                <h4 class="my-0 display-2 text-light font-weight-normal mb-3 number-font package-price">2.000</h4>
+                                                <h4
+                                                    class="my-0 display-2 text-light font-weight-normal mb-3 number-font package-price">
+                                                    2.000</h4>
                                                 <svg class='pricing-divider-img' enable-background='new 0 0 300 100'
                                                     height='100px' id='Layer_1' preserveAspectRatio='none' version='1.1'
                                                     viewBox='0 0 300 100' width='300px' x='0px' xml:space='preserve'
@@ -287,11 +380,12 @@
                                                     <li><b>Behind</b> news vip, special</li>
                                                     <li><b>Our cheapest</b> package</li>
                                                     <li><b>Free </b>email support</li>
-                                                    
+
                                                     <li><b>Help center access</b></li>
-                                                    
+
                                                 </ul>
-                                                <button type="button" class="btn btn-lg btn-block  btn-custom " id="normal-package">Choosing</button>
+                                                <button type="button" class="btn btn-lg btn-block  btn-custom "
+                                                    id="normal-package">Choosing</button>
                                             </div>
                                         </div>
 
@@ -301,7 +395,9 @@
                                         <div class="col-4 princing-item blue">
                                             <div class="pricing-divider ">
                                                 <h3 class="text-light type-pricing">VIP</h3>
-                                                <h4 class="my-0 display-2 text-light font-weight-normal mb-3 number-font package-price">20.000</h4>
+                                                <h4
+                                                    class="my-0 display-2 text-light font-weight-normal mb-3 number-font package-price">
+                                                    20.000</h4>
                                                 <svg class='pricing-divider-img' enable-background='new 0 0 300 100'
                                                     height='100px' id='Layer_1' preserveAspectRatio='none' version='1.1'
                                                     viewBox='0 0 300 100' width='300px' x='0px' xml:space='preserve'
@@ -325,7 +421,8 @@
                                                     <li><b>Full</b> support</li>
                                                     <li><b>Help center access</b></li>
                                                 </ul>
-                                                <button type="button" class="btn btn-lg btn-block  btn-custom " id="vip-package">Choosing</button>
+                                                <button type="button" class="btn btn-lg btn-block  btn-custom "
+                                                    id="vip-package">Choosing</button>
                                             </div>
                                         </div>
 
@@ -337,7 +434,9 @@
                                         <div class="col-4 princing-item green">
                                             <div class="pricing-divider ">
                                                 <h3 class="text-light type-pricing">SPECIAL</h3>
-                                                <h4 class="my-0 display-2 text-light font-weight-normal mb-3 number-font package-price">30.000</h4>
+                                                <h4
+                                                    class="my-0 display-2 text-light font-weight-normal mb-3 number-font package-price">
+                                                    30.000</h4>
                                                 <svg class='pricing-divider-img' enable-background='new 0 0 300 100'
                                                     height='100px' id='Layer_1' preserveAspectRatio='none' version='1.1'
                                                     viewBox='0 0 300 100' width='300px' x='0px' xml:space='preserve'
@@ -361,210 +460,310 @@
                                                     <li><b>Full</b> support</li>
                                                     <li><b>Help center access</b></li>
                                                 </ul>
-                                                <button type="button" class="btn btn-lg btn-block  btn-custom " id="special-package">Choosing</button>
+                                                <button type="button" class="btn btn-lg btn-block  btn-custom "
+                                                    id="special-package">Choosing</button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                
+
+
+                                <div class="row w-100 submit-info pt-5">
+                                    <div class="col-4 submit-info-left">
+                                        <div class="post-title-info">Package selection</div>
+                                        <div class="post-desc-info">Your package options.</div>
+                                    </div>
+                                    <div class="col-8 submit-info-right">
+                                        <div class="d-flex justify-content-between choosing-price">
+                                            <div class="form-group choosing-price-item">
+                                                <label for="kind-news">Kind of News</label>
+
+                                                <input class="form-control" type="text" placeholder="Choosing"
+                                                    id="kind-news" value="Choosing" readonly>
+
+                                            </div>
+                                            <div class="form-group choosing-price-item">
+                                                <label for="package-news">Package</label>
+                                                <select name="package-news" id="package-news" class="custom-select">
+                                                    <option selected>Choose package</option>
+                                                    <option value="day">Day</option>
+                                                    <option value="week">Week</option>
+                                                    <option value="month">Month</option>
+
+                                                </select>
+                                            </div>
+
+                                            <div class="form-group choosing-price-item">
+                                                <label for="time-news">Number of <span id="type-pricing-package">Days
+                                                        (*)</span></label>
+                                                <input type="text" id="time-news" class="form-control number-font">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row w-100 submit-info">
+                                    <div class="col-4 submit-info-left">
+                                        <div class="post-title-info">Special Offer</div>
+                                        <div class="post-desc-info"><small
+                                                style="font-style: italic; font-size:13.5px"><span
+                                                    style="color: red;">(*)</span>
+                                                Weekly subscriptions get 10% off, monthly
+                                                packages 20% off per day</small></div>
+                                    </div>
+                                    <div class="col-8 submit-info-right">
+                                        <div class="d-flex justify-content-between align-items-center">
+
+                                            <div class="into-money-wrapper">
+                                                <div class="into-money-title">Total:<span id="total-money"
+                                                        class="number-font pl-2" style="font-weight: 500;"></span></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
                             </div>
 
                             <div id="step-5" class="tab-pane" role="tabpanel" aria-labelledby="step-5">
 
-                                <p class="payment-desc-info">Our website supports the following 2 payment methods and the amount you need to pay is: <span id="amount-pay" class="number-font"></span></p>
-                                <form class="form-radio-payment">
-                                    <div class="inputGroup-radio-payment">
-                                        <input id="radio1" name="radio" type="radio" class="input-radio-payment"
-                                            value="1" />
-                                        <label for="radio1" class="label-radio-payment">Payment through the System
-                                            account</label>
-                                    </div>
-                                    <div class="inputGroup-radio-payment">
-                                        <input id="radio2" name="radio" type="radio" class="input-radio-payment"
-                                            value="2" checked="checked" />
-                                        <label for="radio2" class="label-radio-payment" id="visa-card-show">Payment
-                                            through Visa card,
-                                            Master card</label>
-                                    </div>
-                                </form>
+                                <p class="payment-desc-info">The amount you need to pay is: <span id="amount-pay"
+                                        class="number-font"></span></p>
 
-                                <div class="payment-system-account">
-                                    <ul class="info-amount-account">
-                                        <li class="d-flex justify-content-between info-amount-account-item exist-amount">Existing Amount: 
-                                            <div>
-                                                <span class="number-font exist-amount-value span-first">2000</span>
-                                                <span class="number-font"> đ</span>
+                                <div class="row w-100 submit-info pt-3">
+                                    <div class="col-4 submit-info-left">
+                                        <div class="post-title-info">Payment Methods</div>
+                                        <div class="post-desc-info">Our website supports the following 2 payment
+                                            methods.</div>
+                                    </div>
+                                    <div class="col-8 submit-info-right">
+                                        <form class="form-radio-payment">
+                                            <div class="inputGroup-radio-payment">
+                                                <input id="radio1" name="radio" type="radio" class="input-radio-payment"
+                                                    value="1" />
+                                                <label for="radio1" class="label-radio-payment">Payment through the
+                                                    System
+                                                    account</label>
                                             </div>
-                                        </li>
-
-                                        <li class="d-flex justify-content-between info-amount-account-item paid-amount">Amount to be paid: <span class="number-font paid-amount-value span-first">2000<span> đ</span></span></li>
-
-                                        <li class="d-flex justify-content-between info-amount-account-item remain-amount">The remaining amount: <span class="number-font remain-amount-value span-first">0<span> đ</span></span></li>
-
-                                        <li class="info-amount-account-item info-amount-account-item-warning"><small>Not enough money, top up <a href="/features/top-up">right here</a></small></li>
-                                    </ul>
-                                    
+                                            <div class="inputGroup-radio-payment">
+                                                <input id="radio2" name="radio" type="radio" class="input-radio-payment"
+                                                    value="2" checked="checked" />
+                                                <label for="radio2" class="label-radio-payment"
+                                                    id="visa-card-show">Payment
+                                                    through Visa card,
+                                                    Master card</label>
+                                            </div>
+                                        </form>
+                                    </div>
                                 </div>
 
+                                <div class="row w-100 submit-info pb-0 mb-0 border-bottom-0">
+                                    <div class="col-4 submit-info-left">
+                                        <div class="post-title-info">Payment Details</div>
+                                        <div class="post-desc-info">Details of your transaction</div>
+                                    </div>
+                                    <div class="col-8 submit-info-right">
+                                        <div class="payment-system-account">
+                                            <ul class="info-amount-account">
+                                                <li
+                                                    class="d-flex justify-content-between info-amount-account-item exist-amount">
+                                                    Existing Amount:
+                                                    <div>
+                                                        <span
+                                                            class="number-font exist-amount-value span-first">2000</span>
+                                                        <span class="number-font"> đ</span>
+                                                    </div>
+                                                </li>
 
-                                <div class="payment-visacard-wrapper">
-                                    <div class="container-visa-card preload">
-                                        <div class="creditcard">
-                                            <div class="front">
-                                                <div id="ccsingle"></div>
-                                                <svg version="1.1" id="cardfront" xmlns="http://www.w3.org/2000/svg"
-                                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                    viewBox="0 0 750 471" style="enable-background:new 0 0 750 471;"
-                                                    xml:space="preserve">
-                                                    <g id="Front">
-                                                        <g id="CardBackground">
-                                                            <g id="Page-1_1_">
-                                                                <g id="amex_1_">
-                                                                    <path id="Rectangle-1_1_" class="lightcolor grey" d="M40,0h670c22.1,0,40,17.9,40,40v391c0,22.1-17.9,40-40,40H40c-22.1,0-40-17.9-40-40V40
+                                                <li
+                                                    class="d-flex justify-content-between info-amount-account-item paid-amount">
+                                                    Amount to be paid: <span
+                                                        class="number-font paid-amount-value span-first">2000<span>
+                                                            đ</span></span></li>
+
+                                                <li
+                                                    class="d-flex justify-content-between info-amount-account-item remain-amount">
+                                                    The remaining amount: <span
+                                                        class="number-font remain-amount-value span-first">0<span>
+                                                            đ</span></span></li>
+
+                                                <li class="info-amount-account-item info-amount-account-item-warning">
+                                                    <small>Not
+                                                        enough money, top up <a href="/features/top-up">right
+                                                            here</a></small>
+                                                </li>
+                                            </ul>
+
+                                        </div>
+
+
+                                        <div class="payment-visacard-wrapper">
+                                            <div class="container-visa-card preload">
+                                                <div class="creditcard">
+                                                    <div class="front">
+                                                        <div id="ccsingle"></div>
+                                                        <svg version="1.1" id="cardfront"
+                                                            xmlns="http://www.w3.org/2000/svg"
+                                                            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                                            viewBox="0 0 750 471"
+                                                            style="enable-background:new 0 0 750 471;"
+                                                            xml:space="preserve">
+                                                            <g id="Front">
+                                                                <g id="CardBackground">
+                                                                    <g id="Page-1_1_">
+                                                                        <g id="amex_1_">
+                                                                            <path id="Rectangle-1_1_"
+                                                                                class="lightcolor grey" d="M40,0h670c22.1,0,40,17.9,40,40v391c0,22.1-17.9,40-40,40H40c-22.1,0-40-17.9-40-40V40
                                 C0,17.9,17.9,0,40,0z" />
+                                                                        </g>
+                                                                    </g>
+                                                                    <path class="darkcolor greydark"
+                                                                        d="M750,431V193.2c-217.6-57.5-556.4-13.5-750,24.9V431c0,22.1,17.9,40,40,40h670C732.1,471,750,453.1,750,431z" />
                                                                 </g>
-                                                            </g>
-                                                            <path class="darkcolor greydark"
-                                                                d="M750,431V193.2c-217.6-57.5-556.4-13.5-750,24.9V431c0,22.1,17.9,40,40,40h670C732.1,471,750,453.1,750,431z" />
-                                                        </g>
-                                                        <text transform="matrix(1 0 0 1 60.106 295.0121)" id="svgnumber"
-                                                            class="st2 st3 st4">0123 4567 8910 1112</text>
-                                                        <text transform="matrix(1 0 0 1 54.1064 428.1723)" id="svgname"
-                                                            class="st2 st5 st6">JOHN DOE</text>
-                                                        <text transform="matrix(1 0 0 1 54.1074 389.8793)"
-                                                            class="st7 st5 st8">cardholder name</text>
-                                                        <text transform="matrix(1 0 0 1 479.7754 388.8793)"
-                                                            class="st7 st5 st8">expiration</text>
-                                                        <text transform="matrix(1 0 0 1 65.1054 241.5)"
-                                                            class="st7 st5 st8">card number</text>
-                                                        <g>
-                                                            <text transform="matrix(1 0 0 1 574.4219 433.8095)"
-                                                                id="svgexpire" class="st2 st5 st9">01/23</text>
-                                                            <text transform="matrix(1 0 0 1 479.3848 417.0097)"
-                                                                class="st2 st10 st11">VALID</text>
-                                                            <text transform="matrix(1 0 0 1 479.3848 435.6762)"
-                                                                class="st2 st10 st11">THRU</text>
-                                                            <polygon class="st2"
-                                                                points="554.5,421 540.4,414.2 540.4,427.9 		" />
-                                                        </g>
-                                                        <g id="cchip">
-                                                            <g>
-                                                                <path class="st2" d="M168.1,143.6H82.9c-10.2,0-18.5-8.3-18.5-18.5V74.9c0-10.2,8.3-18.5,18.5-18.5h85.3
+                                                                <text transform="matrix(1 0 0 1 60.106 295.0121)"
+                                                                    id="svgnumber" class="st2 st3 st4">0123 4567 8910
+                                                                    1112</text>
+                                                                <text transform="matrix(1 0 0 1 54.1064 428.1723)"
+                                                                    id="svgname" class="st2 st5 st6">JOHN DOE</text>
+                                                                <text transform="matrix(1 0 0 1 54.1074 389.8793)"
+                                                                    class="st7 st5 st8">cardholder name</text>
+                                                                <text transform="matrix(1 0 0 1 479.7754 388.8793)"
+                                                                    class="st7 st5 st8">expiration</text>
+                                                                <text transform="matrix(1 0 0 1 65.1054 241.5)"
+                                                                    class="st7 st5 st8">card number</text>
+                                                                <g>
+                                                                    <text transform="matrix(1 0 0 1 574.4219 433.8095)"
+                                                                        id="svgexpire" class="st2 st5 st9">01/23</text>
+                                                                    <text transform="matrix(1 0 0 1 479.3848 417.0097)"
+                                                                        class="st2 st10 st11">VALID</text>
+                                                                    <text transform="matrix(1 0 0 1 479.3848 435.6762)"
+                                                                        class="st2 st10 st11">THRU</text>
+                                                                    <polygon class="st2"
+                                                                        points="554.5,421 540.4,414.2 540.4,427.9 		" />
+                                                                </g>
+                                                                <g id="cchip">
+                                                                    <g>
+                                                                        <path class="st2" d="M168.1,143.6H82.9c-10.2,0-18.5-8.3-18.5-18.5V74.9c0-10.2,8.3-18.5,18.5-18.5h85.3
                             c10.2,0,18.5,8.3,18.5,18.5v50.2C186.6,135.3,178.3,143.6,168.1,143.6z" />
-                                                            </g>
-                                                            <g>
-                                                                <g>
-                                                                    <rect x="82" y="70" class="st12" width="1.5"
-                                                                        height="60" />
-                                                                </g>
-                                                                <g>
-                                                                    <rect x="167.4" y="70" class="st12" width="1.5"
-                                                                        height="60" />
-                                                                </g>
-                                                                <g>
-                                                                    <path class="st12" d="M125.5,130.8c-10.2,0-18.5-8.3-18.5-18.5c0-4.6,1.7-8.9,4.7-12.3c-3-3.4-4.7-7.7-4.7-12.3
+                                                                    </g>
+                                                                    <g>
+                                                                        <g>
+                                                                            <rect x="82" y="70" class="st12" width="1.5"
+                                                                                height="60" />
+                                                                        </g>
+                                                                        <g>
+                                                                            <rect x="167.4" y="70" class="st12"
+                                                                                width="1.5" height="60" />
+                                                                        </g>
+                                                                        <g>
+                                                                            <path class="st12" d="M125.5,130.8c-10.2,0-18.5-8.3-18.5-18.5c0-4.6,1.7-8.9,4.7-12.3c-3-3.4-4.7-7.7-4.7-12.3
                                 c0-10.2,8.3-18.5,18.5-18.5s18.5,8.3,18.5,18.5c0,4.6-1.7,8.9-4.7,12.3c3,3.4,4.7,7.7,4.7,12.3
                                 C143.9,122.5,135.7,130.8,125.5,130.8z M125.5,70.8c-9.3,0-16.9,7.6-16.9,16.9c0,4.4,1.7,8.6,4.8,11.8l0.5,0.5l-0.5,0.5
                                 c-3.1,3.2-4.8,7.4-4.8,11.8c0,9.3,7.6,16.9,16.9,16.9s16.9-7.6,16.9-16.9c0-4.4-1.7-8.6-4.8-11.8l-0.5-0.5l0.5-0.5
                                 c3.1-3.2,4.8-7.4,4.8-11.8C142.4,78.4,134.8,70.8,125.5,70.8z" />
-                                                                </g>
-                                                                <g>
-                                                                    <rect x="82.8" y="82.1" class="st12" width="25.8"
-                                                                        height="1.5" />
-                                                                </g>
-                                                                <g>
-                                                                    <rect x="82.8" y="117.9" class="st12" width="26.1"
-                                                                        height="1.5" />
-                                                                </g>
-                                                                <g>
-                                                                    <rect x="142.4" y="82.1" class="st12" width="25.8"
-                                                                        height="1.5" />
-                                                                </g>
-                                                                <g>
-                                                                    <rect x="142" y="117.9" class="st12" width="26.2"
-                                                                        height="1.5" />
+                                                                        </g>
+                                                                        <g>
+                                                                            <rect x="82.8" y="82.1" class="st12"
+                                                                                width="25.8" height="1.5" />
+                                                                        </g>
+                                                                        <g>
+                                                                            <rect x="82.8" y="117.9" class="st12"
+                                                                                width="26.1" height="1.5" />
+                                                                        </g>
+                                                                        <g>
+                                                                            <rect x="142.4" y="82.1" class="st12"
+                                                                                width="25.8" height="1.5" />
+                                                                        </g>
+                                                                        <g>
+                                                                            <rect x="142" y="117.9" class="st12"
+                                                                                width="26.2" height="1.5" />
+                                                                        </g>
+                                                                    </g>
                                                                 </g>
                                                             </g>
-                                                        </g>
-                                                    </g>
-                                                    <g id="Back">
-                                                    </g>
-                                                </svg>
-                                            </div>
-                                            <div class="back">
-                                                <svg version="1.1" id="cardback" xmlns="http://www.w3.org/2000/svg"
-                                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                    viewBox="0 0 750 471" style="enable-background:new 0 0 750 471;"
-                                                    xml:space="preserve">
-                                                    <g id="Front">
-                                                        <line class="st0" x1="35.3" y1="10.4" x2="36.7" y2="11" />
-                                                    </g>
-                                                    <g id="Back">
-                                                        <g id="Page-1_2_">
-                                                            <g id="amex_2_">
-                                                                <path id="Rectangle-1_2_" class="darkcolor greydark" d="M40,0h670c22.1,0,40,17.9,40,40v391c0,22.1-17.9,40-40,40H40c-22.1,0-40-17.9-40-40V40
+                                                            <g id="Back">
+                                                            </g>
+                                                        </svg>
+                                                    </div>
+                                                    <div class="back">
+                                                        <svg version="1.1" id="cardback"
+                                                            xmlns="http://www.w3.org/2000/svg"
+                                                            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                                            viewBox="0 0 750 471"
+                                                            style="enable-background:new 0 0 750 471;"
+                                                            xml:space="preserve">
+                                                            <g id="Front">
+                                                                <line class="st0" x1="35.3" y1="10.4" x2="36.7"
+                                                                    y2="11" />
+                                                            </g>
+                                                            <g id="Back">
+                                                                <g id="Page-1_2_">
+                                                                    <g id="amex_2_">
+                                                                        <path id="Rectangle-1_2_"
+                                                                            class="darkcolor greydark" d="M40,0h670c22.1,0,40,17.9,40,40v391c0,22.1-17.9,40-40,40H40c-22.1,0-40-17.9-40-40V40
                             C0,17.9,17.9,0,40,0z" />
-                                                            </g>
-                                                        </g>
-                                                        <rect y="61.6" class="st2" width="750" height="78" />
-                                                        <g>
-                                                            <path class="st3" d="M701.1,249.1H48.9c-3.3,0-6-2.7-6-6v-52.5c0-3.3,2.7-6,6-6h652.1c3.3,0,6,2.7,6,6v52.5
+                                                                    </g>
+                                                                </g>
+                                                                <rect y="61.6" class="st2" width="750" height="78" />
+                                                                <g>
+                                                                    <path class="st3" d="M701.1,249.1H48.9c-3.3,0-6-2.7-6-6v-52.5c0-3.3,2.7-6,6-6h652.1c3.3,0,6,2.7,6,6v52.5
                         C707.1,246.4,704.4,249.1,701.1,249.1z" />
-                                                            <rect x="42.9" y="198.6" class="st4" width="664.1"
-                                                                height="10.5" />
-                                                            <rect x="42.9" y="224.5" class="st4" width="664.1"
-                                                                height="10.5" />
-                                                            <path class="st5"
-                                                                d="M701.1,184.6H618h-8h-10v64.5h10h8h83.1c3.3,0,6-2.7,6-6v-52.5C707.1,187.3,704.4,184.6,701.1,184.6z" />
-                                                        </g>
-                                                        <text transform="matrix(1 0 0 1 621.999 227.2734)"
-                                                            id="svgsecurity" class="st6 st7">985</text>
-                                                        <g class="st8">
-                                                            <text transform="matrix(1 0 0 1 518.083 280.0879)"
-                                                                class="st9 st6 st10">security code</text>
-                                                        </g>
-                                                        <rect x="58.1" y="378.6" class="st11" width="375.5"
-                                                            height="13.5" />
-                                                        <rect x="58.1" y="405.6" class="st11" width="421.7"
-                                                            height="13.5" />
-                                                        <text transform="matrix(1 0 0 1 59.5073 228.6099)"
-                                                            id="svgnameback" class="st12 st13">John Doe</text>
-                                                    </g>
-                                                </svg>
+                                                                    <rect x="42.9" y="198.6" class="st4" width="664.1"
+                                                                        height="10.5" />
+                                                                    <rect x="42.9" y="224.5" class="st4" width="664.1"
+                                                                        height="10.5" />
+                                                                    <path class="st5"
+                                                                        d="M701.1,184.6H618h-8h-10v64.5h10h8h83.1c3.3,0,6-2.7,6-6v-52.5C707.1,187.3,704.4,184.6,701.1,184.6z" />
+                                                                </g>
+                                                                <text transform="matrix(1 0 0 1 621.999 227.2734)"
+                                                                    id="svgsecurity" class="st6 st7">985</text>
+                                                                <g class="st8">
+                                                                    <text transform="matrix(1 0 0 1 518.083 280.0879)"
+                                                                        class="st9 st6 st10">security code</text>
+                                                                </g>
+                                                                <rect x="58.1" y="378.6" class="st11" width="375.5"
+                                                                    height="13.5" />
+                                                                <rect x="58.1" y="405.6" class="st11" width="421.7"
+                                                                    height="13.5" />
+                                                                <text transform="matrix(1 0 0 1 59.5073 228.6099)"
+                                                                    id="svgnameback" class="st12 st13">John Doe</text>
+                                                            </g>
+                                                        </svg>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-container">
-                                        <div class="field-container">
-                                            <label for="name" class="label-payment">Name</label>
-                                            <input id="name" maxlength="20" type="text" class="input-payment">
-                                        </div>
-                                        <div class="field-container">
-                                            <label for="cardnumber" class="label-payment">Card Number</label><span
-                                                id="generatecard">generate
-                                                random</span>
-                                            <input id="cardnumber" type="text" pattern="[0-9]*" inputmode="numeric"
-                                                class="input-payment number-font">
-                                            <svg id="ccicon" class="ccicon" width="750" height="471"
-                                                viewBox="0 0 750 471" version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <div class="form-container">
+                                                <div class="field-container">
+                                                    <label for="name" class="label-payment">Name</label>
+                                                    <input id="name" maxlength="20" type="text" class="input-payment">
+                                                </div>
+                                                <div class="field-container">
+                                                    <label for="cardnumber" class="label-payment">Card
+                                                        Number</label><span id="generatecard">Choose</span>
+                                                    <input id="cardnumber" type="text" pattern="[0-9]*"
+                                                        inputmode="numeric" class="input-payment number-font">
+                                                    <svg id="ccicon" class="ccicon" width="750" height="471"
+                                                        viewBox="0 0 750 471" version="1.1"
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                        xmlns:xlink="http://www.w3.org/1999/xlink">
 
-                                            </svg>
-                                        </div>
-                                        <div class="field-container">
-                                            <label for="expirationdate" class="label-payment">Expiration (mm/yy)</label>
-                                            <input id="expirationdate" type="text" pattern="[0-9]*" inputmode="numeric"
-                                                class="input-payment number-font">
-                                        </div>
-                                        <div class="field-container">
-                                            <label for="securitycode" class="label-payment">Security Code</label>
-                                            <input id="securitycode" type="text" pattern="[0-9]*" inputmode="numeric"
-                                                class="input-payment number-font">
+                                                    </svg>
+                                                </div>
+                                                <div class="field-container">
+                                                    <label for="expirationdate" class="label-payment">Expiration
+                                                        (mm/yy)</label>
+                                                    <input id="expirationdate" type="text" pattern="[0-9]*"
+                                                        inputmode="numeric" class="input-payment number-font">
+                                                </div>
+                                                <div class="field-container">
+                                                    <label for="securitycode" class="label-payment">Security
+                                                        Code</label>
+                                                    <input id="securitycode" type="text" pattern="[0-9]*"
+                                                        inputmode="numeric" class="input-payment number-font">
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -573,5 +772,3 @@
         </div>
     </div>
 </div>
-
-<script src="/src/app/imask.min.js"></script>

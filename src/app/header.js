@@ -1,4 +1,9 @@
 // Fix menu header when scrolling 
+$(document).ready(function() {
+    $('li.active').removeClass('active');
+    $('a[href="' + location.pathname + '"]').closest('li').addClass('active'); 
+});
+
 $(window).on("scroll", function () {
     if($("#homepage-flag").length > 0){
         if ($(window).scrollTop() > 65) {

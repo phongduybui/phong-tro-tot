@@ -586,31 +586,31 @@ $(document).ready(function() {
    $("#province").on('change', function(){
         province = $( "#province option:selected" ).text();
         address = `${apartmentNumber}${street}${ward}${district}${province}`;
-        $("#address").val(address);
+        $("#full-address").val(address);
    });
 
    $("#district").on('change', function(){
         district = $( "#district option:selected" ).text() + ", ";
         address = `${apartmentNumber}${street}${ward}${district}${province}`;
-        $("#address").val(address);
+        $("#full-address").val(address);
     });
 
     $("#ward").on('change', function(){
         ward = $( "#ward option:selected" ).text() + ", ";
         address = `${apartmentNumber}${street}${ward}${district}${province}`;
-        $("#address").val(address);
+        $("#full-address").val(address);
     });
 
     $("#street").on('change', function(){
         street = $( "#street" ).val() + ", ";
         address = `${apartmentNumber}${street}${ward}${district}${province}`;
-        $("#address").val(address);
+        $("#full-address").val(address);
     });
 
     $("#apartmentNumber").on('change', function(){
         apartmentNumber = $( "#apartmentNumber" ).val() + " ";
         address = `${apartmentNumber}${street}${ward}${district}${province}`;
-        $("#address").val(address);
+        $("#full-address").val(address);
     });
     
 });
