@@ -200,7 +200,7 @@ $(document).ready(function () {
             showPreviousButton: true, // show/hide a Previous button
             toolbarExtraButtons: [
                 $('<button></button>').text('Submit').addClass('btn btn-danger submit-post-form').on('click', function(){
-                    alert("aaa");
+                    alert("Payment successful!");
                 })
             ] // Extra buttons to show on toolbar, array of jQuery input/buttons elements
         },
@@ -226,14 +226,23 @@ $(document).ready(function () {
         hiddenSteps: [] // Hidden steps
     });
 
+
+    $('.sw-btn-next').on('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    })
+
+    $('.sw-btn-prev').on('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    })
     
    
     $("#smartwizard").on("leaveStep", function(e, anchorObject, stepNumber) {
         var elmForm = $("#form-step-" + stepNumber);
+        var elmFormString = "#form-step-"+stepNumber;
         if(elmForm){
             // Add the custom validation here
             elmForm.validator('validate'); 
-            var elmErr = elmForm.children('.has-error');
+            var elmErr = $(`${elmFormString} .has-error`)
             if(elmErr && elmErr.length > 0){
                 // Error found
                 return false;    
@@ -558,14 +567,15 @@ window.onload = function () {
 
 /* Show Payment Visa Card */
 $(document).ready(function() {
-    $('.form-radio-payment input').on('change', function(e) {
-        if($('input[name=radio]:checked', '.form-radio-payment').val() == "2"){
-            $(".payment-visacard-wrapper").css('display', 'flex')
-            $(".payment-system-account").css('display', 'none')
+    $('input[name=radio-choose-method-payment]').on('change', function(e) {
+        console.log(11);
+        if($('input[name=radio-choose-method-payment]:checked').val() == "2"){
+            $(".payment-visacard-wrapper").show();
+            $(".payment-system-account").hide();
         }
         else {
-            $(".payment-visacard-wrapper").css('display', 'none')
-            $(".payment-system-account").css('display', 'flex')
+            $(".payment-visacard-wrapper").hide();
+            $(".payment-system-account").show();
             
         }
         
@@ -616,7 +626,10 @@ $(document).ready(function() {
 });
 /*Get address*/
 
-
+/* Function convert number to number with commas */
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
 
 /* Get total of money */
 $(document).ready(function() {
@@ -634,8 +647,8 @@ $(document).ready(function() {
         remainAmount = existAmount - priceNumber;
         $(".remain-amount-value").text(remainAmount + " đ");
 
-        $('.form-radio-payment input').on('change', function(e) {
-            if(remainAmount < 0 && $('input[name=radio]:checked', '.form-radio-payment').val() == "1")
+        $('input[name=radio-choose-method-payment]').on('change', function(e) {
+            if(remainAmount < 0 && $('input[name=radio-choose-method-payment]:checked').val() == "1")
             {
                 $(".info-amount-account-item-warning").show();
             }
@@ -664,7 +677,7 @@ $(document).ready(function() {
         calculatePayment();
     }
 
-    $("#time-news").on('change', function(){
+    $("#time-news").on('input', function(){
         timeNews = $("#time-news").val();
         calculateTotal();
     });
@@ -690,12 +703,20 @@ $(document).ready(function() {
         calculateTotal();
     })
 
-
-    function numberWithCommas(x) {
-        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    }
-    
-    
+    function commaSeparateNumber(val){
+        while (/(\d+)(\d{3})/.test(val.toString())){
+          val = val.toString().replace(/(\d+)(\d{3})/, '$1'+','+'$2');
+        }
+        return val;
+      }
+    $('#price-input').on('input', function(){
+        let temp = this.value.split(',').join('') - 0;
+        this.value = commaSeparateNumber(temp);
+     
+    });
+  
 })
+
+
 
 /* Get total of money */

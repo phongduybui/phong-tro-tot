@@ -199,17 +199,12 @@ html {
   font-family: 'Montserrat', sans-serif;
   font-size: 16px; }
 
-.nav-link {
-  padding: 8px 16px !important; }
-  .nav-link:link {
-    color: #fff !important; }
-  .nav-link:visited {
-    color: #fff !important; }
-  .nav-link:hover {
+.navbar .nav-link {
+  padding: 8px 6px !important;
+  margin: 0 10px !important; }
+  .navbar .nav-link:hover {
     color: #20ad96 !important;
     border-bottom-color: #20ad96 !important; }
-  .nav-link:active {
-    color: #fff !important; }
 
 .icon-search {
   background-color: transparent;
@@ -251,7 +246,6 @@ html {
     border-bottom: 2px solid #000 !important; }
   .bg-light .nav-link {
     color: #000 !important;
-    font-family: 'Montserrat', sans-serif;
     font-size: 16px; }
   .bg-light .nav-link:hover {
     color: #20ad96 !important; }
@@ -944,9 +938,10 @@ input[type='text'] {
 .inputGroup-radio-payment {
   background-color: #eee;
   display: block;
-  position: relative; }
+  position: relative;
+  margin: 0 80px; }
   .inputGroup-radio-payment .label-radio-payment {
-    padding: 3px 30px;
+    padding: 8px 30px;
     width: 100%;
     display: block;
     text-align: left;
@@ -1440,13 +1435,15 @@ input[type='text'] {
 /* Pricing Card */
 /*Payment through account system*/
 .payment-system-account {
-  padding-top: 25px;
   display: none;
   justify-content: center;
   font-size: 18px; }
 
 .info-amount-account {
-  list-style: none; }
+  list-style: none;
+  width: 100% !important;
+  padding: 0 75px;
+  font-size: 17px; }
   .info-amount-account-item {
     border-bottom: 1px solid #ddd;
     padding: 10px 15px; }
@@ -1456,6 +1453,8 @@ input[type='text'] {
       display: none;
       border-bottom: none;
       color: red; }
+      .info-amount-account-item-warning > small {
+        font-size: 17px; }
 
 /*Payment through account system*/
 /* Top-up-page */
@@ -1592,6 +1591,10 @@ input[type='text'] {
   margin: 0 0 50px; }
 
 /*Custom smart Wizard*/
+.other-input-post {
+  padding: 0 10px !important;
+  color: #222; }
+
 @media only screen and (max-width: 767px) {
   .navbar-nav {
     background: rgba(0, 0, 0, 0.5); }

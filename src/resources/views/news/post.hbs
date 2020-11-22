@@ -11,7 +11,7 @@
                         </ol>
                     </nav>
                 </div>
-                <form method="POST" action="/news/store" id="formCreateNewsPost" role="form" data-toggle="validator">
+                <form id="formCreateNewsPost" role="form" data-toggle="validator">
                     <div id="smartwizard">
 
                         <ul class="nav">
@@ -92,9 +92,9 @@
                                                 <label>Price <span style="color: red;">(*)</span></label>
                                                 <div class="input-group">
 
-                                                    <input type="number" class="number-font form-control number-font"
-                                                        style="text-align: right;" placeholder="For example: 2500000"
-                                                        required>
+                                                    <input type="text" class="number-font form-control number-font"
+                                                        id="price-input" style="text-align: right;"
+                                                        placeholder="For example: 2500000" required>
                                                     <div class="input-group-append">
                                                         <span class="input-group-text">.đ</span>
                                                     </div>
@@ -171,8 +171,7 @@
                                                 <div class="input-group w49">
                                                     <label for="tel" style="width: 100%;">Phone Number</label>
                                                     <input type="tel" class="form-control number-font"
-                                                        placeholder="Enter phone number" aria-label="Username"
-                                                        aria-describedby="basic-addon1">
+                                                        placeholder="Enter phone number">
                                                 </div>
 
                                                 <div class="input-group w49">
@@ -233,31 +232,51 @@
                                     </div>
                                     <div class="col-8 submit-info-right">
                                         <label for="" style="width: 100%;">Features:</label>
-                                        <div class="mb-3 d-flex justify-content-between flex-wrap">
+                                        <div class="d-flex justify-content-between flex-wrap">
 
-                                            <form>
-                                                <label>
-                                                    <input type="checkbox" name="check">
-                                                    <span>Camera</span>
+
+                                            <label class="w-25 pb-3">
+                                                <input type="checkbox" name="check">
+                                                <span>Camera</span>
+                                            </label>
+                                            <label class="w-25 pb-3">
+                                                <input type="checkbox" name="check">
+                                                <span>Internet</span>
+                                            </label>
+                                            <label class="w-25 pb-3">
+                                                <input type="checkbox" name="check">
+                                                <span>Market</span>
+                                            </label>
+                                            <label class="w-25 pb-3">
+                                                <input type="checkbox" name="check">
+                                                <span>Free Time</span>
+                                            </label>
+
+                                            <label class="w-25 pb-3">
+                                                <input type="checkbox" name="check">
+                                                <span>Gym</span>
+                                            </label>
+                                            <label class="w-25 pb-3">
+                                                <input type="checkbox" name="check">
+                                                <span>Park</span>
+                                            </label>
+                                            <label class="w-25 pb-3">
+                                                <input type="checkbox" name="check">
+                                                <span>Security</span>
+                                            </label>
+                                            <label class="w-25 pb-3">
+                                                <input type="checkbox" name="check">
+                                                <span>Private Entrance</span>
+                                            </label>
+
+
+
+                                            <div class="form-group d-flex justify-content-center align-items-center">
+                                                <label class="p-0 m-0 pr-2">Others
+                                                    <input type="text"
+                                                        class="form-control p-0 number-font other-input-post">
                                                 </label>
-                                                <label>
-                                                    <input type="checkbox" name="check">
-                                                    <span>Internet</span>
-                                                </label>
-                                                <label>
-                                                    <input type="checkbox" name="check">
-                                                    <span>Market</span>
-                                                </label>
-                                                <label>
-                                                    <input type="checkbox" name="check">
-                                                    <span>Free Time</span>
-                                                </label>
-                                            </form>
-                                            <div class="form-group row">
-                                                <label for="" class="col-sm-2 col-form-label p-0">Others</label>
-                                                <div class="col-sm-10">
-                                                    <input type="text" class="form-control p-0 number-font">
-                                                </div>
+
                                             </div>
                                         </div>
                                     </div>
@@ -538,14 +557,14 @@
                                     <div class="col-8 submit-info-right">
                                         <form class="form-radio-payment">
                                             <div class="inputGroup-radio-payment">
-                                                <input id="radio1" name="radio" type="radio" class="input-radio-payment"
+                                                <input id="radio1" name="radio-choose-method-payment" type="radio" class="input-radio-payment"
                                                     value="1" />
                                                 <label for="radio1" class="label-radio-payment">Payment through the
                                                     System
                                                     account</label>
                                             </div>
                                             <div class="inputGroup-radio-payment">
-                                                <input id="radio2" name="radio" type="radio" class="input-radio-payment"
+                                                <input id="radio2" name="radio-choose-method-payment" type="radio" class="input-radio-payment"
                                                     value="2" checked="checked" />
                                                 <label for="radio2" class="label-radio-payment"
                                                     id="visa-card-show">Payment
@@ -587,6 +606,7 @@
                                                             đ</span></span></li>
 
                                                 <li class="info-amount-account-item info-amount-account-item-warning">
+                                                    <i class="fas fa-exclamation-triangle"></i>
                                                     <small>Not
                                                         enough money, top up <a href="/features/top-up">right
                                                             here</a></small>

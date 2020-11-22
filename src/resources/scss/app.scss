@@ -87,21 +87,25 @@ html {
   font-family: 'Montserrat', sans-serif;
   font-size: 16px;
 }
-.nav-link {
-  padding: 8px 16px !important;
-  &:link {
-    color: #fff !important;
+.navbar {
+  .nav-link {
+    padding: 8px 6px !important;
+    margin: 0 10px !important;
+    // &:link {
+    //   color: #fff !important;
+    // }
+    // &:visited {
+    //   color: #fff !important;
+    // }
+    &:hover {
+      color: $title-color !important;
+      border-bottom-color: $title-color !important;
+    }
+    // &:active {
+    //   color: #fff !important;
+    // }
   }
-  &:visited {
-    color: #fff !important;
-  }
-  &:hover {
-    color: $title-color !important;
-    border-bottom-color: $title-color !important;
-  }
-  &:active {
-    color: #fff !important;
-  }
+  
 }
 
 .icon-search {
@@ -148,7 +152,6 @@ html {
   }
   .nav-link {
     color: #000 !important;
-    font-family: 'Montserrat', sans-serif;
     font-size: 16px;
   }
   .nav-link:hover {
@@ -936,15 +939,16 @@ input[type='text'] { font-size: 15px; }
   padding-bottom: 30px;
   padding-left:15px;
 }
+
 .inputGroup-radio-payment {
   background-color: #eee;
   display: block;
-  // margin: 10px 0;
   position: relative;
+  margin: 0 80px;
   
 
   .label-radio-payment {
-    padding: 3px 30px;
+    padding: 8px 30px;
     width: 100%;
     display: block;
     text-align: left;
@@ -1027,7 +1031,6 @@ input[type='text'] { font-size: 15px; }
   line-height: 36px;
   
 }
-
 
 /*Payment Visa Card*/
 .payment-visacard-wrapper {
@@ -1528,16 +1531,20 @@ input[type='text'] { font-size: 15px; }
 
 /*Payment through account system*/
 .payment-system-account {
-  padding-top: 25px;
   display: none;
   justify-content: center;
   font-size: 18px;
+  
 }
 .info-amount-account {
   list-style: none;
+  width: 100% !important;
+  padding: 0 75px;
+  font-size: 17px;
   &-item {
     border-bottom: 1px solid #ddd;
     padding: 10px 15px;
+    
     .span-first {
       padding-left: 100px;
     }
@@ -1546,6 +1553,9 @@ input[type='text'] { font-size: 15px; }
       display: none;
       border-bottom: none;
       color: red;
+      > small {
+        font-size: 17px;
+      }
     }
   }
 }
@@ -1712,6 +1722,11 @@ input[type='text'] { font-size: 15px; }
   margin: 0 0 50px;
 }
 /*Custom smart Wizard*/
+
+.other-input-post {
+  padding: 0 10px !important;
+  color: #222;
+}
 @media only screen and (max-width: 767px) {
   .navbar-nav {
     background: rgba($color: #000000, $alpha: 0.5);
