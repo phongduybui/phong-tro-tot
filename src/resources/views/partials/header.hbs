@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light fixed-top {{#unless isHome}} bg-light {{/unless}}">
-  <div class="container">
+  <div class="container header-container">
     <a class="navbar-brand" href="/">
       <img id="logo" 
       src="{{#if isHome}}/src/public/img/logo2.svg{{else}}/src/public/img/logo3.svg{{/if}}" 
@@ -11,7 +11,7 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
+      <ul class="navbar-nav ml-auto navbar-nav-custom">
         <li class="nav-item active">
           <a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a>
         </li>
@@ -30,8 +30,31 @@
         <li class="nav-item">
           <a class="nav-link" href="/contact">Contact</a>
         </li>
+
+        <li class="nav-item dropdown  nav-item-user">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            <img src="https://scontent.fdad3-2.fna.fbcdn.net/v/t1.0-9/83734544_2579279965648306_2181350637655031808_o.jpg?_nc_cat=104&ccb=2&_nc_sid=09cbfe&_nc_ohc=3Dpwo2U3k00AX_nsH6S&_nc_ht=scontent.fdad3-2.fna&oh=f751f6e50f4e4ad82deda518bb2928bb&oe=5FE3C0AF" alt="" class="user-img-header">
+            Duy Phong
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">Edit profile</a>
+            <a class="dropdown-item" href="#">Manage Post</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Logout</a>
+          </div>
+        </li>
+
       </ul>
      
     </div>
   </div>
 </nav>
+
+<div class="icon-bar">
+    <a href="#" class="facebook icon-bar-fb"><i class="fa fa-facebook"></i></a>
+    <a href="#" class="twitter icon-bar-tw"><i class="fa fa-twitter"></i></a>
+    <a href="#" class="google icon-bar-gg"><i class="fa fa-google"></i></a>
+    <a href="#" class="linkedin icon-bar-linkedin"><i class="fa fa-linkedin"></i></a>
+    <a href="#" class="youtube icon-bar-yt"><i class="fa fa-youtube"></i></a>
+</div>
