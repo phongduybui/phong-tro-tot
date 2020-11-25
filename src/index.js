@@ -30,13 +30,23 @@ app.use(express.json());
 // app.use(morgan('combined'));
 
 //Template engine
+
 app.engine('hbs', handlebars({
-    extname: '.hbs'
+    extname: '.hbs',
+    helpers: {
+        section: function(name, options){ 
+            if(!this._sections) this._sections = {};
+            this._sections[name] = options.fn(this); 
+            return null;
+        } 
+    }    
 }));
 app.set('view engine', 'hbs');
 
+
 //Config views folders
 app.set('views', path.join(__dirname, 'resources', 'views')); //'resources/views'
+
 
 app.get('/', function (req, res, next) {
     New.find({})
@@ -68,6 +78,8 @@ app.get('/news/:slug', (req, res, next) => {
 app.get('/features/top-up', function (req, res) {
     res.render('features/top-up');
 });
+
+
 
 // app.post('/search', (req, res) => {
 //     console.log(req.body);

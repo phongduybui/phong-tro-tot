@@ -913,10 +913,10 @@ input[type='text'] {
   text-align: center !important; }
 
 .post-container {
-  background-color: #F7F7F7; }
+  background-color: #FFF; }
 
 .post-inner {
-  background-color: #F7F7F7;
+  background-color: #FFF;
   padding: 0;
   font-family: "Raleway", sans-serif; }
   .post-inner input::placeholder {
