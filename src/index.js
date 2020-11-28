@@ -79,6 +79,20 @@ app.get('/features/top-up', function (req, res) {
     res.render('features/top-up');
 });
 
+app.get('/me/manage-user', function(req, res){
+    res.render('me/manage-user-info');
+});
+
+// app.get("/search/:title", function(req, res, next){
+// 	var regex = new RegExp(req.params.title, 'i');
+// 	New.find({title:regex})
+// 		.then(result => {
+// 			res.render('features/modal-search', {
+//                 results: mutipleMongooseToObject(result)
+//             });
+//         })
+//         .catch(next);
+// })
 
 
 // app.post('/search', (req, res) => {

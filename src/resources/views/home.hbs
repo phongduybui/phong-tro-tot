@@ -1,11 +1,11 @@
 
-<div id="carousel-header" class="carousel slide carousel-navheader" data-ride="carousel">
+<div id="carousel-header" class="carousel slide carousel-navheader" data-ride="carousel" data-interval="6000">
     <ol class="carousel-indicators">
         <li data-target="#carousel-header" data-slide-to="0" class="active"></li>
         <li data-target="#carousel-header" data-slide-to="1"></li>
         <li data-target="#carousel-header" data-slide-to="2"></li>
     </ol>
-    <div class="carousel-inner">
+    <div class="carousel-inner carousel-header-inner">
 
         <div class="carousel-item active">
             <div class="img-cover"></div>
@@ -14,17 +14,10 @@
                 alt="Second slide">
             <div class="carousel-caption d-none d-md-block">
                 <h3 class="typewriter">Search for Hostel</h3>
-                <p class="animate__animated animate__fadeInUp animate__delay-1s">EASY - FAST - CONVENIENT</p>
+                <p class="animate__animated animate__fadeInUp animate__delay-1s">EASY - FASTLY</p>
                 <button type="button"
-                    class="btn btn-outline-light animate__animated animate__fadeInUp animate__delay-4s">Explore</button>
-                <div class="scroll-container">
-                    <div class="scroll-down">
-                        <div class="chevron"></div>
-                        <div class="chevron"></div>
-                        <div class="chevron"></div>
-                        <span class="text-scroll">Scroll down</span>
-                    </div>
-                </div>
+                    class="btn btn-outline-light animate__animated animate__fadeInUp animate__delay-4s" onClick="document.getElementById('hot-news').scrollIntoView();">Explore</button>
+               
             </div>
         </div>
         <div class="carousel-item">
@@ -33,17 +26,10 @@
                 src="https://images.wallpaperscraft.com/image/interior_design_furniture_living_room_style_70162_1400x1050.jpg">
             <div class="carousel-caption d-none d-md-block">
                 <h3 class="animate__animated animate__fadeInUp animate__delay-1s">Boarding House Management</h3>
-                <p class="animate__animated animate__fadeInUp animate__delay-2s">SAFE - FAST - CONVENIENT</p>
+                <p class="animate__animated animate__fadeInUp animate__delay-2s ">SAFE - FAST - CONVENIENT</p>
                 <button type="button"
-                    class="btn btn-outline-light animate__animated animate__fadeInUp animate__delay-3s">Explore</button>
-                <div class="scroll-container">
-                    <div class="scroll-down">
-                        <div class="chevron"></div>
-                        <div class="chevron"></div>
-                        <div class="chevron"></div>
-                        <span class="text-scroll">Scroll down</span>
-                    </div>
-                </div>
+                    class="btn btn-outline-light animate__animated animate__fadeInUp animate__delay-3s" onClick="document.getElementById('intro-manage-home').scrollIntoView();">Explore</button>
+                
             </div>
         </div>
         <div class="carousel-item">
@@ -51,18 +37,11 @@
             <img class="d-block w-100 w-100-cus carousel-img"
                 src="https://images.wallpaperscraft.com/image/interior_design_sofa_coffee_tables_113658_1400x1050.jpg">
             <div class="carousel-caption d-none d-md-block">
-                <h3 class="animate__animated animate__backInDown animate__delay-1s">Looking for Roommates</h3>
+                <h3 class="animate__animated animate__fadeInUp animate__delay-1s">Looking for Roommates</h3>
                 <p class="animate__animated animate__fadeInUp animate__delay-2s">EASY - FAST - CONVENIENT</p>
                 <button type="button"
-                    class="btn btn-outline-light animate__animated animate__fadeInUp animate__delay-3s">Explore</button>
-                <div class="scroll-container">
-                    <div class="scroll-down">
-                        <div class="chevron"></div>
-                        <div class="chevron"></div>
-                        <div class="chevron"></div>
-                        <span class="text-scroll">Scroll down</span>
-                    </div>
-                </div>
+                    class="btn btn-outline-light animate__animated animate__fadeInUp animate__delay-3s" onClick="document.getElementById('roomate-news').scrollIntoView();">Explore</button>
+                
             </div>
         </div>
     </div>
@@ -76,630 +55,931 @@
     </a>
 </div>
 
-<div class="container">
-    <div class="search-title">
-        <h3 class="search-title-h3"><span>Search</span>something</h3>
-        <p class="search-title-desc">Lorem ipsum dolor sit amet consectetur.</p>
-        <div class="line-text">
-            <div class="line-text-icon"><i class="fas fa-search"></i></div>
+<div class="search-bar-wrapper w-100">
+    <div class="container">
+        <div class="search-title" data-aos="fade-right" data-aos-duration="1500">
+            <h3 class="search-title-h3">Looking for News</h3>
+            <p class="search-title-desc">Search for Boarding Rooms and Roommates here.</p>
         </div>
+            
+        <div class="map-search">
+            <div class="search-bar-container">
+                <div class="search-bar">
+                    <input class="form-control mr-sm-2 mb25 search-keyword" type="search" placeholder="Search by keyword"
+                        aria-label="Search" id="search-by-keyword">
 
-    </div>
-</div>
-</div>
-
-<div class="container">
-    <div class="map-search">
-        <div class="search-bar-container">
-            <div class="search-bar">
-                <input class="form-control mr-sm-2 mb25 search-keyword" type="search"
-                    placeholder="Search by keyword" aria-label="Search">
-
-                <select id="province" class="custom-select mb25">
-                    <option selected>Province/City</option>
-                </select>
-
-                <select id="district" class="custom-select mb25">
-                    <option selected>District</option>
-                </select>
-
-                <select id="ward" class="custom-select mb25">
-                    <option selected>Ward</option>
-                </select>
-
-                <select id="price" class="custom-select mb25">
-                    <option selected>Price (VND)</option>
-                    <option value="1">
-                        < 1 milion</option>
-                    <option value="2">1 - 2 milion</option>
-                    <option value="2">2 - 3 milion</option>
-                    <option value="2">3 - 5 milion</option>
-                    <option value="2">5 - 7 milion </option>
-                    <option value="2">7 - 10 milion</option>
-                    <option value="2">> 10 milion </option>
-                </select>
-                <div class="area-range">
-                    <div class="area-desc">
-                        <i class="fas fa-chart-area"></i>
-                        <span class="span-area">Area(m<sup>2</sup>)</span>
-                    </div>
-                    <div class="range">
-                        <div class="sliderValue">
-                            <span class="area-span">100</span>
+                    <select id="kind-news-search" class="custom-select mb25">
+                        <option selected>-- Kind of News --</option>
+                        <option>Rental</option>
+                        <option>Find Roommate</option>
+                    </select>
+                    <select id="province" class="custom-select mb25">
+                        <option selected>-- Province/City --</option>
+                    </select>
+    
+                    <div class="d-flex justify-content-between">
+                        <div class="w-50 pr-1">
+                            <select id="district" class="custom-select mb25">
+                                <option selected>-- District --</option>
+                            </select>
                         </div>
-                        <div class="field">
-                            <div class="value left">0</div>
-                            <input class="area-input" type="range" min="10" max="200" value="100" steps="1">
-                            <div class="value right">200</div>
-                        </div>
-                    </div>
-                </div>
-
-                <button type="button" class="btn btn-primary btn-form-search">Search</button>
-            </div>
-        </div>
-        <div class="map-responsive">
-            <iframe
-                src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d43378.64499950561!2d108.19472693280031!3d16.056834217620402!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1zbmjDoCB0cuG7jQ!5e0!3m2!1svi!2s!4v1604989500052!5m2!1svi!2s"
-                width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false"
-                tabindex="0"></iframe>
-        </div>
-    </div>
-</div>
-
-
-
-
-<div class="container">
-    <div class="search-title">
-        <h3 class="search-title-h3"><span>News</span>page</h3>
-        <p class="search-title-desc">Lorem ipsum dolor sit amet consectetur.</p>
-        <div class="line-text">
-            <div class="line-text-icon"><i class="fas fa-newspaper"></i></div>
-        </div>
-
-    </div>
-</div>
-
-<div class="news-container container">
-
-    <div class="row">
-        {{#each news}}
-        <div class="col-lg-4 col-md-6 col-sm-12">
-            <div class="news-card">
-                <div class="map-detail map-detail-{{this.mapId}}">
-                    <div class="map-back map-back-{{this.mapId}}">
-                        <i class="fas fa-angle-left"></i>
-                        <span>Back</span>
-                    </div>
-                    
-                    
-                    <div class="map-respon">
-                        <iframe src="{{this.map}}" width="350" height="370" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-                    </div>
-
-                    
-                </div>
-                
-                <img src="{{this.img}}" alt="{{this.img}}" class="news-card__img-cover">
         
-                <div class="card-title--top">
-                    <div class="card-title-top-right">
-                        <div class="card-title-top__sale">Rental</div>
-                        <div class="card-title-top__feature">{{this.kindOfNews}}</div>
-                    </div>
-                    <div class="card-title-top-left">
-                        <div class="card-title-top__heart" onclick="bootstrapAlert()">
-                            <i class="far fa-heart"></i>
+                        <div class="w-50 pl-1">
+                            <select id="ward" class="custom-select mb25">
+                                <option selected>-- Ward --</option>
+                            </select>
                         </div>
-                        <div class="card-title-top__map top__map-{{this.mapId}}">
-                            <i class="fas fa-map-marked-alt"></i>
+                    </div>
+    
+                    <select id="price" class="custom-select mb25">
+                        <option selected>Price (VND)</option>
+                        <option value="1">
+                            < 1 milion</option>
+                        <option value="2">1 - 2 milion</option>
+                        <option value="2">2 - 3 milion</option>
+                        <option value="2">3 - 5 milion</option>
+                        <option value="2">5 - 7 milion </option>
+                        <option value="2">7 - 10 milion</option>
+                        <option value="2">> 10 milion </option>
+                    </select>
+                    <div class="area-range">
+                        <div class="area-desc">
+                            <i class="fas fa-chart-area"></i>
+                            <span class="span-area">Area: </span>
+                            <span id="value-area-input-min">10m<sup>2</sup></span>
+                            <span style="padding: 0 10px;">-</span>
+                            <span id="value-area-input-max">90m<sup>2</sup></span>
+                        </div>
+
+                        <div class="area-range-input">
+                            <div class="middle">
+                                <div class="multi-range-slider">
+                                    <input type="range" id="input-left" min="0" max="100" value="10">
+                                    <input type="range" id="input-right" min="0" max="100" value="90">
+
+                                    <div class="slider">
+                                        <div class="track"></div>
+                                        <div class="range"></div>
+                                        <div class="thumb left"></div>
+                                        <div class="thumb right"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <button type="button" class="btn btn-primary btn-form-search" data-toggle="modal" data-target="#modalSearchResult">Search</button>
+                </div>
+            </div>
+            
+            <div class="map-responsive"><div class="mapouter"><div class="gmap_canvas"><iframe width="670" height="520" id="gmap_canvas" src="https://maps.google.com/maps?q=ph%C3%B2ng%20tr%E1%BB%8D&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://embedgooglemap.net/143/"></a></div><style>.mapouter{position:relative;text-align:right;height:520px;width:670px;}.gmap_canvas {overflow:hidden;background:none!important;height:520px;width:670px;}</style></div></div>
+        </div>
+    </div>
+</div>
+
+<div class="hot-news-wrapper" id="hot-news">
+    <div class="line-wave-custom" data-negative="false">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none"
+            class="line-wave-custom-svg">
+            <path class="wave-shape-fill" opacity="0.33"
+                d="M473,67.3c-203.9,88.3-263.1-34-320.3,0C66,119.1,0,59.7,0,59.7V0h1000v59.7 c0,0-62.1,26.1-94.9,29.3c-32.8,3.3-62.8-12.3-75.8-22.1C806,49.6,745.3,8.7,694.9,4.7S492.4,59,473,67.3z">
+            </path>
+            <path class="wave-shape-fill" opacity="0.66"
+                d="M734,67.3c-45.5,0-77.2-23.2-129.1-39.1c-28.6-8.7-150.3-10.1-254,39.1 s-91.7-34.4-149.2,0C115.7,118.3,0,39.8,0,39.8V0h1000v36.5c0,0-28.2-18.5-92.1-18.5C810.2,18.1,775.7,67.3,734,67.3z">
+            </path>
+            <path class="wave-shape-fill"
+                d="M766.1,28.9c-200-57.5-266,65.5-395.1,19.5C242,1.8,242,5.4,184.8,20.6C128,35.8,132.3,44.9,89.9,52.5C28.6,63.7,0,0,0,0 h1000c0,0-9.9,40.9-83.6,48.1S829.6,47,766.1,28.9z">
+            </path>
+        </svg>
+    </div>
+
+    <div class="container">
+        <div class="search-title" data-aos="fade-left" data-aos-duration="1500">
+            <h3 class="search-title-h3">Rental News</h3>
+            <p class="search-title-desc">Search for hostel that suits your needs, quickly, conveniently and easily.</p>
+        </div>
+    </div>
+    
+    <div class="news-container container">
+    
+        <div class="row">
+            {{#each news}}
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="news-card">
+                    <div class="map-detail map-detail-{{this.mapId}}">
+                        <div class="map-back map-back-{{this.mapId}}">
+                            <i class="fas fa-angle-left"></i>
+                            <span>Back</span>
+                        </div>
+    
+    
+                        <div class="map-respon">
+                            <iframe src="{{this.map}}" width="350" height="370" frameborder="0" style="border:0;"
+                                allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                        </div>
+    
+    
+                    </div>
+    
+                    <img src="{{this.img}}" alt="{{this.img}}" class="news-card__img-cover">
+    
+                    <div class="card-title--top">
+                        <div class="card-title-top-right">
+                            <div class="card-title-top__sale">Rental</div>
+                            <div class="card-title-top__feature">{{this.kindOfNews}}</div>
+                        </div>
+                        <div class="card-title-top-left">
+                            <div class="card-title-top__heart" onclick="bootstrapAlert()">
+                                <i class="far fa-heart"></i>
+                            </div>
+                            <div class="card-title-top__map top__map-{{this.mapId}}">
+                                <i class="fas fa-map-marked-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-bot-container">
+                        <a href="/news/{{this.slug}}" class="link-to-detail-page">
+                            <div class="card-title--bot">
+                                <span class="card-price">
+                                    <img src="./src/public/img/vnd.svg" class="vnd-icon" alt="">
+                                    {{this.price}}
+                                    <sub>/Tháng</sub>
+                                </span>
+                                <h4 class="card-title-name">{{this.title}}</h4>
+                                <div class="card-location">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    {{this.location}}
+                                </div>
+                            </div>
+                        </a>
+                        <ul class="card-detail">
+                            <li><span><i class="fas fa-ruler-combined"></i></span>{{this.overview.area}}m<sup>2</sup></li>
+                            <li><span><i class="fas fa-phone-alt"></i></i></span>{{this.host.phoneNumber}}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+    
+        <ul class="list-unstyled d-flex pagination-dots-custom">
+            <li class="pagination-dots-custom-item pagination-dots-custom-item-active"><i class="fas fa-circle"></i></li>
+            <li class="pagination-dots-custom-item"><i class="fas fa-circle"></i></li>
+            <li class="pagination-dots-custom-item"><i class="fas fa-circle"></i></li>
+            <li class="pagination-dots-custom-item"><i class="fas fa-circle"></i></li>
+            <li class="pagination-dots-custom-item"><i class="fas fa-circle"></i></li>
+            <li class="pagination-dots-custom-item"><i class="fas fa-circle"></i></li>       
+        </ul>
+    </div>
+</div>
+
+
+
+<div class="roomate-news-wrapper" id="roomate-news">
+    <div class="line-wave-custom line-wave-custom-white" data-negative="false">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none"
+            class="line-wave-custom-svg line-wave-custom-svg-white">
+            <path class="wave-shape-fill wave-shape-fill-white" opacity="0.33"
+                d="M473,67.3c-203.9,88.3-263.1-34-320.3,0C66,119.1,0,59.7,0,59.7V0h1000v59.7 c0,0-62.1,26.1-94.9,29.3c-32.8,3.3-62.8-12.3-75.8-22.1C806,49.6,745.3,8.7,694.9,4.7S492.4,59,473,67.3z">
+            </path>
+            <path class="wave-shape-fill wave-shape-fill-white" opacity="0.66"
+                d="M734,67.3c-45.5,0-77.2-23.2-129.1-39.1c-28.6-8.7-150.3-10.1-254,39.1 s-91.7-34.4-149.2,0C115.7,118.3,0,39.8,0,39.8V0h1000v36.5c0,0-28.2-18.5-92.1-18.5C810.2,18.1,775.7,67.3,734,67.3z">
+            </path>
+            <path class="wave-shape-fill wave-shape-fill-white"
+                d="M766.1,28.9c-200-57.5-266,65.5-395.1,19.5C242,1.8,242,5.4,184.8,20.6C128,35.8,132.3,44.9,89.9,52.5C28.6,63.7,0,0,0,0 h1000c0,0-9.9,40.9-83.6,48.1S829.6,47,766.1,28.9z">
+            </path>
+        </svg>
+    </div>
+
+    <div class="container">
+        <div class="search-title" data-aos="fade-right" data-aos-duration="1000">
+            <h3 class="search-title-h3">Looking for Roomates</h3>
+            <p class="search-title-desc">Finding roommates, reducing accommodation costs, making new friends. Discover it with PhongTroTot right now.</p>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="news-grid-container">
+            <div class="grid-left">
+                <div class="grid-left-top">
+                    <div class="grid-left-top-left">
+                        <div class="news-card w-h-100">
+                            <div class="map-detail map-detail-7">
+                                <div class="map-back map-back-7">
+                                    <i class="fas fa-angle-left"></i>
+                                    <span>Back</span>
+                                </div>
+                                <div class="mapouter">
+                                    <div class="gmap_canvas map-100"><iframe width="411" height="273" id="gmap_canvas"
+                                            src="https://maps.google.com/maps?q=82%20H%C3%A0%20Huy%20T%E1%BA%ADp%20Thanh%20Kh%C3%AA%20&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                                            frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a
+                                            href="https://www.embedgooglemap.net"></a></div>
+                                    <style>
+                                        .mapouter {
+                                            position: absolute;
+                                            text-align: right;
+                                            height: 273px;
+                                            width: 411px;
+                                        }
+    
+                                        .gmap_canvas {
+                                            overflow: hidden;
+                                            background: none !important;
+                                            height: 273px;
+                                            width: 411px;
+                                        }
+                                    </style>
+                                </div>
+                            </div>
+                            <img src="https://wedo.vn/wp-content/uploads/2019/11/thiet-ke-phong-tro-dep-6.jpg" alt=""
+                                class="news-card__img-cover">
+                            <div class="card-title--top">
+                                <div class="card-title-top-right">
+                                    <div class="card-title-top__sale">Roommate</div>
+                                </div>
+                                <div class="card-title-top-left">
+                                    <div class="card-title-top__heart" onclick="bootstrapAlert()">
+                                        <i class="far fa-heart"></i>
+                                    </div>
+                                    <div class="card-title-top__map top__map-7">
+                                        <i class="fas fa-map-marked-alt"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-bot-container">
+                                <div class="card-title--bot">
+                                    <span class="card-price">
+                                        <img src="./src/public/img/vnd.svg" class="vnd-icon" alt="">
+                                        2 triệu 5
+                                        <sub>/Tháng</sub>
+                                    </span>
+                                    <h4 class="card-title-name">Tìm Nam ở ghép</h4>
+                                    <div class="card-location">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        82 Ha Huy Tap, Thanh Khe, Da Nang
+                                    </div>
+                                </div>
+                                <ul class="card-detail">
+                                    <li><span>2</span>Bedrooms</li>
+                                    <li><span>2</span>Bathrooms</li>
+                                    <li><span>1</span>Mezzanine</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid-left-top-right">
+                        <div class="news-card w-h-100">
+                            <div class="map-detail map-detail-8">
+                                <div class="map-back map-back-8">
+                                    <i class="fas fa-angle-left"></i>
+                                    <span>Back</span>
+                                </div>
+                                <div class="mapouter">
+                                    <div class="gmap_canvas map-100"><iframe width="290" height="275" id="gmap_canvas"
+                                            src="https://maps.google.com/maps?q=187%20%C4%91%E1%BB%91ng%20%C4%91a%20h%E1%BA%A3i%20ch%C3%A2u&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                                            frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a
+                                            href="https://www.embedgooglemap.net"></a></div>
+                                    <style>
+                                        .mapouter {
+                                            position: relative;
+                                            text-align: right;
+                                            height: 275px;
+                                            width: 290px;
+                                        }
+    
+                                        .gmap_canvas {
+                                            overflow: hidden;
+                                            background: none !important;
+                                            height: 275px;
+                                            width: 290px;
+                                        }
+                                    </style>
+                                </div>
+                            </div>
+                            <img src="https://xaynhatro.net/wp-content/uploads/2020/06/mau-thiet-ke-phong-tro-co-gac-lung-dep-hien-dai-o-huong-nam-1.png"
+                                alt="" class="news-card__img-cover">
+                            <div class="card-title--top">
+                                <div class="card-title-top-right">
+                                    <div class="card-title-top__sale">Roommate</div>
+                                </div>
+                                <div class="card-title-top-left">
+                                    <div class="card-title-top__heart">
+                                        <i class="far fa-heart"></i>
+                                    </div>
+                                    <div class="card-title-top__map top__map-8">
+                                        <i class="fas fa-map-marked-alt"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-bot-container">
+                                <div class="card-title--bot">
+                                    <span class="card-price">
+                                        <img src="./src/public/img/vnd.svg" class="vnd-icon" alt="">
+                                        1 triệu 7
+                                        <sub>/Tháng</sub>
+                                    </span>
+                                    <h4 class="card-title-name">Tìm Nữ ở ghép</h4>
+                                    <div class="card-location">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        187 Dong Da, Hai Chau
+                                    </div>
+                                </div>
+                                <ul class="card-detail">
+                                    <li><span>1</span>Bedrooms</li>
+                                    <li><span>2</span>Bathrooms</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="card-bot-container">
-                    <a href="/news/{{this.slug}}" class="link-to-detail-page">
+                <div class="grid-left-bot">
+                    <div class="grid-left-bot-left">
+                        <div class="news-card w-h-100">
+                            <div class="map-detail map-detail-9">
+                                <div class="map-back map-back-9">
+                                    <i class="fas fa-angle-left"></i>
+                                    <span>Back</span>
+                                </div>
+                                <div class="mapouter">
+                                    <div class="gmap_canvas map-100"><iframe width="290" height="275" id="gmap_canvas"
+                                            src="https://maps.google.com/maps?q=24%20Ti%E1%BB%83u%20La&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                                            frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a
+                                            href="https://www.embedgooglemap.net"></a></div>
+                                    <style>
+                                        .mapouter {
+                                            position: relative;
+                                            text-align: right;
+                                            height: 275px;
+                                            width: 290px;
+                                        }
+    
+                                        .gmap_canvas {
+                                            overflow: hidden;
+                                            background: none !important;
+                                            height: 275px;
+                                            width: 290px;
+                                        }
+                                    </style>
+                                </div>
+                            </div>
+                            <img src="https://famidecor.com/wp-content/uploads/2019/06/1-1.png" alt=""
+                                class="news-card__img-cover">
+                            <div class="card-title--top">
+                                <div class="card-title-top-right">
+                                    <div class="card-title-top__sale">Roommate</div>
+                                </div>
+                                <div class="card-title-top-left">
+                                    <div class="card-title-top__heart">
+                                        <i class="far fa-heart"></i>
+                                    </div>
+                                    <div class="card-title-top__map top__map-9">
+                                        <i class="fas fa-map-marked-alt"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-bot-container">
+                                <div class="card-title--bot">
+                                    <span class="card-price">
+                                        <img src="./src/public/img/vnd.svg" class="vnd-icon" alt="">
+                                        1 triệu 9
+                                        <sub>/Tháng</sub>
+                                    </span>
+                                    <h4 class="card-title-name">Tìm Nữ ở ghép</h4>
+                                    <div class="card-location">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        24 Tieu La, Hai Chau, Da Nang
+                                    </div>
+                                </div>
+                                <ul class="card-detail">
+                                    <li><span>2</span>Bathrooms</li>
+                                    <li><span>1</span>Mezzanine</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid-left-bot-right">
+                        <div class="news-card w-h-100">
+                            <div class="map-detail map-detail-10">
+                                <div class="map-back map-back-10">
+                                    <i class="fas fa-angle-left"></i>
+                                    <span>Back</span>
+                                </div>
+                                <div class="mapouter">
+                                    <div class="gmap_canvas map-100"><iframe width="412" height="274" id="gmap_canvas"
+                                            src="https://maps.google.com/maps?q=K104%20Tr%E1%BA%A7n%20Cao%20V%C3%A2n%20Thanh%20Kh%C3%AA&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                                            frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a
+                                            href="https://www.embedgooglemap.net"></a></div>
+                                    <style>
+                                        .mapouter {
+                                            position: relative;
+                                            text-align: right;
+                                            height: 274px;
+                                            width: 412px;
+                                        }
+    
+                                        .gmap_canvas {
+                                            overflow: hidden;
+                                            background: none !important;
+                                            height: 274px;
+                                            width: 412px;
+                                        }
+                                    </style>
+                                </div>
+                            </div>
+                            <img src="https://img.cdn9h.com/article/2019_6_w4/l_774-phong-tro-voi-thiet-ke-bat-mat.jpeg"
+                                alt="" class="news-card__img-cover">
+                            <div class="card-title--top">
+                                <div class="card-title-top-right">
+                                    <div class="card-title-top__sale">Roommate</div>
+                                </div>
+                                <div class="card-title-top-left">
+                                    <div class="card-title-top__heart" onclick="bootstrapAlert()">
+                                        <i class="far fa-heart"></i>
+                                    </div>
+                                    <div class="card-title-top__map top__map-10">
+                                        <i class="fas fa-map-marked-alt"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-bot-container">
+                                <div class="card-title--bot">
+                                    <span class="card-price">
+                                        <img src="./src/public/img/vnd.svg" class="vnd-icon" alt="">
+                                        2 triệu 3
+                                        <sub>/Tháng</sub>
+                                    </span>
+                                    <h4 class="card-title-name">Tìm Nam ở ghép</h4>
+                                    <div class="card-location">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        K104, Tran Cao Van, Thanh Khe, Da Nang
+                                    </div>
+                                </div>
+                                <ul class="card-detail">
+                                    <li><span>1</span>Bedrooms</li>
+                                    <li><span>2</span>Bathrooms</li>
+                                    <li><span>1</span>Mezzanine</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid-right">
+                <div class="news-card w-h-100">
+                    <div class="map-detail map-detail-11">
+                        <div class="map-back map-back-11">
+                            <i class="fas fa-angle-left"></i>
+                            <span>Back</span>
+                        </div>
+                        <div class="mapouter">
+                            <div class="gmap_canvas"><iframe width="370" height="570" id="gmap_canvas"
+                                    src="https://maps.google.com/maps?q=216%20Ng%C5%A9%20H%C3%A0nh%20S%C6%A1n%2C%20B%E1%BA%AFc%20M%E1%BB%B9%20Ph%C3%BA%2C%20Ng%C5%A9%20H%C3%A0nh%20S%C6%A1n%2C%20%C4%90%C3%A0%20N%E1%BA%B5ng&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                                    frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a
+                                    href="https://123movies-to.org"></a></div>
+                            <style>
+                                .mapouter {
+                                    position: relative;
+                                    text-align: right;
+                                    height: 570px;
+                                    width: 370px;
+                                }
+    
+                                .gmap_canvas {
+                                    overflow: hidden;
+                                    background: none !important;
+                                    height: 570px;
+                                    width: 370px;
+                                }
+                            </style>
+                        </div>
+                    </div>
+                    <img src="https://suanhanhanh24h.vn/wp-content/uploads/2019/06/64805419_1322512824562510_8199512272268165120_n-685x800.jpg"
+                        alt="" class="news-card__img-cover">
+                    <div class="card-title--top">
+                        <div class="card-title-top-right">
+                            <div class="card-title-top__sale">Roommate</div>
+                        </div>
+                        <div class="card-title-top-left">
+                            <div class="card-title-top__heart">
+                                <i class="far fa-heart"></i>
+                            </div>
+                            <div class="card-title-top__map top__map-11">
+                                <i class="fas fa-map-marked-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-bot-container">
                         <div class="card-title--bot">
                             <span class="card-price">
                                 <img src="./src/public/img/vnd.svg" class="vnd-icon" alt="">
-                                {{this.price}}
+                                4 triệu
                                 <sub>/Tháng</sub>
                             </span>
-                            <h4 class="card-title-name">{{this.title}}</h4>
+                            <h4 class="card-title-name">Tìm Nữ ở ghép</h4>
                             <div class="card-location">
                                 <i class="fas fa-map-marker-alt"></i>
-                                {{this.location}}
+                                216 Ngu Hanh Son, Da Nang
+                            </div>
+                        </div>
+                        <ul class="card-detail">
+                            <li><span>1</span>Bedrooms</li>
+                            <li><span>1</span>Bathrooms</li>
+                            <li><span>0</span>Mezzanine</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <ul class="list-unstyled d-flex pagination-dots-custom" style="padding: 50px 0 30px;">
+            <li class="pagination-dots-custom-item pagination-dots-custom-item-active"><i class="fas fa-circle"></i></li>
+            <li class="pagination-dots-custom-item"><i class="fas fa-circle"></i></li>
+            <li class="pagination-dots-custom-item"><i class="fas fa-circle"></i></li>
+            <li class="pagination-dots-custom-item"><i class="fas fa-circle"></i></li>
+            <li class="pagination-dots-custom-item"><i class="fas fa-circle"></i></li>
+            <li class="pagination-dots-custom-item"><i class="fas fa-circle"></i></li>       
+        </ul>
+    </div>
+</div>
+
+<div class="intro-manage-feature" id="intro-manage-home">
+    <div class="line-wave-custom" data-negative="false">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none"
+            class="line-wave-custom-svg">
+            <path class="wave-shape-fill" opacity="0.33"
+                d="M473,67.3c-203.9,88.3-263.1-34-320.3,0C66,119.1,0,59.7,0,59.7V0h1000v59.7 c0,0-62.1,26.1-94.9,29.3c-32.8,3.3-62.8-12.3-75.8-22.1C806,49.6,745.3,8.7,694.9,4.7S492.4,59,473,67.3z">
+            </path>
+            <path class="wave-shape-fill" opacity="0.66"
+                d="M734,67.3c-45.5,0-77.2-23.2-129.1-39.1c-28.6-8.7-150.3-10.1-254,39.1 s-91.7-34.4-149.2,0C115.7,118.3,0,39.8,0,39.8V0h1000v36.5c0,0-28.2-18.5-92.1-18.5C810.2,18.1,775.7,67.3,734,67.3z">
+            </path>
+            <path class="wave-shape-fill"
+                d="M766.1,28.9c-200-57.5-266,65.5-395.1,19.5C242,1.8,242,5.4,184.8,20.6C128,35.8,132.3,44.9,89.9,52.5C28.6,63.7,0,0,0,0 h1000c0,0-9.9,40.9-83.6,48.1S829.6,47,766.1,28.9z">
+            </path>
+        </svg>
+    </div>
+    <div class="container">
+        <div class="search-title" data-aos="fade-left" data-aos-duration="1000">
+            <h3 class="search-title-h3">Accommodation Management</h3>
+            <p class="search-title-desc">Helping the owner to manage accommodation easily, quickly and safely.</p>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row payment-method">
+            <div class="col-lg-4 payment-method-card card-intro-manage">
+                <div class="payment-method-card-wrapper card-intro-manage-wrapper">
+                    <div class="intro-img-circle"><img src="/src/public/img/high-five.png" alt="" class="payment-method-card__img intro-manage-img"></div>
+                    <h3 class="payment-method-card__title">Tenant Management</h3>
+                    <p class="payment-method-card__desc">Manage your tenants, making things easier, more convenient and safer.</p>
+                    <button type="button" class="btn btn-link">Explore</button>
+                </div>
+            </div>
+
+            <div class="col-lg-4 payment-method-card card-intro-manage">
+                <div class="payment-method-card-wrapper card-intro-manage-wrapper">
+                    <div class="intro-img-circle"><img src="/src/public/img/house.png" alt="" class="payment-method-card__img intro-manage-img"></div>
+                    <h3 class="payment-method-card__title">Statistics & Backup</h3>
+                    <p class="payment-method-card__desc">Statistics of monthly and yearly electricity, water, internet bills of tenants and backup.</p>
+                    <button type="button" class="btn btn-link">Explore</button>
+                </div>
+            </div>
+
+            <div class="col-lg-4 payment-method-card card-intro-manage">
+                <div class="payment-method-card-wrapper card-intro-manage-wrapper">
+                    <div class="intro-img-circle"><img src="/src/public/img/profits.png" alt="" class="payment-method-card__img intro-manage-img"></div>
+                    <h3 class="payment-method-card__title">Online Payment</h3>
+                    <p class="payment-method-card__desc">Help landlords collect money for accommodation online quickly and safely.</p>
+                    <button type="button" class="btn btn-link">Explore</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<div class="cus-review-wrapper">
+    <div class="line-wave-custom-white" data-negative="false">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none"
+            class="line-wave-custom-svg-white">
+            <path class="wave-shape-fill-white" opacity="0.33"
+                d="M473,67.3c-203.9,88.3-263.1-34-320.3,0C66,119.1,0,59.7,0,59.7V0h1000v59.7 c0,0-62.1,26.1-94.9,29.3c-32.8,3.3-62.8-12.3-75.8-22.1C806,49.6,745.3,8.7,694.9,4.7S492.4,59,473,67.3z">
+            </path>
+            <path class="wave-shape-fill-white" opacity="0.66"
+                d="M734,67.3c-45.5,0-77.2-23.2-129.1-39.1c-28.6-8.7-150.3-10.1-254,39.1 s-91.7-34.4-149.2,0C115.7,118.3,0,39.8,0,39.8V0h1000v36.5c0,0-28.2-18.5-92.1-18.5C810.2,18.1,775.7,67.3,734,67.3z">
+            </path>
+            <path class="wave-shape-fill-white"
+                d="M766.1,28.9c-200-57.5-266,65.5-395.1,19.5C242,1.8,242,5.4,184.8,20.6C128,35.8,132.3,44.9,89.9,52.5C28.6,63.7,0,0,0,0 h1000c0,0-9.9,40.9-83.6,48.1S829.6,47,766.1,28.9z">
+            </path>
+        </svg>
+    </div>
+    <div class="container">
+        <div class="search-title" data-aos="fade-right" data-aos-duration="1000">
+            <h3 class="search-title-h3">Testimonials</h3>
+            <p class="search-title-desc">The valuable comments sent to us by users <3</p>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 testimonial-rev-wrapper">
+                <div class="testimonial-rev-content">
+                    <div class="testimonial-quote"><i class="fas fa-quote-left"></i></div>
+                    <p class="cus-rev">Đội ngũ support thân thiện. Website là cầu nối giúp người thuê trọ dễ dàng tìm kiếm trọ hơn rất nhiều.</p>
+                    <div class="star" style="padding-bottom: 30px;">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <img src="/src/public/img/user7.jpg"
+                                alt="" class="cus-avatar">
+                        <div class="cus-rev-info">
+                            <h5 class="cus-name"><span>by</span> Phương Ly</h5>
+                            <h6 class="cus-pos">Tenant, KCN Hòa Khánh</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 testimonial-rev-wrapper testimonial-rev-wrapper-mid">
+                <div class="testimonial-rev-content">
+                    <div class="testimonial-quote"><i class="fas fa-quote-left"></i></div>
+                    <p class="cus-rev">Với tư cách là một chủ trọ, tôi vô cùng biết ơn vì website đã giúp tôi quản lí
+                        trọ một cách dễ dàng hơn.</p>
+                    <div class="star" style="padding-bottom: 30px;">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <img src="/src/public/img/user3.jpg"
+                                alt="" class="cus-avatar">
+                        <div class="cus-rev-info">
+                            <h5 class="cus-name"><span>by</span> Nam Phạm</h5>
+                            <h6 class="cus-pos">Host, Phòng trọ anh Nam</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 testimonial-rev-wrapper">
+                <div class="testimonial-rev-content">
+                    <div class="testimonial-quote"><i class="fas fa-quote-left"></i></div>
+                    <p class="cus-rev">Có nhiều phòng trọ đẹp, giá thành phải chăng, địa chỉ lý tưởng, rất phù hợp với
+                        sinh viên như chúng tôi.</p>
+                    <div class="star" style="padding-bottom: 30px;">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <img src="/src/public/img/user2.jpg"
+                                alt="" class="cus-avatar">
+                        <div class="cus-rev-info">
+                            <h5 class="cus-name"><span>by</span> Huệ Thi</h5>
+                            <h6 class="cus-pos">Tenant, Đại học Duy Tân</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- Modal -->
+<div class="modal fade modal-search-result-wrapper" id="modalSearchResult" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Search Result: 4 results</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <a href="/news/phong-tro-bon-mua" class="row modal-result-item a-tag-custom">
+                        <img src="/src/public/img/tro2.jpg" alt="" class="modal-img-result">
+                        <div class="modal-content-result">
+                            <div class="modal-content-result-title">Phòng Trọ Bốn Mùa</div>
+                            <div class="modal-content-result-host">by Duy Phong</div>
+                            <div class="modal-content-result-location"><i class="fas fa-map-marker-alt"></i> 14 Le Duan, Hai Chau</div>
+                            <div class="modal-content-result-desc">Cho thuê phòng trọ gần Trường ĐH Duy Tân, có chỗ giữ xe, an ninh, giờ giấc thoải mái.</div>
+                        </div>
+                        <div class="modal-detail-result d-flex flex-column justify-content-center">
+                            <div class="modal-detail-result-item">
+                                <div class="modal-detail-result-price d-flex"><i class="fas fa-coins"></i> 2.000.000</div>
+                                <div class="modal-detail-result-area d-flex"><i class="fas fa-ruler-combined"></i> <span>36m<sup>2</sup></span></div>
+                                <div class="modal-detail-result-phone d-flex"><i class="fas fa-phone-alt"></i>096 357 248</div>
                             </div>
                         </div>
                     </a>
-                    <ul class="card-detail">
-                        <li><span><i class="fas fa-ruler-combined"></i></span>{{this.overview.area}}m<sup>2</sup></li>
-                        <li><span><i class="fas fa-phone-alt"></i></i></span>{{this.host.phoneNumber}}</li>
-                    </ul>
+                    <div class="row modal-result-item">
+                        <img src="/src/public/img/tro1.jpg" alt="" class="modal-img-result">
+                        <div class="modal-content-result">
+                            <div class="modal-content-result-title">Phòng Trọ Cô Thu</div>
+                            <div class="modal-content-result-host">by Thu</div>
+                            <div class="modal-content-result-location"><i class="fas fa-map-marker-alt"></i> 56 Nguyen Van Linh, Hai Chau</div>
+                            <div class="modal-content-result-desc">Cho thuê phòng trọ gần Trường ĐH Duy Tân, có chỗ giữ xe, an ninh, giờ giấc thoải mái.</div>
+                        </div>
+                        <div class="modal-detail-result d-flex flex-column justify-content-center">
+                            <div class="modal-detail-result-item">
+                                <div class="modal-detail-result-price d-flex"><i class="fas fa-coins"></i> 2.000.000</div>
+                                <div class="modal-detail-result-area d-flex"><i class="fas fa-ruler-combined"></i> <span>36m<sup>2</sup></span></div>
+                                <div class="modal-detail-result-phone d-flex"><i class="fas fa-phone-alt"></i>096 357 248</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row modal-result-item">
+                        <img src="/src/public/img/tro4.jpg" alt="" class="modal-img-result">
+                        <div class="modal-content-result">
+                            <div class="modal-content-result-title">Phòng trọ anh Tuấn</div>
+                            <div class="modal-content-result-host">by Văn Tuấn</div>
+                            <div class="modal-content-result-location"><i class="fas fa-map-marker-alt"></i> 23/2 Chương Dương, Ngũ Hành Sơn</div>
+                            <div class="modal-content-result-desc">Cho thuê phòng trọ gần Trường ĐH Duy Tân, có chỗ giữ xe, an ninh, giờ giấc thoải mái.</div>
+                        </div>
+                        <div class="modal-detail-result d-flex flex-column justify-content-center">
+                            <div class="modal-detail-result-item">
+                                <div class="modal-detail-result-price d-flex"><i class="fas fa-coins"></i> 2.000.000</div>
+                                <div class="modal-detail-result-area d-flex"><i class="fas fa-ruler-combined"></i> <span>36m<sup>2</sup></span></div>
+                                <div class="modal-detail-result-phone d-flex"><i class="fas fa-phone-alt"></i>096 357 248</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row modal-result-item">
+                        <img src="/src/public/img/tro5.jpg" alt="" class="modal-img-result">
+                        <div class="modal-content-result">
+                            <div class="modal-content-result-title">Phòng trọ Sinh Viên</div>
+                            <div class="modal-content-result-host">by Hue Thi</div>
+                            <div class="modal-content-result-location"><i class="fas fa-map-marker-alt"></i> 79 Le Duan, Hai Chau</div>
+                            <div class="modal-content-result-desc">Cho thuê phòng trọ gần Trường ĐH Duy Tân, có chỗ giữ xe, an ninh, giờ giấc thoải mái.</div>
+                        </div>
+                        <div class="modal-detail-result d-flex flex-column justify-content-center">
+                            <div class="modal-detail-result-item">
+                                <div class="modal-detail-result-price d-flex"><i class="fas fa-coins"></i> 2.000.000</div>
+                                <div class="modal-detail-result-area d-flex"><i class="fas fa-ruler-combined"></i> <span>36m<sup>2</sup></span></div>
+                                <div class="modal-detail-result-phone d-flex"><i class="fas fa-phone-alt"></i>096 357 248</div>
+                            </div>
+                        </div>
+                    </div>
+                   
                 </div>
             </div>
-        </div>
-        {{/each}}
-    </div>
-
-    <div class="card-see-more"><a href="#">See More ...</a></div>
-</div>
-
-<div class="container">
-    <div class="search-title">
-        <h3 class="search-title-h3"><span>Hot</span>news</h3>
-        <p class="search-title-desc">Lorem ipsum dolor sit amet consectetur.</p>
-        <div class="line-text">
-            <div class="line-text-icon"><i class="fas fa-newspaper"></i></div>
-        </div>
-
-    </div>
-</div>
-
-<div class="container">
-    <div class="news-grid-container">
-        <div class="grid-left">
-            <div class="grid-left-top">
-                <div class="grid-left-top-left">
-                    <div class="news-card w-h-100">
-                        <div class="map-detail map-detail-7">
-                            <div class="map-back map-back-7">
-                                <i class="fas fa-angle-left"></i>
-                                <span>Back</span>
-                            </div>
-                            <div class="mapouter">
-                                <div class="gmap_canvas map-100"><iframe width="411" height="273" id="gmap_canvas"
-                                        src="https://maps.google.com/maps?q=82%20H%C3%A0%20Huy%20T%E1%BA%ADp%20Thanh%20Kh%C3%AA%20&t=&z=13&ie=UTF8&iwloc=&output=embed"
-                                        frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a
-                                        href="https://www.embedgooglemap.net"></a></div>
-                                <style>
-                                    .mapouter {
-                                        position: absolute;
-                                        text-align: right;
-                                        height: 273px;
-                                        width: 411px;
-                                    }
-
-                                    .gmap_canvas {
-                                        overflow: hidden;
-                                        background: none !important;
-                                        height: 273px;
-                                        width: 411px;
-                                    }
-                                </style>
-                            </div>
-                        </div>
-                        <img src="https://wedo.vn/wp-content/uploads/2019/11/thiet-ke-phong-tro-dep-6.jpg" alt=""
-                            class="news-card__img-cover">
-                        <div class="card-title--top">
-                            <div class="card-title-top-right">
-                                <div class="card-title-top__sale">Rental</div>
-                            </div>
-                            <div class="card-title-top-left">
-                                <div class="card-title-top__heart" onclick="bootstrapAlert()">
-                                    <i class="far fa-heart"></i>
-                                </div>
-                                <div class="card-title-top__map top__map-7">
-                                    <i class="fas fa-map-marked-alt"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-bot-container">
-                            <div class="card-title--bot">
-                                <span class="card-price">
-                                    <img src="./src/public/img/vnd.svg" class="vnd-icon" alt="">
-                                    2 triệu 5
-                                    <sub>/Tháng</sub>
-                                </span>
-                                <h4 class="card-title-name">Phòng trọ sinh viên</h4>
-                                <div class="card-location">
-                                    <i class="fas fa-map-marker-alt"></i>
-                                    82 Ha Huy Tap, Thanh Khe, Da Nang
-                                </div>
-                            </div>
-                            <ul class="card-detail">
-                                <li><span>2</span>Bedrooms</li>
-                                <li><span>2</span>Bathrooms</li>
-                                <li><span>1</span>Mezzanine</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="grid-left-top-right">
-                    <div class="news-card w-h-100">
-                        <div class="map-detail map-detail-8">
-                            <div class="map-back map-back-8">
-                                <i class="fas fa-angle-left"></i>
-                                <span>Back</span>
-                            </div>
-                            <div class="mapouter">
-                                <div class="gmap_canvas map-100"><iframe width="290" height="275" id="gmap_canvas"
-                                        src="https://maps.google.com/maps?q=187%20%C4%91%E1%BB%91ng%20%C4%91a%20h%E1%BA%A3i%20ch%C3%A2u&t=&z=13&ie=UTF8&iwloc=&output=embed"
-                                        frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a
-                                        href="https://www.embedgooglemap.net"></a></div>
-                                <style>
-                                    .mapouter {
-                                        position: relative;
-                                        text-align: right;
-                                        height: 275px;
-                                        width: 290px;
-                                    }
-
-                                    .gmap_canvas {
-                                        overflow: hidden;
-                                        background: none !important;
-                                        height: 275px;
-                                        width: 290px;
-                                    }
-                                </style>
-                            </div>
-                        </div>
-                        <img src="https://xaynhatro.net/wp-content/uploads/2020/06/mau-thiet-ke-phong-tro-co-gac-lung-dep-hien-dai-o-huong-nam-1.png"
-                            alt="" class="news-card__img-cover">
-                        <div class="card-title--top">
-                            <div class="card-title-top-right">
-                                <div class="card-title-top__sale">Rental</div>
-                            </div>
-                            <div class="card-title-top-left">
-                                <div class="card-title-top__heart">
-                                    <i class="far fa-heart"></i>
-                                </div>
-                                <div class="card-title-top__map top__map-8">
-                                    <i class="fas fa-map-marked-alt"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-bot-container">
-                            <div class="card-title--bot">
-                                <span class="card-price">
-                                    <img src="./src/public/img/vnd.svg" class="vnd-icon" alt="">
-                                    1 triệu 7
-                                    <sub>/Tháng</sub>
-                                </span>
-                                <h4 class="card-title-name">Nhà trọ Thiên Đức</h4>
-                                <div class="card-location">
-                                    <i class="fas fa-map-marker-alt"></i>
-                                    187 Dong Da, Hai Chau
-                                </div>
-                            </div>
-                            <ul class="card-detail">
-                                <li><span>1</span>Bedrooms</li>
-                                <li><span>2</span>Bathrooms</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="grid-left-bot">
-                <div class="grid-left-bot-left">
-                    <div class="news-card w-h-100">
-                        <div class="map-detail map-detail-9">
-                            <div class="map-back map-back-9">
-                                <i class="fas fa-angle-left"></i>
-                                <span>Back</span>
-                            </div>
-                            <div class="mapouter">
-                                <div class="gmap_canvas map-100"><iframe width="290" height="275" id="gmap_canvas"
-                                        src="https://maps.google.com/maps?q=24%20Ti%E1%BB%83u%20La&t=&z=13&ie=UTF8&iwloc=&output=embed"
-                                        frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a
-                                        href="https://www.embedgooglemap.net"></a></div>
-                                <style>
-                                    .mapouter {
-                                        position: relative;
-                                        text-align: right;
-                                        height: 275px;
-                                        width: 290px;
-                                    }
-
-                                    .gmap_canvas {
-                                        overflow: hidden;
-                                        background: none !important;
-                                        height: 275px;
-                                        width: 290px;
-                                    }
-                                </style>
-                            </div>
-                        </div>
-                        <img src="https://famidecor.com/wp-content/uploads/2019/06/1-1.png" alt=""
-                            class="news-card__img-cover">
-                        <div class="card-title--top">
-                            <div class="card-title-top-right">
-                                <div class="card-title-top__sale">Rental</div>
-                            </div>
-                            <div class="card-title-top-left">
-                                <div class="card-title-top__heart">
-                                    <i class="far fa-heart"></i>
-                                </div>
-                                <div class="card-title-top__map top__map-9">
-                                    <i class="fas fa-map-marked-alt"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-bot-container">
-                            <div class="card-title--bot">
-                                <span class="card-price">
-                                    <img src="./src/public/img/vnd.svg" class="vnd-icon" alt="">
-                                    1 triệu 9
-                                    <sub>/Tháng</sub>
-                                </span>
-                                <h4 class="card-title-name">Phòng trọ cô Thu</h4>
-                                <div class="card-location">
-                                    <i class="fas fa-map-marker-alt"></i>
-                                    24 Tieu La, Hai Chau, Da Nang
-                                </div>
-                            </div>
-                            <ul class="card-detail">
-                                <li><span>2</span>Bathrooms</li>
-                                <li><span>1</span>Mezzanine</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="grid-left-bot-right">
-                    <div class="news-card w-h-100">
-                        <div class="map-detail map-detail-10">
-                            <div class="map-back map-back-10">
-                                <i class="fas fa-angle-left"></i>
-                                <span>Back</span>
-                            </div>
-                            <div class="mapouter">
-                                <div class="gmap_canvas map-100"><iframe width="412" height="274" id="gmap_canvas"
-                                        src="https://maps.google.com/maps?q=K104%20Tr%E1%BA%A7n%20Cao%20V%C3%A2n%20Thanh%20Kh%C3%AA&t=&z=13&ie=UTF8&iwloc=&output=embed"
-                                        frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a
-                                        href="https://www.embedgooglemap.net"></a></div>
-                                <style>
-                                    .mapouter {
-                                        position: relative;
-                                        text-align: right;
-                                        height: 274px;
-                                        width: 412px;
-                                    }
-
-                                    .gmap_canvas {
-                                        overflow: hidden;
-                                        background: none !important;
-                                        height: 274px;
-                                        width: 412px;
-                                    }
-                                </style>
-                            </div>
-                        </div>
-                        <img src="https://img.cdn9h.com/article/2019_6_w4/l_774-phong-tro-voi-thiet-ke-bat-mat.jpeg"
-                            alt="" class="news-card__img-cover">
-                        <div class="card-title--top">
-                            <div class="card-title-top-right">
-                                <div class="card-title-top__sale">Rental</div>
-                            </div>
-                            <div class="card-title-top-left">
-                                <div class="card-title-top__heart" onclick="bootstrapAlert()">
-                                    <i class="far fa-heart"></i>
-                                </div>
-                                <div class="card-title-top__map top__map-10">
-                                    <i class="fas fa-map-marked-alt"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-bot-container">
-                            <div class="card-title--bot">
-                                <span class="card-price">
-                                    <img src="./src/public/img/vnd.svg" class="vnd-icon" alt="">
-                                    2 triệu 3
-                                    <sub>/Tháng</sub>
-                                </span>
-                                <h4 class="card-title-name">Phòng trọ Tấn Phát</h4>
-                                <div class="card-location">
-                                    <i class="fas fa-map-marker-alt"></i>
-                                    K104, Tran Cao Van, Thanh Khe, Da Nang
-                                </div>
-                            </div>
-                            <ul class="card-detail">
-                                <li><span>1</span>Bedrooms</li>
-                                <li><span>2</span>Bathrooms</li>
-                                <li><span>1</span>Mezzanine</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="grid-right">
-            <div class="news-card w-h-100">
-                <div class="map-detail map-detail-11">
-                    <div class="map-back map-back-11">
-                        <i class="fas fa-angle-left"></i>
-                        <span>Back</span>
-                    </div>
-                    <div class="mapouter">
-                        <div class="gmap_canvas"><iframe width="370" height="570" id="gmap_canvas"
-                                src="https://maps.google.com/maps?q=216%20Ng%C5%A9%20H%C3%A0nh%20S%C6%A1n%2C%20B%E1%BA%AFc%20M%E1%BB%B9%20Ph%C3%BA%2C%20Ng%C5%A9%20H%C3%A0nh%20S%C6%A1n%2C%20%C4%90%C3%A0%20N%E1%BA%B5ng&t=&z=13&ie=UTF8&iwloc=&output=embed"
-                                frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a
-                                href="https://123movies-to.org"></a></div>
-                        <style>
-                            .mapouter {
-                                position: relative;
-                                text-align: right;
-                                height: 570px;
-                                width: 370px;
-                            }
-
-                            .gmap_canvas {
-                                overflow: hidden;
-                                background: none !important;
-                                height: 570px;
-                                width: 370px;
-                            }
-                        </style>
-                    </div>
-                </div>
-                <img src="https://suanhanhanh24h.vn/wp-content/uploads/2019/06/64805419_1322512824562510_8199512272268165120_n-685x800.jpg"
-                    alt="" class="news-card__img-cover">
-                <div class="card-title--top">
-                    <div class="card-title-top-right">
-                        <div class="card-title-top__sale">Rental</div>
-                    </div>
-                    <div class="card-title-top-left">
-                        <div class="card-title-top__heart">
-                            <i class="far fa-heart"></i>
-                        </div>
-                        <div class="card-title-top__map top__map-11">
-                            <i class="fas fa-map-marked-alt"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-bot-container">
-                    <div class="card-title--bot">
-                        <span class="card-price">
-                            <img src="./src/public/img/vnd.svg" class="vnd-icon" alt="">
-                            4 triệu
-                            <sub>/Tháng</sub>
-                        </span>
-                        <h4 class="card-title-name">Phòng trọ Nữ</h4>
-                        <div class="card-location">
-                            <i class="fas fa-map-marker-alt"></i>
-                            216 Ngu Hanh Son, Da Nang
-                        </div>
-                    </div>
-                    <ul class="card-detail">
-                        <li><span>1</span>Bedrooms</li>
-                        <li><span>1</span>Bathrooms</li>
-                        <li><span>0</span>Mezzanine</li>
-                    </ul>
-                </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Ok</button>
             </div>
         </div>
     </div>
 </div>
-<div class="card-see-more container see-more-2"><a href="#">See More ...</a></div>
-
-<div class="w-100">
-    <div id="carouselReviewCustomer" class="carousel slide carousel-review" data-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <div class="carousel-caption d-none d-md-block">
-                    <h3 class="cus-title"><span>CUSTOMER</span>REVIEW</h3>
-                    <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80" alt="" class="cus-avatar">
-                    <p class="cus-rev">Đội ngũ support thân thiện. Website là cầu nối giúp người thuê trọ như tôi dễ dàng tìm kiếm trọ hơn rất nhiều <3</p>
-                    <h5 class="cus-name">Duy Phong Bui</h5>
-                    <h6 class="cus-pos">Customer</h6>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <div class="carousel-caption d-none d-md-block">
-                    <h3 class="cus-title"><span>CUSTOMER</span>REVIEW</h3>
-                    <img src="https://images.pexels.com/photos/1496647/pexels-photo-1496647.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="" class="cus-avatar">
-                    <p class="cus-rev">Có nhiều phòng trọ đẹp, giá thành phải chăng, địa chỉ lý tưởng, rất phù hợp với sinh viên như chúng tôi <3</p>
-                    <h5 class="cus-name">Nam Nguyễn</h5>
-                    <h6 class="cus-pos">Tenant</h6>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <div class="carousel-caption d-none d-md-block">
-                    <h3 class="cus-title"><span>CUSTOMER</span>REVIEW</h3>
-                    <img src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80" alt="" class="cus-avatar">
-                    <p class="cus-rev">Với tư cách là một chủ trọ, tôi vô cùng biết ơn vì website đã giúp tôi quản lí trọ một cách dễ dàng, nhanh chóng, an toàn, thông minh hơn rất nhiều <3</p>
-                    <h5 class="cus-name">Tuấn Vũ</h5>
-                    <h6 class="cus-pos">Host</h6>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
 
 {{#section 'script'}}
-    <script>
+<script src="/src/app/get-location.js"></script>
+<script>
+    //AOS init
+    AOS.init();
+
+    //Area range input
+    var inputLeft = document.getElementById("input-left");
+    var inputRight = document.getElementById("input-right");
+
+    var thumbLeft = document.querySelector(".slider > .thumb.left");
+    var thumbRight = document.querySelector(".slider > .thumb.right");
+    var range = document.querySelector(".slider > .range");
+
+    function setLeftValue() {
+        var _this = inputLeft,
+            min = parseInt(_this.min),
+            max = parseInt(_this.max);
+
+        _this.value = Math.min(parseInt(_this.value), parseInt(inputRight.value) - 1);
+
+        var percent = ((_this.value - min) / (max - min)) * 100;
+
+        thumbLeft.style.left = percent + "%";
+        range.style.left = percent + "%";
+    }
+    setLeftValue();
+
+    function setRightValue() {
+        var _this = inputRight,
+            min = parseInt(_this.min),
+            max = parseInt(_this.max);
+
+        _this.value = Math.max(parseInt(_this.value), parseInt(inputLeft.value) + 1);
+
+        var percent = ((_this.value - min) / (max - min)) * 100;
+
+        thumbRight.style.right = (100 - percent) + "%";
+        range.style.right = (100 - percent) + "%";
+    }
+    setRightValue();
+
+    inputLeft.addEventListener("input", setLeftValue);
+    inputRight.addEventListener("input", setRightValue);
+
+    inputLeft.addEventListener("mouseover", function() {
+        thumbLeft.classList.add("hover");
+    });
+    inputLeft.addEventListener("mouseout", function() {
+        thumbLeft.classList.remove("hover");
+    });
+    inputLeft.addEventListener("mousedown", function() {
+        thumbLeft.classList.add("active");
+    });
+    inputLeft.addEventListener("mouseup", function() {
+        thumbLeft.classList.remove("active");
+    });
+
+    inputRight.addEventListener("mouseover", function() {
+        thumbRight.classList.add("hover");
+    });
+    inputRight.addEventListener("mouseout", function() {
+        thumbRight.classList.remove("hover");
+    });
+    inputRight.addEventListener("mousedown", function() {
+        thumbRight.classList.add("active");
+    });
+    inputRight.addEventListener("mouseup", function() {
+        thumbRight.classList.remove("active");
+    });
+
+    // Button Scroll
+    $(document).ready(function () {
+        $(".chevron").click(function () {
+            $('html, body').animate({
+                scrollTop: $(".map-search").offset().top
+            }, 1070);
+        });
+    });
+
+    $('#input-left').on('input', ()=> {
+        let minValueArea = $('#input-left').val();
+        $("#value-area-input-min").html(minValueArea + "m<sup>2</sup>");
+    })
+     $('#input-right').on('input', ()=> {
+        let maxValueArea = $('#input-right').val();
+        $("#value-area-input-max").html(maxValueArea + "m<sup>2</sup>");
+    })
+
+
+    //Change header when scroll
+    $(window).on("scroll", function () {
+        if ($(window).scrollTop() > 65) {
+            $("#logo").attr("src", "/src/public/img/logo3.svg");
+            $(".navbar").addClass("bg-light");
+            $(".navbar").css('box-shadow', '0px 0px 15px 0px rgba(0,0,0,0.1)');
+        } else {
+            //remove the background property so it comes transparent again 
+            $("#logo").attr("src", "/src/public/img/logo2.svg");
+            $(".navbar").removeClass("bg-light");
+            $(".navbar").css('box-shadow', 'none');
+        }
+    });
+</script>
+<script>
+    //Search bar JS
+    /*$('#search-by-keyword').on('focus', ()=>{
+        $('#province').attr('disabled', true);
+    });
+    $('#search-by-keyword').on('focusout', ()=>{
+        $('#province').attr('disabled', false);
+    });*/
+    $('#search-by-keyword').on('input', ()=>{
+        if($('#search-by-keyword').val()){
+            $('#province').attr('disabled', true);
+            $('#district').attr('disabled', true);
+            $('#ward').attr('disabled', true);
+            $('#price').attr('disabled', true);
+            $('#input-left').attr('disabled', true);
+            $('#input-right').attr('disabled', true);
+        }
+        else {
+            $('#province').attr('disabled', false);
+            $('#district').attr('disabled', false);
+            $('#ward').attr('disabled', false);
+            $('#price').attr('disabled', false);
+            $('#input-left').attr('disabled', false);
+            $('#input-right').attr('disabled', false);
+        }
         
-        //Get city, district, ward from json file
-        $(function(){
-            let provinceOption;
-            let districtOption;
-            let wardOption;
-            let firstTime = 1;
-            $.getJSON('/src/app/json/province.json', function(result){
-                $.each(result, function(i, province){
-                    //<option value="province.id">pronvice.name</option>
-                    if(firstTime==1){
-                        provinceOption += `<option>-- Province/City --</option>`;
-                        firstTime = 2;
-                    }
-                    provinceOption += `<option value="${province.id}">${province.name}</option>`;
-                });
-                $('#province').html(provinceOption);
-            });
-            $("#province").on('change', function(){
-                districtOption = '';
-                $('#ward').html('`<option>-- Ward --</option>`');
-                let provinceId = $(this).val();
-                $.getJSON('/src/app/json/district.json', function(result){
-                    $.each(result, function(i, district){
-                        if(firstTime==2){
-                            districtOption += `<option>-- District --</option>`;
-                            firstTime = 3;
-                        }
-                        if(provinceId == district.tinh_id){
-                            districtOption += `<option value="${district.id}">${district.name}</option>`;
-                        } 
-                    });
-                    $('#district').html(districtOption);
-                });
-            });
-
-            $("#district").on('change', function(){
-                wardOption = '';
-                let districtId = $(this).val();
-                $.getJSON('/src/app/json/ward.json', function(result){
-                    $.each(result, function(i, ward){
-                        if(firstTime==3){
-                            wardOption += `<option>-- Ward --</option>`;
-                            firstTime = 4;
-                        }
-                        if(districtId == ward.huyen_id){
-                            wardOption += `<option value="${ward.id}">${ward.name}</option>`;
-                        } 
-                    });
-                    $('#ward').html(wardOption);
-                });
-            });
+    });
+     $('#province').on('change', ()=>{
+        if($('#province').val() !== "-- Province/City --"){
+            $('#search-by-keyword').attr('disabled', true);
+        }
+        else {
+            $('#search-by-keyword').attr('disabled', false);
+        }
         
-        });
+    });
 
-        // Button Scroll
-        $(document).ready(function (){
-            $(".chevron").click(function (){
-                $('html, body').animate({
-                    scrollTop: $(".map-search").offset().top
-                }, 1070);
-            });
-        });
-
-        //Slider input area
-        const slideValue = document.querySelector(".area-span");
-        const inputSlider = document.querySelector(".area-input");
-        inputSlider.oninput = (() => {
-            let value = inputSlider.value;
-            slideValue.textContent = value;
-            slideValue.style.left = (value / 2) + "%";
-            slideValue.classList.add("show");
-        });
-        inputSlider.onblur = (() => {
-            slideValue.classList.remove("show");
-        });
-
-        //Change header when scroll
-        $(window).on("scroll", function () {
-            if ($(window).scrollTop() > 65) {
-                $("#logo").attr("src", "/src/public/img/logo3.svg");
-                $(".navbar").addClass("bg-light");
-                $(".navbar").css('box-shadow', '0px 0px 15px 0px rgba(0,0,0,0.1)');
-            } else {
-                //remove the background property so it comes transparent again 
-                $("#logo").attr("src", "/src/public/img/logo2.svg");
-                $(".navbar").removeClass("bg-light");
-                $(".navbar").css('box-shadow', 'none');
-            }
-        });
-    </script>
-
+    
+</script>
 {{/section}}

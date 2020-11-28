@@ -1,0 +1,88 @@
+<!-- Modal -->
+<div class="modal fade modal-search-result-wrapper" id="modalSearchResult" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Search Result: 4 results</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    {{#each results}}
+                    <div class="row modal-result-item">
+                        <img src="/src/public/img/tro2.jpg" alt="" class="modal-img-result">
+                        <div class="modal-content-result">
+                            <div class="modal-content-result-title">{{this.title}}</div>
+                            <div class="modal-content-result-host">by {{this.host.nameHost}}</div>
+                            <div class="modal-content-result-location"><i class="fas fa-map-marker-alt"></i> {{this.location}}</div>
+                            <div class="modal-content-result-desc">{{this.description}}</div>
+                        </div>
+                        <div class="modal-detail-result d-flex flex-column justify-content-center">
+                            <div class="modal-detail-result-item">
+                                <div class="modal-detail-result-price d-flex"><i class="fas fa-coins"></i> {{this.priceNumber}}</div>
+                                <div class="modal-detail-result-area d-flex"><i class="fas fa-ruler-combined"></i> <span>{{this.overview.area}}m<sup>2</sup></span></div>
+                                <div class="modal-detail-result-phone d-flex"><i class="fas fa-phone-alt"></i>{{this.host.phoneNumber}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    {{/each}}
+                    {{!-- <div class="row modal-result-item">
+                        <img src="/src/public/img/tro1.jpg" alt="" class="modal-img-result">
+                        <div class="modal-content-result">
+                            <div class="modal-content-result-title">Phòng Trọ Cô Thu</div>
+                            <div class="modal-content-result-host">by Thu</div>
+                            <div class="modal-content-result-location"><i class="fas fa-map-marker-alt"></i> 56 Nguyen Van Linh, Hai Chau</div>
+                            <div class="modal-content-result-desc">Cho thuê phòng trọ gần Trường ĐH Duy Tân, có chỗ giữ xe, an ninh, giờ giấc thoải mái.</div>
+                        </div>
+                        <div class="modal-detail-result d-flex flex-column justify-content-center">
+                            <div class="modal-detail-result-item">
+                                <div class="modal-detail-result-price d-flex"><i class="fas fa-coins"></i> 2.000.000</div>
+                                <div class="modal-detail-result-area d-flex"><i class="fas fa-ruler-combined"></i> <span>36m<sup>2</sup></span></div>
+                                <div class="modal-detail-result-phone d-flex"><i class="fas fa-phone-alt"></i>096 357 248</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row modal-result-item">
+                        <img src="/src/public/img/tro4.jpg" alt="" class="modal-img-result">
+                        <div class="modal-content-result">
+                            <div class="modal-content-result-title">Phòng trọ anh Tuấn</div>
+                            <div class="modal-content-result-host">by Văn Tuấn</div>
+                            <div class="modal-content-result-location"><i class="fas fa-map-marker-alt"></i> 23/2 Chương Dương, Ngũ Hành Sơn</div>
+                            <div class="modal-content-result-desc">Cho thuê phòng trọ gần Trường ĐH Duy Tân, có chỗ giữ xe, an ninh, giờ giấc thoải mái.</div>
+                        </div>
+                        <div class="modal-detail-result d-flex flex-column justify-content-center">
+                            <div class="modal-detail-result-item">
+                                <div class="modal-detail-result-price d-flex"><i class="fas fa-coins"></i> 2.000.000</div>
+                                <div class="modal-detail-result-area d-flex"><i class="fas fa-ruler-combined"></i> <span>36m<sup>2</sup></span></div>
+                                <div class="modal-detail-result-phone d-flex"><i class="fas fa-phone-alt"></i>096 357 248</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row modal-result-item">
+                        <img src="/src/public/img/tro5.jpg" alt="" class="modal-img-result">
+                        <div class="modal-content-result">
+                            <div class="modal-content-result-title">Phòng trọ Sinh Viên</div>
+                            <div class="modal-content-result-host">by Hue Thi</div>
+                            <div class="modal-content-result-location"><i class="fas fa-map-marker-alt"></i> 79 Le Duan, Hai Chau</div>
+                            <div class="modal-content-result-desc">Cho thuê phòng trọ gần Trường ĐH Duy Tân, có chỗ giữ xe, an ninh, giờ giấc thoải mái.</div>
+                        </div>
+                        <div class="modal-detail-result d-flex flex-column justify-content-center">
+                            <div class="modal-detail-result-item">
+                                <div class="modal-detail-result-price d-flex"><i class="fas fa-coins"></i> 2.000.000</div>
+                                <div class="modal-detail-result-area d-flex"><i class="fas fa-ruler-combined"></i> <span>36m<sup>2</sup></span></div>
+                                <div class="modal-detail-result-phone d-flex"><i class="fas fa-phone-alt"></i>096 357 248</div>
+                            </div>
+                        </div>
+                    </div> --}}
+                   
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
