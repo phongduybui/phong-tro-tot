@@ -86,7 +86,8 @@ app.get('/search-result', function(req, res, next){
                 res.render('search-result', {
                     results: mutipleMongooseToObject(result)
                 })
-        })
+            })
+            .catch(next);
     }
     else {
         var titleRegex = new RegExp(req.query.title, 'i');
@@ -96,7 +97,8 @@ app.get('/search-result', function(req, res, next){
                 res.render('search-result', {
                     results: mutipleMongooseToObject(result)
                 })
-        })
+            })
+            .catch(next);
     }
     
 })
@@ -123,17 +125,44 @@ app.get('/features/top-up', function (req, res) {
     res.render('features/top-up');
 });
 
-app.get('/me/manage-user', function(req, res){
-    res.render('me/manage-user-info');
-});
+
+
 
 app.get('/dashboard', function(req, res) {
-    res.render('news', {layout: 'dashboard.hbs'});
-});
-
-app.get('/dashboard/pages-profile', function(req, res) {
     res.render('admin/pages-profile', {layout: 'dashboard.hbs'});
 });
+
+app.get('/dashboard/deposit-history', function(req, res) {
+    res.render('admin/deposit-history', {layout: 'dashboard.hbs'});
+});
+
+app.get('/dashboard/payment-history', function(req, res) {
+    res.render('admin/payment-history', {layout: 'dashboard.hbs'});
+});
+
+app.get('/dashboard/news-management', function(req, res) {
+    res.render('admin/news-management', {layout: 'dashboard.hbs'});
+});
+
+
+
+app.get('/dashboard/blank', function(req, res) {
+    res.render('admin/blank', {layout: 'dashboard.hbs'});
+});
+app.get('/error/404', function(req, res) {
+    res.render('admin/error-404', {layout: false});
+});
+
+
+//Admin
+app.get('/admin/dashboard', function(req, res) {
+    res.render('admin/dashboard-content', {layout: 'dashboard.hbs'});
+});
+
+app.get('/admin/account-manage', function(req, res) {
+    res.render('admin/account-manage', {layout: 'dashboard.hbs'});
+});
+
 
 
 
