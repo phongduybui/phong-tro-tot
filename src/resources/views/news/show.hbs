@@ -23,7 +23,7 @@
 
             <div class="d-flex align-items-center justify-content-between pb-2">
                 <h2 class="page-title">{{oneNew.title}}</h2>
-                <h2 class="price-detail">{{oneNew.priceNumber}}<span>đồng</span></h2>
+                <h2 class="price-detail">{{numberWithCommas oneNew.priceNumber}}<span>đồng</span></h2>
             </div>
 
             <div class="d-flex justify-content-start">
@@ -383,7 +383,7 @@
                     <div class="wrapper-list d-flex justify-content-between">
                         <ul class="list-unstyled ul-item-address" style="width: 46%;">
                             <li class="detail-address d-flex justify-content-between" ><strong>Province/City</strong> <span>{{oneNew.city}}</span></li>
-                            <li class="detail-city d-flex justify-content-between"><strong>Street</strong> <span>{{oneNew.ward}}</span></li>
+                            <li class="detail-city d-flex justify-content-between"><strong>Street</strong> <span>{{oneNew.street}}</span></li>
                             
                         </ul>
                         <ul class="list-unstyled ul-item-address" style="width: 46%;">

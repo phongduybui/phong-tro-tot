@@ -20,6 +20,7 @@ db.connect();
 app.use(express.static(path.join(__dirname, 'public')));
 app.use("/src/app", express.static(__dirname + '/app'));
 app.use("/src/public", express.static(__dirname + '/public'));
+app.use("/src/nice-admin", express.static(__dirname + '/nice-admin'));
 
 app.use(express.urlencoded({
     extended: true
@@ -38,7 +39,10 @@ app.engine('hbs', handlebars({
             if(!this._sections) this._sections = {};
             this._sections[name] = options.fn(this); 
             return null;
-        } 
+        },
+        numberWithCommas: function(x) {
+            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
     }    
 }));
 app.set('view engine', 'hbs');
@@ -49,6 +53,7 @@ app.set('views', path.join(__dirname, 'resources', 'views')); //'resources/views
 
 
 app.get('/', function (req, res, next) {
+    // console.log(req.query)
     New.find({})
         .then(news => {
             res.render('home', {
@@ -58,6 +63,45 @@ app.get('/', function (req, res, next) {
         })
         .catch(next);
 });
+
+app.get('/search-result', function(req, res, next){
+    if(!req.query.title){
+        var kindRegex = new RegExp(req.query.kind, 'i');
+        var provinceRegex = new RegExp(req.query.province, 'i');
+        var districtRegex = new RegExp(req.query.district, 'i');
+        var wardRegex = new RegExp(req.query.ward, 'i');
+        var priceMin =  req.query.price - 0;
+        var priceMax = (priceMin === 6000000) ? 100000000 : priceMin + 1000000;
+        
+        var areaMin =  req.query.areaMin - 0;
+        var areaMax =  req.query.areaMax - 0;
+        New.find({ kind: kindRegex, 
+            idCity: provinceRegex,
+            idDis: districtRegex,
+            idWard: wardRegex, 
+            priceNumber: { $gte: priceMin, $lte: priceMax },
+            "overview.area": { $gte: areaMin, $lte: areaMax },
+        })
+            .then(result => {
+                res.render('search-result', {
+                    results: mutipleMongooseToObject(result)
+                })
+        })
+    }
+    else {
+        var titleRegex = new RegExp(req.query.title, 'i');
+        New.find(
+            { title: titleRegex })
+            .then(result => {
+                res.render('search-result', {
+                    results: mutipleMongooseToObject(result)
+                })
+        })
+    }
+    
+})
+
+
 
 app.get('/news/post', (req, res, next) => {
     res.render('news/post');
@@ -83,22 +127,16 @@ app.get('/me/manage-user', function(req, res){
     res.render('me/manage-user-info');
 });
 
-// app.get("/search/:title", function(req, res, next){
-// 	var regex = new RegExp(req.params.title, 'i');
-// 	New.find({title:regex})
-// 		.then(result => {
-// 			res.render('features/modal-search', {
-//                 results: mutipleMongooseToObject(result)
-//             });
-//         })
-//         .catch(next);
-// })
+app.get('/dashboard', function(req, res) {
+    res.render('news', {layout: 'dashboard.hbs'});
+});
+
+app.get('/dashboard/pages-profile', function(req, res) {
+    res.render('admin/pages-profile', {layout: 'dashboard.hbs'});
+});
 
 
-// app.post('/search', (req, res) => {
-//     console.log(req.body);
-//     res.send('');
-// });
+
 
 app.listen(port, () => console.log(`App listening at http://localhost:${port}`));
 

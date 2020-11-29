@@ -59,48 +59,64 @@
     <div class="container">
         <div class="search-title" data-aos="fade-right" data-aos-duration="1500">
             <h3 class="search-title-h3">Looking for News</h3>
-            <p class="search-title-desc">Search for Boarding Rooms and Roommates here.</p>
+            <p class="search-title-desc search-title-desc-first">Search for Boarding Rooms and Roommates here.</p>
         </div>
+         
+       <form action="/search-result" method="GET" class="d-flex justify-content-center align-items-center pb-4" style="height: 100px;">
+            <div class="form-keyword h-100">
+                <input type="text" name="title" autocomplete="off" id="search-by-keyword" required />
+                <label for="title" class="label-name-keyword">
+                    <span class="content-name-keyword">Search by keyword</span>
+                </label>
+                <button type="submit" class="btn-submit-keyword">
+                    <img src="/src/public/img/search-icon.png"/>
+                </button>
+            </div>
+       </form>
+
+        {{!-- <form  class="w-100  mb25">
+            <input class="form-control search-keyword" type="search" placeholder="Search by keyword"
+                            name="title" >
             
+        </form> --}}
         <div class="map-search">
             <div class="search-bar-container">
-                <div class="search-bar">
-                    <input class="form-control mr-sm-2 mb25 search-keyword" type="search" placeholder="Search by keyword"
-                        aria-label="Search" id="search-by-keyword">
+                <form action="/search-result" method="GET" class="search-bar">
+                    
 
-                    <select id="kind-news-search" class="custom-select mb25">
+                    <select id="kind-news-search" class="custom-select mb25" name="kind">
                         <option selected>-- Kind of News --</option>
                         <option>Rental</option>
                         <option>Find Roommate</option>
                     </select>
-                    <select id="province" class="custom-select mb25">
+                    <select id="province" class="custom-select mb25" name="province">
                         <option selected>-- Province/City --</option>
                     </select>
     
                     <div class="d-flex justify-content-between">
                         <div class="w-50 pr-1">
-                            <select id="district" class="custom-select mb25">
+                            <select id="district" class="custom-select mb25" name="district">
                                 <option selected>-- District --</option>
                             </select>
                         </div>
         
                         <div class="w-50 pl-1">
-                            <select id="ward" class="custom-select mb25">
+                            <select id="ward" class="custom-select mb25" name="ward">
                                 <option selected>-- Ward --</option>
                             </select>
                         </div>
                     </div>
     
-                    <select id="price" class="custom-select mb25">
+                    <select id="price" class="custom-select mb25" name="price">
                         <option selected>Price (VND)</option>
                         <option value="1">
                             < 1 milion</option>
-                        <option value="2">1 - 2 milion</option>
-                        <option value="2">2 - 3 milion</option>
-                        <option value="2">3 - 5 milion</option>
-                        <option value="2">5 - 7 milion </option>
-                        <option value="2">7 - 10 milion</option>
-                        <option value="2">> 10 milion </option>
+                        <option value="1000000">1 - 2 milion</option>
+                        <option value="2000000">2 - 3 milion</option>
+                        <option value="3000000">3 - 4 milion</option>
+                        <option value="4000000">4 - 5 milion </option>
+                        <option value="5000000">5 - 6 milion</option>
+                        <option value="6000000">> 6 milion </option>
                     </select>
                     <div class="area-range">
                         <div class="area-desc">
@@ -114,8 +130,8 @@
                         <div class="area-range-input">
                             <div class="middle">
                                 <div class="multi-range-slider">
-                                    <input type="range" id="input-left" min="0" max="100" value="10">
-                                    <input type="range" id="input-right" min="0" max="100" value="90">
+                                    <input type="range" id="input-left" min="0" max="100" value="10" name="areaMin">
+                                    <input type="range" id="input-right" min="0" max="100" value="90" name="areaMax">
 
                                     <div class="slider">
                                         <div class="track"></div>
@@ -128,8 +144,8 @@
                         </div>
                     </div>
     
-                    <button type="button" class="btn btn-primary btn-form-search" data-toggle="modal" data-target="#modalSearchResult">Search</button>
-                </div>
+                    <button type="submit" class="btn btn-primary btn-form-search" id="search-advanced-btn">Search</button>
+                </form>
             </div>
             
             <div class="map-responsive"><div class="mapouter"><div class="gmap_canvas"><iframe width="670" height="520" id="gmap_canvas" src="https://maps.google.com/maps?q=ph%C3%B2ng%20tr%E1%BB%8D&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://embedgooglemap.net/143/"></a></div><style>.mapouter{position:relative;text-align:right;height:520px;width:670px;}.gmap_canvas {overflow:hidden;background:none!important;height:520px;width:670px;}</style></div></div>
@@ -751,94 +767,6 @@
 
 
 
-
-<!-- Modal -->
-<div class="modal fade modal-search-result-wrapper" id="modalSearchResult" tabindex="-1" role="dialog">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Search Result: 4 results</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="container-fluid">
-                    <a href="/news/phong-tro-bon-mua" class="row modal-result-item a-tag-custom">
-                        <img src="/src/public/img/tro2.jpg" alt="" class="modal-img-result">
-                        <div class="modal-content-result">
-                            <div class="modal-content-result-title">Phòng Trọ Bốn Mùa</div>
-                            <div class="modal-content-result-host">by Duy Phong</div>
-                            <div class="modal-content-result-location"><i class="fas fa-map-marker-alt"></i> 14 Le Duan, Hai Chau</div>
-                            <div class="modal-content-result-desc">Cho thuê phòng trọ gần Trường ĐH Duy Tân, có chỗ giữ xe, an ninh, giờ giấc thoải mái.</div>
-                        </div>
-                        <div class="modal-detail-result d-flex flex-column justify-content-center">
-                            <div class="modal-detail-result-item">
-                                <div class="modal-detail-result-price d-flex"><i class="fas fa-coins"></i> 2.000.000</div>
-                                <div class="modal-detail-result-area d-flex"><i class="fas fa-ruler-combined"></i> <span>36m<sup>2</sup></span></div>
-                                <div class="modal-detail-result-phone d-flex"><i class="fas fa-phone-alt"></i>096 357 248</div>
-                            </div>
-                        </div>
-                    </a>
-                    <div class="row modal-result-item">
-                        <img src="/src/public/img/tro1.jpg" alt="" class="modal-img-result">
-                        <div class="modal-content-result">
-                            <div class="modal-content-result-title">Phòng Trọ Cô Thu</div>
-                            <div class="modal-content-result-host">by Thu</div>
-                            <div class="modal-content-result-location"><i class="fas fa-map-marker-alt"></i> 56 Nguyen Van Linh, Hai Chau</div>
-                            <div class="modal-content-result-desc">Cho thuê phòng trọ gần Trường ĐH Duy Tân, có chỗ giữ xe, an ninh, giờ giấc thoải mái.</div>
-                        </div>
-                        <div class="modal-detail-result d-flex flex-column justify-content-center">
-                            <div class="modal-detail-result-item">
-                                <div class="modal-detail-result-price d-flex"><i class="fas fa-coins"></i> 2.000.000</div>
-                                <div class="modal-detail-result-area d-flex"><i class="fas fa-ruler-combined"></i> <span>36m<sup>2</sup></span></div>
-                                <div class="modal-detail-result-phone d-flex"><i class="fas fa-phone-alt"></i>096 357 248</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row modal-result-item">
-                        <img src="/src/public/img/tro4.jpg" alt="" class="modal-img-result">
-                        <div class="modal-content-result">
-                            <div class="modal-content-result-title">Phòng trọ anh Tuấn</div>
-                            <div class="modal-content-result-host">by Văn Tuấn</div>
-                            <div class="modal-content-result-location"><i class="fas fa-map-marker-alt"></i> 23/2 Chương Dương, Ngũ Hành Sơn</div>
-                            <div class="modal-content-result-desc">Cho thuê phòng trọ gần Trường ĐH Duy Tân, có chỗ giữ xe, an ninh, giờ giấc thoải mái.</div>
-                        </div>
-                        <div class="modal-detail-result d-flex flex-column justify-content-center">
-                            <div class="modal-detail-result-item">
-                                <div class="modal-detail-result-price d-flex"><i class="fas fa-coins"></i> 2.000.000</div>
-                                <div class="modal-detail-result-area d-flex"><i class="fas fa-ruler-combined"></i> <span>36m<sup>2</sup></span></div>
-                                <div class="modal-detail-result-phone d-flex"><i class="fas fa-phone-alt"></i>096 357 248</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row modal-result-item">
-                        <img src="/src/public/img/tro5.jpg" alt="" class="modal-img-result">
-                        <div class="modal-content-result">
-                            <div class="modal-content-result-title">Phòng trọ Sinh Viên</div>
-                            <div class="modal-content-result-host">by Hue Thi</div>
-                            <div class="modal-content-result-location"><i class="fas fa-map-marker-alt"></i> 79 Le Duan, Hai Chau</div>
-                            <div class="modal-content-result-desc">Cho thuê phòng trọ gần Trường ĐH Duy Tân, có chỗ giữ xe, an ninh, giờ giấc thoải mái.</div>
-                        </div>
-                        <div class="modal-detail-result d-flex flex-column justify-content-center">
-                            <div class="modal-detail-result-item">
-                                <div class="modal-detail-result-price d-flex"><i class="fas fa-coins"></i> 2.000.000</div>
-                                <div class="modal-detail-result-area d-flex"><i class="fas fa-ruler-combined"></i> <span>36m<sup>2</sup></span></div>
-                                <div class="modal-detail-result-phone d-flex"><i class="fas fa-phone-alt"></i>096 357 248</div>
-                            </div>
-                        </div>
-                    </div>
-                   
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Ok</button>
-            </div>
-        </div>
-    </div>
-</div>
-
 {{#section 'script'}}
 <script src="/src/app/get-location.js"></script>
 <script>
@@ -945,33 +873,32 @@
 </script>
 <script>
     //Search bar JS
-    /*$('#search-by-keyword').on('focus', ()=>{
-        $('#province').attr('disabled', true);
-    });
-    $('#search-by-keyword').on('focusout', ()=>{
-        $('#province').attr('disabled', false);
-    });*/
+
     $('#search-by-keyword').on('input', ()=>{
         if($('#search-by-keyword').val()){
+            $('#kind-news-search').attr('disabled', true);
             $('#province').attr('disabled', true);
             $('#district').attr('disabled', true);
             $('#ward').attr('disabled', true);
             $('#price').attr('disabled', true);
             $('#input-left').attr('disabled', true);
             $('#input-right').attr('disabled', true);
+            $('#search-advanced-btn').attr('disabled', true);
         }
         else {
+            $('#kind-news-search').attr('disabled', false);
             $('#province').attr('disabled', false);
             $('#district').attr('disabled', false);
             $('#ward').attr('disabled', false);
             $('#price').attr('disabled', false);
             $('#input-left').attr('disabled', false);
             $('#input-right').attr('disabled', false);
+            $('#search-advanced-btn').attr('disabled', false);
         }
         
     });
-     $('#province').on('change', ()=>{
-        if($('#province').val() !== "-- Province/City --"){
+     $('#kind-news-search').on('change', ()=>{
+        if($('#kind-news-search').val() !== "-- Kind of News --"){
             $('#search-by-keyword').attr('disabled', true);
         }
         else {
@@ -979,7 +906,7 @@
         }
         
     });
-
+    
     
 </script>
 {{/section}}

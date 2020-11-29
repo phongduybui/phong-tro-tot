@@ -1,0 +1,26 @@
+<div class="container search-result-wrapper" style="padding-top: 100px;">
+    <div class="search-result-title">Search Result: <span>{{results.length}} </span>results</div>
+    <div class="search-result-content">
+        {{#each results}}
+        <a href="/news/{{this.slug}}" class="row modal-result-item a-tag-custom">
+            <div class="d-flex">
+                <img src="{{this.img}}" alt="" class="modal-img-result">
+                <div class="modal-content-result">
+                    <div class="modal-content-result-title">{{this.title}}</div>
+                    <div class="modal-content-result-host">by {{this.host.nameHost}}</div>
+                    <div class="modal-content-result-location"><i class="fas fa-map-marker-alt"></i> {{this.location}}</div>
+                    <div class="modal-content-result-desc">{{this.description}}</div>
+                </div>
+            </div>
+            <div class="modal-detail-result d-flex flex-column justify-content-center">
+                <div class="modal-detail-result-item">
+                    <div class="modal-detail-result-price d-flex"><i class="fas fa-coins"></i> {{this.priceNumber}}</div>
+                    <div class="modal-detail-result-area d-flex"><i class="fas fa-ruler-combined"></i>
+                        <span>{{this.overview.area}}m<sup>2</sup></span></div>
+                    <div class="modal-detail-result-phone d-flex"><i class="fas fa-phone-alt"></i>{{this.host.phoneNumber}}</div>
+                </div>
+            </div>
+        </a>
+        {{/each}}  
+    </div>
+</div>
