@@ -12,8 +12,19 @@ const { mutipleMongooseToObject } = require('./util/mongoose');
 const { mongooseToObject } = require('./util/mongoose');
 
 
+//Slug Generator
+const toSlug = require('./app/slug-generator');
+
+
 //Connect to DB
 db.connect();
+
+
+//File Upload
+const fileUpload = require('express-fileupload');
+app.use(fileUpload());
+
+
 
 
 //Config static file (img, css...)
@@ -22,9 +33,12 @@ app.use("/src/app", express.static(__dirname + '/app'));
 app.use("/src/public", express.static(__dirname + '/public'));
 app.use("/src/nice-admin", express.static(__dirname + '/nice-admin'));
 
+
+//Middleware to get data from req.body (gui tu form)
 app.use(express.urlencoded({
     extended: true
 }));
+//Middleware to get,post using axios/fetch/XMLHttpRequest... (gui dung js)
 app.use(express.json());
 
 // HTTP logger
@@ -107,6 +121,75 @@ app.get('/search-result', function(req, res, next){
 
 app.get('/news/post', (req, res, next) => {
     res.render('news/post');
+});
+
+
+
+
+app.post('/news/store', (req, res, next) => {
+    let imgArray = [];
+    if(req.files){
+
+        const file = req.files.image;
+        console.log(file)
+        
+        if(Array.isArray(file)){
+            for(let i = 0 ; i < file.length; i++){
+                imgArray[i] = '/src/public/img/upload/'+file[i].name;
+                file[i].mv(__dirname + '/public/img/upload/'+file[i].name, function (err){
+                    if(err){
+                        res.send(err);
+                    }
+                })
+            }
+        }
+        else {
+            file.mv(__dirname + '/public/img/upload/'+file.name);
+            imgArray[0] = '/src/public/img/upload/'+file.name;
+        }
+        
+        
+    }
+    console.log(imgArray)
+    const data = req.body;
+    const news = new New({
+        motelId: '_' + Math.random().toString(36).substr(2, 5),
+        img: imgArray,
+        kind: data.kind,
+        title: data.title,
+        slug: toSlug(data.title),
+        gender: data.gender,
+        priceNumber: data.price,
+        price: data.price/1000000 + ' triệu',
+        idCity: data.idCity,
+        idDis: data.idDis,
+        idWard: data.idWard,
+        street: data.street,
+        address: data.address,
+        location: data.location,
+        description: data.description,
+        kindOfNews: data.kindOfNews,
+        features: data.features,
+        "overview.area": data.area,
+        "overview.bedroom": data.bedroom,
+        "overview.bathroom": data.bathroom,
+        "overview.floor": data.floor,
+        "overview.yearBuilt": data.yearBuilt,
+        "host.nameHost": data.nameHost,
+        "host.phoneNumber": data.phoneNumber,
+        "host.mailHost": data.mailHost,
+        "host.imgHost": '/src/public/img/user7.jpg'
+    });
+
+
+    news.save(function (err) {
+        if (err){
+            res.send(err);
+        }
+        alert("Successful!");
+        res.redirect('/news/post');
+    });
+    
 });
 
 app.get('/news/:slug', (req, res, next) => {

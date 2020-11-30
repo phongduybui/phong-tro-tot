@@ -22,9 +22,10 @@ $(document).ready(function () {
             showNextButton: true, // show/hide a Next button
             showPreviousButton: true, // show/hide a Previous button
             toolbarExtraButtons: [
-                $('<button></button>').text('Submit').addClass('btn btn-danger submit-post-form').on('click', function () {
-                    alert("Payment successful!");
-                })
+                $('<button></button>').text('Submit').addClass('btn btn-danger submit-post-form').attr('type', 'submit')
+                // on('click', function () {
+                //     alert("Payment successful!");
+                // })
             ] // Extra buttons to show on toolbar, array of jQuery input/buttons elements
         },
         anchorSettings: {
@@ -75,29 +76,29 @@ $(document).ready(function () {
     });
 
 
-    $(".submit-post-form").prop('disabled', true);
-    let stepIndex;
-    $(".sw-btn-next").on('click', function () {
-        stepIndex = $('#smartwizard').smartWizard("getStepIndex");
+    // $(".submit-post-form").prop('disabled', true);
+    // let stepIndex;
+    // $(".sw-btn-next").on('click', function () {
+    //     stepIndex = $('#smartwizard').smartWizard("getStepIndex");
 
-        if (stepIndex == 4) {
-            $(".submit-post-form").prop('disabled', false);
-        }
-        else {
-            $(".submit-post-form").prop('disabled', true);
-        }
-    })
+    //     if (stepIndex == 4) {
+    //         $(".submit-post-form").prop('disabled', false);
+    //     }
+    //     else {
+    //         $(".submit-post-form").prop('disabled', true);
+    //     }
+    // })
 
-    $(".sw-btn-prev").on('click', function () {
-        stepIndex = $('#smartwizard').smartWizard("getStepIndex");
+    // $(".sw-btn-prev").on('click', function () {
+    //     stepIndex = $('#smartwizard').smartWizard("getStepIndex");
 
-        if (stepIndex == 4) {
-            $(".submit-post-form").prop('disabled', false);
-        }
-        else {
-            $(".submit-post-form").prop('disabled', true);
-        }
-    })
+    //     if (stepIndex == 4) {
+    //         $(".submit-post-form").prop('disabled', false);
+    //     }
+    //     else {
+    //         $(".submit-post-form").prop('disabled', true);
+    //     }
+    // })
 });
 
 
@@ -524,17 +525,17 @@ $(document).ready(function() {
         calculateTotal();
     })
 
-    function commaSeparateNumber(val){
-        while (/(\d+)(\d{3})/.test(val.toString())){
-          val = val.toString().replace(/(\d+)(\d{3})/, '$1'+','+'$2');
-        }
-        return val;
-      }
-    $('#price-input').on('input', function(){
-        let temp = this.value.split(',').join('') - 0;
-        this.value = commaSeparateNumber(temp);
+    // function commaSeparateNumber(val){
+    //     while (/(\d+)(\d{3})/.test(val.toString())){
+    //       val = val.toString().replace(/(\d+)(\d{3})/, '$1'+','+'$2');
+    //     }
+    //     return val;
+    //   }
+    // $('#price-input').on('input', function(){
+    //     let temp = this.value.split(',').join('') - 0;
+    //     this.value = commaSeparateNumber(temp);
      
-    });
+    // });
   
 })
 

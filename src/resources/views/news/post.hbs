@@ -11,7 +11,7 @@
                         </ol>
                     </nav>
                 </div>
-                <form id="formCreateNewsPost" role="form" data-toggle="validator">
+                <form method="POST" action="/news/store" id="formCreateNewsPost" role="form" data-toggle="validator" enctype="multipart/form-data">
                     <div id="smartwizard">
 
                         <ul class="nav">
@@ -63,10 +63,10 @@
                                             <div class="mb-3 w-100">
                                                 <label for="kind-news-post">Kind of News <span
                                                         style="color: red;">(*)</span></label>
-                                                <select class="custom-select" id="kind-news-post">
+                                                <select class="custom-select" id="kind-news-post" name="kind">
                                                     <option selected>Choose the kind of news</option>
-                                                    <option value="cho-thue">Rental Accommodation</option>
-                                                    <option value="o-ghep">Find people to share rooms</option>
+                                                    <option value="Rental">Rental Accommodation</option>
+                                                    <option value="Roommate">Find people to share rooms</option>
                                                 </select>
                                             </div>
 
@@ -80,11 +80,10 @@
                                             <div class="mb-3 w-100">
                                                 <label for="gender-allow">Gender Allowed <span
                                                         style="color: red;">(*)</span></label>
-                                                <select class="custom-select" id="gender-allow">
-                                                    <option selected>All</option>
+                                                <select class="custom-select" id="gender-allow" name="gender">
+                                                    <option value="all" selected>All</option>
                                                     <option value="male">Male</option>
                                                     <option value="female">Female</option>
-                                                    <option value="other">Other</option>
                                                 </select>
                                             </div>
 
@@ -92,9 +91,9 @@
                                                 <label>Price <span style="color: red;">(*)</span></label>
                                                 <div class="input-group">
 
-                                                    <input type="text" class="number-font form-control number-font"
+                                                    <input type="number" class="number-font form-control number-font"
                                                         id="price-input" style="text-align: right;"
-                                                        placeholder="For example: 2500000" required>
+                                                        placeholder="For example: 2500000" name="price" required>
                                                     <div class="input-group-append">
                                                         <span class="input-group-text">.đ</span>
                                                     </div>
@@ -113,14 +112,14 @@
                                             <div class="form-group form-input-custom mb-3">
                                                 <label style="width: 100%;">Rental Address <span
                                                         style="color: red;">(*)</span></label>
-                                                <select id="province" class="custom-select w33" name="province">
+                                                <select id="province" class="custom-select w33" name="idCity">
                                                 </select>
 
-                                                <select id="district" class="custom-select w33" name="district">
+                                                <select id="district" class="custom-select w33" name="idDis">
                                                     <option selected>-- District --</option>
                                                 </select>
 
-                                                <select id="ward" class="custom-select w33" name="ward">
+                                                <select id="ward" class="custom-select w33" name="idWard">
                                                     <option selected>-- Ward --</option>
                                                 </select>
                                             </div>
@@ -138,14 +137,14 @@
                                                             style="color: red;">(*)</span></label>
                                                     <input type="text" class="form-control number-font"
                                                         id="apartmentNumber" placeholder="Enter apartment number"
-                                                        name="apartmentNumber" required>
+                                                        name="address" required>
                                                     <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
                                             <div class="form-group w-100">
                                                 <label for="full-address">Full Address</label>
                                                 <input type="text" class="form-control number-font" id="full-address"
-                                                    name="full-address" style="color: #222;">
+                                                    name="location" style="color: #222;">
                                             </div>
                                         </div>
                                     </div>
@@ -167,17 +166,22 @@
                                         </div>
                                         <div class="col-8 submit-info-right">
                                             <div class="form-group form-input-custom">
+                                                <label for="nameHost" style="width: 100%;">Full Name</label>
+                                                <input type="text" class="form-control number-font"
+                                                        placeholder="Enter full name" name="nameHost">
+                                            </div>
+                                            <div class="form-group form-input-custom">
 
                                                 <div class="input-group w49">
                                                     <label for="tel" style="width: 100%;">Phone Number</label>
                                                     <input type="tel" class="form-control number-font"
-                                                        placeholder="Enter phone number">
+                                                        placeholder="Enter phone number" name="phoneNumber">
                                                 </div>
 
                                                 <div class="input-group w49">
                                                     <label for="email" style="width: 100%;">Email</label>
                                                     <input type="email" class="form-control number-font"
-                                                        placeholder="Example: duyphong@gmail.com">
+                                                        placeholder="Example: duyphong@gmail.com" name="mailHost">
                                                 </div>
                                             </div>
                                         </div>
@@ -193,7 +197,7 @@
                                             <div class="input-group mb25 d-flex flex-column">
                                                 <label for="description-detail-post">Description</label>
                                                 <textarea class="form-control number-font w-100"
-                                                    aria-label="With textarea" name="description-detail-post"
+                                                    aria-label="With textarea" name="description"
                                                     rows="6"></textarea>
                                             </div>
                                         </div>
@@ -207,11 +211,10 @@
                                                 limit).</div>
                                         </div>
                                         <div class="col-8 submit-info-right">
-                                            <label for="my-dropzone-id" style="width: 100%;"> Drop Images</label>
-                                            <div id="my-dropzone-id" class="dropzone">
-                                                <div class="fallback">
-                                                    <input name="file" type="file" multiple />
-                                                </div>
+                                            <label for="my-dropzone-id" style="width: 100%;"> Upload Images</label>
+                                            <div class="upload-img-wrapper">
+                                                <input type="file" name="image" id="gallery-photo-add" multiple>
+                                                <div class="gallery"></div>
                                             </div>
                                         </div>
                                     </div>
@@ -236,36 +239,36 @@
 
 
                                             <label class="w-25 pb-3">
-                                                <input type="checkbox" name="check">
+                                                <input type="checkbox" value="Camera" name="features">
                                                 <span>Camera</span>
                                             </label>
                                             <label class="w-25 pb-3">
-                                                <input type="checkbox" name="check">
+                                                <input type="checkbox" value="Internet" name="features">
                                                 <span>Internet</span>
                                             </label>
                                             <label class="w-25 pb-3">
-                                                <input type="checkbox" name="check">
+                                                <input type="checkbox" value="Market" name="features">
                                                 <span>Market</span>
                                             </label>
                                             <label class="w-25 pb-3">
-                                                <input type="checkbox" name="check">
+                                                <input type="checkbox" value="Free Time" name="features">
                                                 <span>Free Time</span>
                                             </label>
 
                                             <label class="w-25 pb-3">
-                                                <input type="checkbox" name="check">
+                                                <input type="checkbox" value="Gym" name="features">
                                                 <span>Gym</span>
                                             </label>
                                             <label class="w-25 pb-3">
-                                                <input type="checkbox" name="check">
+                                                <input type="checkbox" value="Park" name="features">
                                                 <span>Park</span>
                                             </label>
                                             <label class="w-25 pb-3">
-                                                <input type="checkbox" name="check">
+                                                <input type="checkbox" value="Security" name="features">
                                                 <span>Security</span>
                                             </label>
                                             <label class="w-25 pb-3">
-                                                <input type="checkbox" name="check">
+                                                <input type="checkbox" value="Private Entrance" name="features">
                                                 <span>Private Entrance</span>
                                             </label>
 
@@ -297,7 +300,7 @@
                                                         <span class="input-group-text">Area</span>
                                                     </div>
                                                     <input type="number" class="form-control number-font"
-                                                        style="text-align: right;" required>
+                                                        style="text-align: right;" name="area" required>
                                                     <div class="input-group-append">
                                                         <span class="input-group-text">m<sup>2</sup></span>
                                                     </div>
@@ -310,7 +313,7 @@
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text">Year Built</span>
                                                     </div>
-                                                    <input type="month" class="form-control number-font" required>
+                                                    <input type="month" class="form-control number-font" name="yearBuilt" required>
                                                 </div>
                                                 <div class="help-block with-errors"></div>
                                             </div>
@@ -328,7 +331,7 @@
                                         <div class="d-flex justify-content-between flex-wrap">
                                             <div class="mb-3 w49">
                                                 <label for="floor">Floor</label>
-                                                <select class="custom-select" id="floor">
+                                                <select class="custom-select" id="floor" name="floor">
                                                     <option selected>Number of floors</option>
                                                     <option value="0">0</option>
                                                     <option value="1">1</option>
@@ -340,7 +343,7 @@
 
                                             <div class="mb-3 w49">
                                                 <label for="bathroom">Bathroom</label>
-                                                <select class="custom-select" id="bathroom">
+                                                <select class="custom-select" id="bathroom" name="bathroom">
                                                     <option selected>Number of bathrooms</option>
                                                     <option value="0">0</option>
                                                     <option value="1">1</option>
@@ -351,7 +354,7 @@
 
                                             <div class="mb-3 w-100">
                                                 <label for="bedroom">Bedroom</label>
-                                                <select class="custom-select" id="bedroom">
+                                                <select class="custom-select" id="bedroom" name="bedroom">
                                                     <option selected>Number of Bedroom</option>
                                                     <option value="0">0</option>
                                                     <option value="1">1</option>
@@ -498,12 +501,12 @@
                                                 <label for="kind-news">Kind of News</label>
 
                                                 <input class="form-control" type="text" placeholder="Choosing"
-                                                    id="kind-news" value="Choosing" readonly>
+                                                    id="kind-news" name="kindOfNews" readonly>
 
                                             </div>
                                             <div class="form-group choosing-price-item">
                                                 <label for="package-news">Package</label>
-                                                <select name="package-news" id="package-news" class="custom-select">
+                                                <select id="package-news" class="custom-select">
                                                     <option selected>Choose package</option>
                                                     <option value="day">Day</option>
                                                     <option value="week">Week</option>
@@ -798,14 +801,32 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.min.js" integrity="sha512-dTu0vJs5ndrd3kPwnYixvOCsvef5SGYW/zSSK4bcjRBcZHzqThq7pt7PmCv55yb8iBvni0TSeIDV8RYKjZL36A==" crossorigin="anonymous"></script>
     
     <script src="/src/app/get-location.js"></script>
-    <script src="/src/app/dropzone.min.js"></script>
-    <script>
-        Dropzone.autoDiscover = false;
-        $("div#my-dropzone-id").dropzone({
-            url: "/file/post"
-        });
-    </script>
     <script src="/src/app/imask.min.js"></script>
     <script src="/src/app/post-form.js"></script>
-    
+    <script>
+        $(function() {
+            // Multiple images preview in browser
+            var imagesPreview = function(input, placeToInsertImagePreview) {
+
+                if (input.files) {
+                    var filesAmount = input.files.length;
+
+                    for (i = 0; i < filesAmount; i++) {
+                        var reader = new FileReader();
+
+                        reader.onload = function(event) {
+                            $($.parseHTML('<img>')).addClass("image-preview").attr('src', event.target.result).appendTo(placeToInsertImagePreview);
+                        }
+
+                        reader.readAsDataURL(input.files[i]);
+                    }
+                }
+
+            };
+
+            $('#gallery-photo-add').on('change', function() {
+                imagesPreview(this, 'div.gallery');
+            });
+        });
+    </script>
 {{/section}}

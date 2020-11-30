@@ -1743,6 +1743,28 @@ input[type='text'] {
 #search-by-keyword:disabled {
   background-color: transparent; }
 
+.upload-img-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%; }
+  .upload-img-wrapper .gallery {
+    height: 190px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border: 2px dashed #20ad96;
+    margin-top: 15px;
+    padding: 10px 20px;
+    overflow: hidden; }
+  .upload-img-wrapper .image-preview {
+    height: 150px;
+    width: 150px;
+    object-fit: cover;
+    overflow: hidden;
+    border-radius: 5px;
+    margin-right: 20px; }
+
 @media only screen and (max-width: 767px) {
   .navbar-nav {
     background: rgba(0, 0, 0, 0.5); }
