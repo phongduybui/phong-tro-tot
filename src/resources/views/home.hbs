@@ -239,12 +239,13 @@
         </div>
     
         <ul class="list-unstyled d-flex pagination-dots-custom">
-            <li class="pagination-dots-custom-item pagination-dots-custom-item-active"><i class="fas fa-circle"></i></li>
-            <li class="pagination-dots-custom-item"><i class="fas fa-circle"></i></li>
-            <li class="pagination-dots-custom-item"><i class="fas fa-circle"></i></li>
-            <li class="pagination-dots-custom-item"><i class="fas fa-circle"></i></li>
-            <li class="pagination-dots-custom-item"><i class="fas fa-circle"></i></li>
-            <li class="pagination-dots-custom-item"><i class="fas fa-circle"></i></li>       
+            <li class="pagination-dots-custom-item pagination-dots-custom-item-active"><a href="/hot-news/1" class="pagi-hot-news"><i class="fas fa-circle"></i></a></li>
+            <li class="pagination-dots-custom-item"><a href="/hot-news/2" class="pagi-hot-news"><i class="fas fa-circle"></a></i></li>
+            <li class="pagination-dots-custom-item"><a href="/hot-news/3" class="pagi-hot-news"><i class="fas fa-circle"></a></i></li>
+            <li class="pagination-dots-custom-item"><a href="/hot-news/4" class="pagi-hot-news"><i class="fas fa-circle"></a></i></li>
+            <li class="pagination-dots-custom-item"><a href="/hot-news/5" class="pagi-hot-news"><i class="fas fa-circle"></a></i></li>
+            <li class="pagination-dots-custom-item"><a href="/hot-news/6" class="pagi-hot-news"><i class="fas fa-circle"></a></i></li>
+            <li class="pagination-dots-custom-item"><a href="/hot-news/7" class="pagi-hot-news"><i class="fas fa-circle"></a></i></li>    
         </ul>
     </div>
 </div>
@@ -608,12 +609,13 @@
         </div>
         
         <ul class="list-unstyled d-flex pagination-dots-custom" style="padding: 50px 0 30px;">
-            <li class="pagination-dots-custom-item pagination-dots-custom-item-active"><i class="fas fa-circle"></i></li>
-            <li class="pagination-dots-custom-item"><i class="fas fa-circle"></i></li>
-            <li class="pagination-dots-custom-item"><i class="fas fa-circle"></i></li>
-            <li class="pagination-dots-custom-item"><i class="fas fa-circle"></i></li>
-            <li class="pagination-dots-custom-item"><i class="fas fa-circle"></i></li>
-            <li class="pagination-dots-custom-item"><i class="fas fa-circle"></i></li>       
+            <li class="pagination-dots-custom-item pagination-dots-custom-item-active"><a href="/news/1" class="pagi-hot-news"><i class="fas fa-circle"></i></a></li>
+            <li class="pagination-dots-custom-item"><a class="pagi-hot-news"><i class="fas fa-circle"></a></i></li>
+            <li class="pagination-dots-custom-item"><a class="pagi-hot-news"><i class="fas fa-circle"></a></i></li>
+            <li class="pagination-dots-custom-item"><a class="pagi-hot-news"><i class="fas fa-circle"></a></i></li>
+            <li class="pagination-dots-custom-item"><a class="pagi-hot-news"><i class="fas fa-circle"></a></i></li>
+            <li class="pagination-dots-custom-item"><a class="pagi-hot-news"><i class="fas fa-circle"></a></i></li>
+            <li class="pagination-dots-custom-item"><a class="pagi-hot-news"><i class="fas fa-circle"></a></i></li>
         </ul>
     </div>
 </div>
@@ -908,5 +910,13 @@
     });
     
     
+</script>
+<script>
+    //Change class active pagination
+    $(document).ready(function() {
+        $('li.pagination-dots-custom-item-active').removeClass('pagination-dots-custom-item-active');
+        $('a[href="' + location.pathname + '"]').closest('li').addClass('pagination-dots-custom-item-active'); 
+    });
+
 </script>
 {{/section}}

@@ -1,0 +1,358 @@
+<div class="w-100 post-container">
+    <div class="container" style="padding-top: 80px;">
+        <div class="row">
+            <div class="col-lg-12 post-inner">
+                <div class="breadcrump-wrap">
+                    <nav>
+                        <ol class="breadcrump">
+                            <li class="breadcrump-item">Home</li>
+                            <li class="breadcrump-item">News</li>
+                            <li class="breadcrump-item active">Edit news</li>
+                        </ol>
+                    </nav>
+                </div>
+                <form method="POST" action="/news/{{new._id}}?_method=PUT" id="formCreateNewsPost" role="form" >
+                    <div id="smartwizard">
+
+                        <ul class="nav">
+                            <li class="nav-item">
+                                <a class="nav-link title-wizard" href="#step-1">
+                                    Basic
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#step-2">
+                                    Contact
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link title-wizard" href="#step-3">
+                                    Detail
+                                </a>
+                            </li>
+                            
+                        </ul>
+
+                        <div class="tab-content">
+                            <div id="step-1" class="tab-pane" role="tabpanel" aria-labelledby="step-1">
+
+                                <div class="mb-5">
+
+
+                                    <small style="margin-bottom: 35px; padding-left:15px" class="d-block">Tooltip: (*)
+                                        Required to
+                                        enter</small>
+
+                                    <div class="row w-100 submit-info">
+                                        <div class="col-4 submit-info-left">
+                                            <div class="post-title-info">Basic Description</div>
+                                            <div class="post-desc-info">This description will appear first in page.
+                                                Keeping it as a brief overview makes it easier to read.</div>
+                                        </div>
+
+                                        <div class="col-8 submit-info-right">
+                                            <div class="mb-3 w-100">
+                                                <label for="kind-news-post">Kind of News <span
+                                                        style="color: red;">(*)</span></label>
+                                                <select class="custom-select" id="kind-news-post" name="kind">
+                                                    <option>Choose the kind of news</option>
+                                                    <option value="Rental" {{#ifCond new.kind "==" "Rental"}} selected {{/ifCond}}>Rental Accommodation</option>
+                                                    <option value="Roommate" {{#ifCond new.kind "==" "Roommate"}} selected {{/ifCond}}>Find people to share rooms</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="title">Title <span style="color: red;">(*)</span></label>
+                                                <input type="text" class="form-control number-font" id="title"
+                                                    placeholder="Enter title" name="title" value="{{new.title}}" required>
+                                                
+                                            </div>
+
+                                            <div class="mb-3 w-100">
+                                                <label for="gender-allow">Gender Allowed <span
+                                                        style="color: red;">(*)</span></label>
+                                                <select class="custom-select" id="gender-allow" name="gender">
+                                                    <option value="all" {{#ifCond new.gender "==" "all"}} selected {{/ifCond}}>All</option>
+                                                    <option value="male" {{#ifCond new.gender "==" "male"}} selected {{/ifCond}}>Male</option>
+                                                    <option value="female" {{#ifCond new.kind "==" "female"}} selected {{/ifCond}}>Female</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Price <span style="color: red;">(*)</span></label>
+                                                <div class="input-group">
+
+                                                    <input type="number" class="number-font form-control number-font"
+                                                        id="price-input" style="text-align: right;"
+                                                        placeholder="For example: 2500000" name="price" value="{{new.priceNumber}}" required>
+                                                    <div class="input-group-append">
+                                                        <span class="input-group-text">.đ</span>
+                                                    </div>
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row w-100 submit-info border-bottom-0 mb-0 pb-0">
+                                        <div class="col-4 submit-info-left">
+                                            <div class="post-title-info">Declare Location</div>
+                                            <div class="post-desc-info">Declare your accommodation's location in the
+                                                following form.</div>
+                                        </div>
+                                        <div class="col-8 submit-info-right">
+                                            <div class="form-group form-input-custom mb-3">
+                                                <label style="width: 100%;">Rental Address <span
+                                                        style="color: red;">(*)</span></label>
+                                                <select id="province" class="custom-select w33" name="idCity">
+                                                </select>
+
+                                                <select id="district" class="custom-select w33" name="idDis">
+                                                    <option selected>-- District --</option>
+                                                </select>
+
+                                                <select id="ward" class="custom-select w33" name="idWard">
+                                                    <option selected>-- Ward --</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="d-flex justify-content-between">
+                                                <div class="form-group w49">
+                                                    <label for="street">Street <span
+                                                            style="color: red;">(*)</span></label>
+                                                    <input type="text" class="form-control number-font" id="street"
+                                                        placeholder="Enter the street" name="street" value="{{new.street}}" required>
+                                                    
+                                                </div>
+                                                <div class="form-group w49">
+                                                    <label for="apartmentNumber">Apartment Number <span
+                                                            style="color: red;">(*)</span></label>
+                                                    <input type="text" class="form-control number-font"
+                                                        id="apartmentNumber" placeholder="Enter apartment number"
+                                                        name="address" value="{{new.address}}" required>
+                                                    
+                                                </div>
+                                            </div>
+                                            <div class="form-group w-100">
+                                                <label for="full-address">Full Address</label>
+                                                <input type="text" class="form-control number-font" id="full-address"
+                                                    name="location" value="{{new.location}}" style="color: #222;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="step-2" class="tab-pane" role="tabpanel" aria-labelledby="step-2">
+
+                                <div id="form-step-1">
+
+                                    <small style="margin-bottom: 35px; padding-left:15px" class="d-block">Tooltip: (*)
+                                        Required to
+                                        enter</small>
+                                    <div class="row w-100 submit-info pb65">
+                                        <div class="col-4 submit-info-left">
+                                            <div class="post-title-info">Contact Information</div>
+                                            <div class="post-desc-info">Fill in your contact information exactly here,
+                                                so that people wishing to rent or stay in contact are the most
+                                                convenient.</div>
+                                        </div>
+                                        <div class="col-8 submit-info-right">
+                                            <div class="form-group form-input-custom">
+                                                <label for="nameHost" style="width: 100%;">Full Name</label>
+                                                <input type="text" class="form-control number-font"
+                                                        placeholder="Enter full name" name="nameHost" value="{{new.host.nameHost}}">
+                                            </div>
+                                            <div class="form-group form-input-custom">
+
+                                                <div class="input-group w49">
+                                                    <label for="tel" style="width: 100%;">Phone Number</label>
+                                                    <input type="tel" class="form-control number-font"
+                                                        placeholder="Enter phone number" name="phoneNumber" value="{{new.host.phoneNumber}}">
+                                                </div>
+
+                                                <div class="input-group w49">
+                                                    <label for="email" style="width: 100%;">Email</label>
+                                                    <input type="email" class="form-control number-font"
+                                                        placeholder="Example: duyphong@gmail.com" name="mailHost" value="{{new.host.mailHost}}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row w-100 submit-info " style="padding-bottom: 40px;">
+                                        <div class="col-4 submit-info-left">
+                                            <div class="post-title-info">Description Information</div>
+                                            <div class="post-desc-info">Give a detailed description of your
+                                                accommodation as much as possible.</div>
+                                        </div>
+                                        <div class="col-8 submit-info-right">
+                                            <div class="input-group mb25 d-flex flex-column">
+                                                <label for="description-detail-post">Description</label>
+                                                <textarea class="form-control number-font w-100"
+                                                    aria-label="With textarea" name="description"
+                                                    rows="6">{{new.description}}</textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    
+                                </div>
+
+                            </div>
+
+                            <div id="step-3" class="tab-pane" role="tabpanel" aria-labelledby="step-3">
+                                <small style="margin-bottom: 35px; padding-left:15px" class="d-block">Tooltip: (*)
+                                    Required to
+                                    enter
+                                </small>
+                                <div class="row w-100 submit-info">
+                                    <div class="col-4 submit-info-left">
+                                        <div class="post-title-info">Amenities and Features</div>
+                                        <div class="post-desc-info">Tick selected or fill out the form following the
+                                            amenities and features your accommodation has.</div>
+                                    </div>
+                                    <div class="col-8 submit-info-right">
+                                        <label for="" style="width: 100%;">Features:</label>
+                                        <div class="d-flex justify-content-between flex-wrap">
+
+
+                                            <label class="w-25 pb-3">
+                                                <input type="checkbox" value="Camera" name="features" {{#forIf new.features "Camera"}} checked {{/forIf}}>
+                                                <span>Camera</span>
+                                            </label>
+                                            <label class="w-25 pb-3">
+                                                <input type="checkbox" value="Internet" name="features" {{#forIf new.features "Internet"}} checked {{/forIf}}>
+                                                <span>Internet</span>
+                                            </label>
+                                            <label class="w-25 pb-3">
+                                                <input type="checkbox" value="Market" name="features" {{#forIf new.features "Market"}} checked {{/forIf}}>
+                                                <span>Market</span>
+                                            </label>
+                                            <label class="w-25 pb-3">
+                                                <input type="checkbox" value="Free Time" name="features" {{#forIf new.features "Free Time"}} checked {{/forIf}}>
+                                                <span>Free Time</span>
+                                            </label>
+
+                                            <label class="w-25 pb-3">
+                                                <input type="checkbox" value="Gym" name="features" {{#forIf new.features "Gym"}} checked {{/forIf}}>
+                                                <span>Gym</span>
+                                            </label>
+                                            <label class="w-25 pb-3">
+                                                <input type="checkbox" value="Park" name="features" {{#forIf new.features "Park"}} checked {{/forIf}}>
+                                                <span>Park</span>
+                                            </label>
+                                            <label class="w-25 pb-3">
+                                                <input type="checkbox" value="Security" name="features" {{#forIf new.features "Security"}} checked {{/forIf}}>
+                                                <span>Security</span>
+                                            </label>
+                                            <label class="w-25 pb-3">
+                                                <input type="checkbox" value="Private Entrance" name="features" {{#forIf new.features "Private Entrance"}} checked {{/forIf}}>
+                                                <span>Private Entrance</span>
+                                            </label>
+
+
+
+                                            <div class="form-group d-flex justify-content-center align-items-center">
+                                                <label class="p-0 m-0 pr-2">Others
+                                                    <input type="text"
+                                                        class="form-control p-0 number-font other-input-post">
+                                                </label>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row w-100 submit-info">
+                                    <div class="col-4 submit-info-left">
+                                        <div class="post-title-info">Area and Year Built</div>
+                                        <div class="post-desc-info">Fill out the form following the area and year of
+                                            your inn building.</div>
+                                    </div>
+                                    <div class="col-8 submit-info-right">
+                                        <label for="">Detail <span style="color: red;">(*)</span></label>
+                                        <div class="d-flex justify-content-around flex-wrap mb-2">
+                                            <div class="form-group mb-4 w49">
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text">Area</span>
+                                                    </div>
+                                                    <input type="number" class="form-control number-font"
+                                                        style="text-align: right;" name="area" value="{{new.overview.area}}" required>
+                                                    <div class="input-group-append">
+                                                        <span class="input-group-text">m<sup>2</sup></span>
+                                                    </div>
+                                                </div>
+                                                
+                                            </div>
+
+                                            <div class="form-group mb-4 w49">
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text">Year Built</span>
+                                                    </div>
+                                                    <input type="month" class="form-control number-font" name="yearBuilt" value="{{new.overview.yearBuilt}}" required>
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row w-100 submit-info border-bottom-0 mb-0">
+                                    <div class="col-4 submit-info-left">
+                                        <div class="post-title-info">Details Information</div>
+                                        <div class="post-desc-info">Detailed information about the number of floors and
+                                            bathrooms, bedrooms ...</div>
+                                    </div>
+                                    <div class="col-8 submit-info-right">
+                                        <div class="d-flex justify-content-between flex-wrap">
+                                            <div class="mb-3 w49">
+                                                <label for="floor">Floor</label>
+                                                <select class="custom-select" id="floor" name="floor">
+                                                    <option>Number of floors</option>
+                                                    <option value="0" {{#ifCond new.overview.floor "==" "0"}} selected {{/ifCond}}>0</option>
+                                                    <option value="1" {{#ifCond new.overview.floor "==" "1"}} selected {{/ifCond}}>1</option>
+                                                    <option value="2" {{#ifCond new.overview.floor "==" "2"}} selected {{/ifCond}}>2</option>
+                                                    <option value="3" {{#ifCond new.overview.floor "==" "3"}} selected {{/ifCond}}>3</option>
+                                                    <option value="4" {{#ifCond new.overview.floor "==" "4"}} selected {{/ifCond}}>4</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="mb-3 w49">
+                                                <label for="bathroom">Bathroom</label>
+                                                <select class="custom-select" id="bathroom" name="bathroom">
+                                                    <option>Number of bathrooms</option>
+                                                    <option value="0" {{#ifCond new.overview.bathroom "==" "0"}} selected {{/ifCond}}>0</option>
+                                                    <option value="1" {{#ifCond new.overview.bathroom "==" "1"}} selected {{/ifCond}}>1</option>
+                                                    <option value="2" {{#ifCond new.overview.bathroom "==" "2"}} selected {{/ifCond}}>2</option>
+                                                    <option value="3" {{#ifCond new.overview.bathroom "==" "3"}} selected {{/ifCond}}>3</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="mb-3 w-100">
+                                                <label for="bedroom">Bedroom</label>
+                                                <select class="custom-select" id="bedroom" name="bedroom">
+                                                    <option>Number of Bedroom</option>
+                                                    <option value="0" {{#ifCond new.overview.bedroom "==" "0"}} selected {{/ifCond}}>0</option>
+                                                    <option value="1" {{#ifCond new.overview.bedroom "==" "1"}} selected {{/ifCond}}>1</option>
+                                                    <option value="2" {{#ifCond new.overview.bedroom "==" "2"}} selected {{/ifCond}}>2</option>
+                                                    <option value="3" {{#ifCond new.overview.bedroom "==" "3"}} selected {{/ifCond}}>3</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{#section 'script'}}
+    <script src="/src/app/jquery.smartWizard.min.js"></script> 
+    <script src="/src/app/get-location.js"></script>
+    <script src="/src/app/post-form.js"></script>
+    
+{{/section}}

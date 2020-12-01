@@ -43,10 +43,10 @@
                             <h6 class="card-subtitle">Here is your news list.</h6>
                         </div>
                         <div class="admin-add-user pr-5">
-                            <button class="btn btn-success">
+                            <a href="/news/post" class="btn btn-success">
                                 <i class="mdi mdi-comment-plus-outline pr-1"></i>
                                 Posting News
-                            </button>
+                            </a>
                         </div>
                     </div>
                     <div class="table-responsive">
@@ -54,75 +54,29 @@
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col">News ID</th>
+                                    <th scope="col">Kind</th>
                                     <th scope="col">Title</th>
-                                    <th scope="col">Start day</th>
-                                    <th scope="col">End day</th>
+                                    <th scope="col">Host</th>
+                                    <th scope="col">Created At</th>
                                     <th scope="col">Status</th>
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                {{#each news}}
                                 <tr>
-                                    <th scope="row">1</th>
-                                    <td>M147</td>
-                                    <td>Phòng trọ Bốn Mùa</td>
-                                    <td>18/6/20</td>
-                                    <td>18/7/20</td>
+                                    <th scope="row">{{sum @index 1}}</th>
+                                    <td>{{this.kind}}</td>
+                                    <td>{{this.title}}</td>
+                                    <td>{{this.host.nameHost}}</td>
+                                    <td style="max-width: 230px;">{{this.createdAt}}</td>
                                     <td>Displaying</td>
                                     <td>
-                                        <button type="button" class="btn btn-primary">Edit</button>
-                                        <button type="button" class="btn btn-danger">Delete</button>
+                                        <a class="btn btn-primary" href="/news/{{this._id}}/edit">Edit</a>
+                                        <a class="btn btn-danger a-no-color"  data-toggle="modal" data-target="#confirm-delete-news" data-id="{{this._id}}">Delete</a>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>M589</td>
-                                    <td>Phòng trọ Sinh Viên</td>
-                                    <td>5/6/20</td>
-                                    <td>10/6/20</td>
-                                    <td>Expired</td>
-                                    <td>
-                                        <button type="button" class="btn btn-primary">Edit</button>
-                                        <button type="button" class="btn btn-danger">Delete</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td>M369</td>
-                                    <td>Phòng trọ Huỳnh Vũ</td>
-                                    <td>16/11/20</td>
-                                    <td>2/5/21</td>
-                                    <td>Displaying</td>
-                                    <td>
-                                        <button type="button" class="btn btn-primary">Edit</button>
-                                        <button type="button" class="btn btn-danger">Delete</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td>M369</td>
-                                    <td>Phòng trọ Huỳnh Vũ</td>
-                                    <td>16/11/20</td>
-                                    <td>2/5/21</td>
-                                    <td>Displaying</td>
-                                    <td>
-                                        <button type="button" class="btn btn-primary">Edit</button>
-                                        <button type="button" class="btn btn-danger">Delete</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td>M369</td>
-                                    <td>Phòng trọ Huỳnh Vũ</td>
-                                    <td>16/11/20</td>
-                                    <td>2/5/21</td>
-                                    <td>Displaying</td>
-                                    <td>
-                                        <button type="button" class="btn btn-primary">Edit</button>
-                                        <button type="button" class="btn btn-danger">Delete</button>
-                                    </td>
-                                </tr>
+                                {{/each}}
                             </tbody>
                         </table>
                     </div>
@@ -157,3 +111,47 @@
 <!-- ============================================================== -->
 <!-- End Page wrapper  -->
 <!-- ============================================================== -->
+
+{{!-- Modal confirm delete news --}}
+
+<!-- Modal -->
+<div class="modal fade" id="confirm-delete-news" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="exampleModalLabel" style="color: #000; font-size: 18px;">Delete news</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="font-size: 16px;">
+        <div style="margin-bottom: 0px; color: #222">Are you sure to delete this news?</div>
+        <small style="color: red; font-style: italic;">Note: This action cannot be undone.</small>
+      </div>
+      <div class="modal-footer">
+        <button id="btn-delete-news" type="button" class="btn btn-danger">Delete</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{{!-- Form hidden delete --}}
+<form method="POST" name="form-delete-news"></form>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function(){
+        let id;
+        let formDeleteNews = document.forms['form-delete-news'];
+        
+        $('#confirm-delete-news').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget) // Button that triggered the modal
+            id = button.data('id') // Extract info from data-* attributes
+        });
+        $('#btn-delete-news').on('click', function(){
+            formDeleteNews.action = `/news/${id}?_method=DELETE`;
+            formDeleteNews.submit();
+        });
+    });
+</script>

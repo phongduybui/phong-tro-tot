@@ -1555,7 +1555,7 @@ input[type='text'] { font-size: 15px; }
 
 .hot-news-wrapper {
   background-color: #F7F7F7;
-  padding: 160px 0 15px;
+  padding: 160px 0 0px;
   position: relative;
   // padding: 60px 0 0;
   overflow: hidden;
@@ -1574,22 +1574,30 @@ input[type='text'] { font-size: 15px; }
 
   justify-content: center;
   align-items: center;
-  color: #ccc;
+  
   text-align: center;
   vertical-align: center;
-  padding-top: 20px;
+  padding:20px 0;
   margin-bottom: 0;
   padding-bottom: 0 !important; 
 }
 .pagination-dots-custom-item {
   font-size: 5px;
-  padding: 0px 15px;
+  > a {
+    color: #ccc !important;
+    cursor: pointer;
+    padding: 15px 15px;
+  }
+  
   
   &:hover {
-    color: $title-color;
+    color: $title-color !important;
   }
   &-active {
-    color: $title-color;
+    > a {
+      color: $title-color !important; 
+    }
+    
   }
 }
 

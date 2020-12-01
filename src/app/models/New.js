@@ -40,6 +40,8 @@ const New = new Schema({
   overview: overviewSche,
   host: hostSche
 
+}, {
+  timestamps: true,
 });
 
 module.exports = mongoose.model('New', New);

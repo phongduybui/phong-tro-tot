@@ -26,13 +26,18 @@
   },
   "homepage": "https://github.com/phongduybui/nodejs_blog#readme",
   "dependencies": {
+    "bcrypt": "^5.0.0",
     "express": "^4.17.1",
     "express-fileupload": "^1.2.0",
     "express-handlebars": "^5.2.0",
     "imask": "^6.0.5",
-    "mongoose": "^5.10.13"
+    "jsonwebtoken": "^8.5.1",
+    "method-override": "^3.0.0",
+    "mongoose": "^5.10.13",
+    "validator": "^13.5.1"
   },
   "devDependencies": {
+    "env-cmd": "^10.1.0",
     "morgan": "^1.10.0",
     "node-sass": "^4.14.1",
     "nodemon": "^2.0.6"

@@ -80,7 +80,7 @@
                                             <div class="mb-3 w-100">
                                                 <label for="gender-allow">Gender Allowed <span
                                                         style="color: red;">(*)</span></label>
-                                                <select class="custom-select" id="gender-allow" name="gender">
+                                                <select class="custom-select" id="gender-allow" value="male" name="gender">
                                                     <option value="all" selected>All</option>
                                                     <option value="male">Male</option>
                                                     <option value="female">Female</option>
@@ -802,7 +802,24 @@
     
     <script src="/src/app/get-location.js"></script>
     <script src="/src/app/imask.min.js"></script>
+    <script src="/src/app/imask-visa.js"></script>
     <script src="/src/app/post-form.js"></script>
+    <script>
+        $("#smartwizard").on("leaveStep", function (e, anchorObject, stepNumber) {
+            var elmForm = $("#form-step-" + stepNumber);
+            var elmFormString = "#form-step-" + stepNumber;
+            if (elmForm) {
+                // Add the custom validation here
+                elmForm.validator('validate');
+                var elmErr = $(`${elmFormString} .has-error`)
+                if (elmErr && elmErr.length > 0) {
+                    // Error found
+                    return false;
+                }
+            }
+            return true;
+        });
+    </script>
     <script>
         $(function() {
             // Multiple images preview in browser

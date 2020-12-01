@@ -4,7 +4,7 @@
         {{#each results}}
         <a href="/news/{{this.slug}}" class="row modal-result-item a-tag-custom">
             <div class="d-flex">
-                <img src="{{this.img}}" alt="" class="modal-img-result">
+                <img src="{{this.img.[0]}}" alt="" class="modal-img-result">
                 <div class="modal-content-result">
                     <div class="modal-content-result-title">{{this.title}}</div>
                     <div class="modal-content-result-host">by {{this.host.nameHost}}</div>

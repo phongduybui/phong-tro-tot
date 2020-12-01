@@ -1,6 +1,7 @@
 const path = require('path');
 const express = require('express');
 const morgan = require('morgan');
+const methodOverride = require('method-override');
 const handlebars = require('express-handlebars');
 const app = express();
 const port = 3000;
@@ -11,6 +12,10 @@ const New = require('./app/models/New');
 const { mutipleMongooseToObject } = require('./util/mongoose');
 const { mongooseToObject } = require('./util/mongoose');
 
+
+//method override
+// override with POST having ?_method=DELETE
+app.use(methodOverride('_method'));
 
 //Slug Generator
 const toSlug = require('./app/slug-generator');
@@ -56,6 +61,46 @@ app.engine('hbs', handlebars({
         },
         numberWithCommas: function(x) {
             return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        },
+        sum: function(a, b){
+            return a + b;
+        },
+        ifCond: function checkCondition(v1, operator, v2, options) {
+            switch (operator) {
+                case '==':
+                    return (v1 == v2) ? options.fn(this) : options.inverse(this);
+                case '===':
+                    return (v1 === v2) ? options.fn(this) : options.inverse(this);
+                case '!==':
+                    return (v1 !== v2) ? options.fn(this) : options.inverse(this);
+                case '<':
+                    return (v1 < v2) ? options.fn(this) : options.inverse(this);
+                case '<=':
+                    return (v1 <= v2) ? options.fn(this) : options.inverse(this);
+                case '>':
+                    return (v1 > v2) ? options.fn(this) : options.inverse(this);
+                case '>=':
+                    return (v1 >= v2) ? options.fn(this) : options.inverse(this);
+                case '&&':
+                    return (v1 && v2) ? options.fn(this) : options.inverse(this);
+                case '||':
+                    return (v1 || v2) ? options.fn(this) : options.inverse(this);
+                default:
+                    return options.inverse(this);
+            }
+        },
+        forIf: function(array, value, options){
+            let check = false;
+            for(let i=0; i<array.length; i++){
+                if(array[i] == value){
+                    check = true;
+                }
+            }
+            return check ? options.fn(this) : options.inverse(this);
+        },
+        formatDate: function(date){
+            return new Date().toLocaleString();
+           
         }
     }    
 }));
@@ -67,16 +112,58 @@ app.set('views', path.join(__dirname, 'resources', 'views')); //'resources/views
 
 
 app.get('/', function (req, res, next) {
-    // console.log(req.query)
-    New.find({})
-        .then(news => {
-            res.render('home', {
-                news: mutipleMongooseToObject(news),
-                isHome: true
+    let perPage = 6; // số lượng sản phẩm xuất hiện trên 1 page
+    let page = req.params.page || 1; 
+
+    New
+        .find() // find tất cả các sản phẩm 
+        .skip((perPage * page) - perPage) // Trong page đầu tiên sẽ bỏ qua giá trị là 0
+        .limit(perPage)
+        .exec((err, news) => {
+        New.countDocuments((err, count) => { // đếm để tính xem có bao nhiêu trang
+            if (err) return next(err);
+                res.render('home', {
+                    news: mutipleMongooseToObject(news), // sản phẩm trên một page
+                    current: page, // page hiện tại
+                    pages: Math.ceil(count / perPage), // tổng số các page
+                    isHome: true,
+                });
             });
-        })
-        .catch(next);
+        });
+
+
+
+    // New.find({})
+    //     .then(news => {
+    //         res.render('home', {
+    //             news: mutipleMongooseToObject(news),
+    //             isHome: true
+    //         });
+    //     })
+    //     .catch(next);
 });
+app.get('/hot-news/:page', function (req, res, next) {
+    let perPage = 6; // số lượng sản phẩm xuất hiện trên 1 page
+    let page = req.params.page || 1; 
+
+    New
+        .find() // find tất cả các sản phẩm 
+        .skip((perPage * page) - perPage) // Trong page đầu tiên sẽ bỏ qua giá trị là 0
+        .limit(perPage)
+        .exec((err, news) => {
+        New.countDocuments((err, count) => { // đếm để tính xem có bao nhiêu trang
+            if (err) return next(err);
+                res.render('home', {
+                    news: mutipleMongooseToObject(news), // sản phẩm trên một page
+                    current: page, // page hiện tại
+                    pages: Math.ceil(count / perPage), // tổng số các page
+                    isHome: true,
+                });
+            });
+        });
+});
+
+
 
 app.get('/search-result', function(req, res, next){
     if(!req.query.title){
@@ -192,6 +279,50 @@ app.post('/news/store', (req, res, next) => {
     
 });
 
+
+app.get('/news/:id/edit', (req, res, next) => {
+    New.findById(req.params.id)
+        .then(news => res.render('news/edit', {
+            new: mongooseToObject(news)
+        }))
+        .catch(next)
+})
+
+app.put('/news/:id', (req, res, next) => {
+    const data = req.body;
+    New.updateOne({ _id: req.params.id }, {
+        kind: data.kind,
+        title: data.title,
+        gender: data.gender,
+        priceNumber: data.price,
+        price: data.price/1000000 + ' triệu',
+        idCity: data.idCity,
+        idDis: data.idDis,
+        idWard: data.idWard,
+        street: data.street,
+        address: data.address,
+        location: data.location,
+        description: data.description,
+        features: data.features,
+        "overview.area": data.area,
+        "overview.bedroom": data.bedroom,
+        "overview.bathroom": data.bathroom,
+        "overview.floor": data.floor,
+        "overview.yearBuilt": data.yearBuilt,
+        "host.nameHost": data.nameHost,
+        "host.phoneNumber": data.phoneNumber,
+        "host.mailHost": data.mailHost,
+    })
+        .then(() => res.redirect('/me/news-management'))
+        .catch(next)
+})
+
+app.delete('/news/:id', (req, res, next) => {
+    New.deleteOne({ _id: req.params.id })
+        .then(() => res.redirect('back'))
+        .catch(next)
+})
+
 app.get('/news/:slug', (req, res, next) => {
     New.findOne({ slug: req.params.slug })
         .then(oneNew => {
@@ -204,6 +335,9 @@ app.get('/news/:slug', (req, res, next) => {
 });
 
 
+
+
+
 app.get('/features/top-up', function (req, res) {
     res.render('features/top-up');
 });
@@ -211,22 +345,31 @@ app.get('/features/top-up', function (req, res) {
 
 
 
-app.get('/dashboard', function(req, res) {
-    res.render('admin/pages-profile', {layout: 'dashboard.hbs'});
+
+
+app.get('/me/deposit-history', function(req, res) {
+    res.render('me/deposit-history', {layout: 'dashboard.hbs'});
 });
 
-app.get('/dashboard/deposit-history', function(req, res) {
-    res.render('admin/deposit-history', {layout: 'dashboard.hbs'});
+app.get('/me/payment-history', function(req, res) {
+    res.render('me/payment-history', {layout: 'dashboard.hbs'});
 });
 
-app.get('/dashboard/payment-history', function(req, res) {
-    res.render('admin/payment-history', {layout: 'dashboard.hbs'});
+app.get('/me/news-management', function(req, res, next) {
+    New.find({})
+        .then(news => {
+            res.render('me/news-management', {
+                news: mutipleMongooseToObject(news),
+                layout: 'dashboard.hbs',
+            });
+        })
+        .catch(next)
+    
 });
 
-app.get('/dashboard/news-management', function(req, res) {
-    res.render('admin/news-management', {layout: 'dashboard.hbs'});
+app.get('/me', function(req, res) {
+    res.render('me/pages-profile', {layout: 'dashboard.hbs'});
 });
-
 
 
 app.get('/dashboard/blank', function(req, res) {
