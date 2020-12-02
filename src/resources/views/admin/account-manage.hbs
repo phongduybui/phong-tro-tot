@@ -43,10 +43,10 @@
                             <h6 class="card-subtitle">Here is a list of users on system.</h6>
                         </div>
                         <div class="admin-add-user pr-4">
-                            <button class="btn btn-success">
+                            <a href="/admin/account-manage/add-user" class="btn btn-success">
                                 <i class="mdi mdi-account-plus pr-1"></i>
                                 Add new User
-                            </button>
+                            </a>
                         </div>
                     </div>
                     <div class="table-responsive">
@@ -54,123 +54,29 @@
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col">Username</th>
-                                    <th scope="col">Password</th>
+                                    <th scope="col">Full Name</th>
                                     <th scope="col">Email</th>
+                                    <th scope="col">Password</th>
                                     <th scope="col">Date Created</th>
                                     <th scope="col">Role</th>
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                {{#each users}}
                                 <tr>
-                                    <th scope="row">1</th>
-                                    <td>duyphong</td>
-                                    <td>vietna****</td>
-                                    <td>dphong@gmail.com</td>
-                                    <td>18/7/20</td>
-                                    <td>Admin</td>
+                                    <th scope="row">{{sum @index 1}}</th>
+                                    <td>{{this.name}}</td>
+                                    <td>{{this.email}}</td>
+                                    <td>{{this.password}}</td>
+                                    <td style="max-width: 230px;">{{this.createdAt}}</td>
+                                    <td>{{this.role}}</td>
                                     <td>
-                                       <button type="button" class="btn btn-primary"><i class="mdi mdi-account-edit"></i> Edit</button>
-                                        <button type="button" class="btn btn-danger"><i class="mdi mdi-account-remove"></i> Delete</button>
+                                       <a href="/admin/account-manage/{{this._id}}/edit" class="btn btn-primary a-no-color"><i class="mdi mdi-account-edit"></i> Edit</a>
+                                        <a class="btn btn-danger a-no-color" data-toggle="modal" data-target="#confirm-delete-user" data-id="{{this._id}}"><i class="mdi mdi-account-remove"></i> Delete</a>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>namnguyen32</td>
-                                    <td>vandal****</td>
-                                    <td>nam.nguyen@gmail.com</td>
-                                    <td>25/5/20</td>
-                                    <td>Admin</td>
-                                    <td>
-                                       <button type="button" class="btn btn-primary"><i class="mdi mdi-account-edit"></i> Edit</button>
-                                        <button type="button" class="btn btn-danger"><i class="mdi mdi-account-remove"></i> Delete</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td>thanhtrung</td>
-                                    <td>thaytien****</td>
-                                    <td>trung01@gmail.com</td>
-                                    <td>16/9/20</td>
-                                    <td>Admin</td>
-                                    <td>
-                                       <button type="button" class="btn btn-primary"><i class="mdi mdi-account-edit"></i> Edit</button>
-                                        <button type="button" class="btn btn-danger"><i class="mdi mdi-account-remove"></i> Delete</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">4</th>
-                                    <td>huynhvu</td>
-                                    <td>baga****</td>
-                                    <td>huynh.vu.96@gmail.com</td>
-                                    <td>6/8/20</td>
-                                    <td>Host</td>
-                                    <td>
-                                       <button type="button" class="btn btn-primary"><i class="mdi mdi-account-edit"></i> Edit</button>
-                                        <button type="button" class="btn btn-danger"><i class="mdi mdi-account-remove"></i> Delete</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">5</th>
-                                    <td>bagavippro</td>
-                                    <td>proboy****</td>
-                                    <td>boyzzk@gmail.com</td>
-                                    <td>18/9/19</td>
-                                    <td>Host</td>
-                                    <td>
-                                       <button type="button" class="btn btn-primary"><i class="mdi mdi-account-edit"></i> Edit</button>
-                                        <button type="button" class="btn btn-danger"><i class="mdi mdi-account-remove"></i> Delete</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">6</th>
-                                    <td>fakerr96</td>
-                                    <td>korean****</td>
-                                    <td>phake.phake@gmail.com</td>
-                                    <td>12/7/20</td>
-                                    <td>Host</td>
-                                    <td>
-                                       <button type="button" class="btn btn-primary"><i class="mdi mdi-account-edit"></i> Edit</button>
-                                        <button type="button" class="btn btn-danger"><i class="mdi mdi-account-remove"></i> Delete</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">7</th>
-                                    <td>trandanquocsu</td>
-                                    <td>hoaky****</td>
-                                    <td>tigertran@gmail.com</td>
-                                    <td>18/2/20</td>
-                                    <td>User</td>
-                                    <td>
-                                       <button type="button" class="btn btn-primary"><i class="mdi mdi-account-edit"></i> Edit</button>
-                                        <button type="button" class="btn btn-danger"><i class="mdi mdi-account-remove"></i> Delete</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">8</th>
-                                    <td>decuabanh</td>
-                                    <td>vinahou****</td>
-                                    <td>quay.ko.biet.met@gmail.com</td>
-                                    <td>18/2/20</td>
-                                    <td>User</td>
-                                    <td>
-                                       <button type="button" class="btn btn-primary"><i class="mdi mdi-account-edit"></i> Edit</button>
-                                        <button type="button" class="btn btn-danger"><i class="mdi mdi-account-remove"></i> Delete</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">9</th>
-                                    <td>thuyangle</td>
-                                    <td>queen****</td>
-                                    <td>angle.56@gmail.com</td>
-                                    <td>14/11/20</td>
-                                    <td>User</td>
-                                    <td>
-                                       <button type="button" class="btn btn-primary"><i class="mdi mdi-account-edit"></i> Edit</button>
-                                        <button type="button" class="btn btn-danger"><i class="mdi mdi-account-remove"></i> Delete</button>
-                                    </td>
-                                </tr>
+                                {{/each}}
                             </tbody>
                         </table>
                     </div>
@@ -205,3 +111,47 @@
 <!-- ============================================================== -->
 <!-- End Page wrapper  -->
 <!-- ============================================================== -->
+
+{{!-- Modal confirm delete news --}}
+
+<!-- Modal -->
+<div class="modal fade" id="confirm-delete-user" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="exampleModalLabel" style="color: #000; font-size: 18px;">Delete User</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="font-size: 16px;">
+        <div style="margin-bottom: 0px; color: #222">Are you sure to delete this user?</div>
+        <small style="color: red; font-style: italic;">Note: This action cannot be undone.</small>
+      </div>
+      <div class="modal-footer">
+        <button id="btn-delete-user" type="button" class="btn btn-danger">Delete</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{{!-- Form hidden delete --}}
+<form method="POST" name="form-delete-user"></form>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function(){
+        let id;
+        let formDeleteUser = document.forms['form-delete-user'];
+        
+        $('#confirm-delete-user').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget) // Button that triggered the modal
+            id = button.data('id') // Extract info from data-* attributes
+        });
+        $('#btn-delete-user').on('click', function(){
+            formDeleteUser.action = `/admin/user/${id}?_method=DELETE`;
+            formDeleteUser.submit();
+        });
+    });
+</script>

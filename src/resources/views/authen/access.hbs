@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHONGTROTOT | ACCESS</title>
+    <link rel="stylesheet" href="/src/public/css/access.css" type="text/css">
+    <script src="https://kit.fontawesome.com/fa970346af.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="form-box">
+            <div class="button-box">
+                <div id="btn"></div>
+                <button type="button" class="toggle-btn" onclick="login()">Log in</button>
+                <button type="button" class="toggle-btn" onclick="register()">Register</button>
+            </div>
+            <div class="login-another" id="fb-gg-login">
+                <a href="#" class="fb-login btn">
+                    <i class="fa fa-facebook fa-fw"></i> Login with Facebook
+                </a>
+                <a href="#" class="google-login btn"><i class="fa fa-google fa-fw">
+                    </i> Login with Google+
+                </a>
+            </div>
+            <!--FORM LOG IN-->
+            <form method="POST" action="/users/login" id="login" class="access">
+                <input type="email" class="input-text" placeholder=" Enter email..." name="email" required><br>
+                <input type="password" class="input-text" placeholder=" Password..." name="password" required><br>
+                <input type="checkbox" id="save-pass" ><span>Remember me.</span><br>
+                <input type="submit" id="btn-login" value="Log In">
+                <p id="forget-pass">&#10141; <a href="forgot.html">Forgot your password ?</a> </p>
+            </form>
+            <!--FORM  REGISTER-->
+            <form method="POST" action="/users" id="register">
+                <input type="text" class="input-text" placeholder=" Enter name..." name="name" required><br>
+                <input type="email" class="input-text" placeholder=" Enter email..." name="email" required><br>
+                <input type="password" class="input-text" id="password" placeholder=" Password..." name="password" required><br>
+                <input type="password" id="confirm-password" class="input-text" placeholder=" Confirm password..." required><br>
+               
+                <span id="who">Who are you ?</span>
+                <input type="radio" name="role" value="tenant" checked class="radio"> Tenant
+                <input type="radio" name="role" value="host" class="radio"> Host<br>
+                <input type="checkbox" id="term" register><span>Accept terms?</span><br>
+                
+                <input type="submit" id="btn-register" value="Register">
+            </form>
+        </div>
+    </div>
+
+    <script src="/src/app/jquery-3.5.1.min.js"></script>
+    <script>
+        $('#confirm-password').on('blur', ()=> {
+            if($('#confirm-password').val() !== $('#password').val())
+                alert('Password does not match !!!')
+        })
+    </script>
+    <script>
+        var x = document.getElementById("btn");
+        var y = document.getElementById("login");
+        var z = document.getElementById("register");
+
+        function register(){
+            x.style.left = "50%";
+            y.style.display = "none";
+            z.style.display = "inline";
+            $('#fb-gg-login').hide();
+        }
+
+        function login(){
+            x.style.left = "0";
+            z.style.display = "none";
+            y.style.display = "inline"
+            $('#fb-gg-login').show();
+        }
+    </script>
+</body>
+</html>

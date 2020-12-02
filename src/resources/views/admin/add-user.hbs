@@ -5,7 +5,7 @@
     <div class="page-breadcrumb">
         <div class="row">
             <div class="col-5 align-self-center">
-                <h4 class="page-title">Starter Page</h4>
+                <h4 class="page-title">Add New User</h4>
             </div>
             <div class="col-7 align-self-center">
                 <div class="d-flex align-items-center justify-content-end">
@@ -14,7 +14,13 @@
                             <li class="breadcrumb-item">
                                 <a href="#">Home</a>
                             </li>
-                            <li class="breadcrumb-item active" aria-current="page">Starter Page</li>
+                            <li class="breadcrumb-item">
+                                <a href="#">Admin</a>
+                            </li>
+                            <li class="breadcrumb-item">
+                                <a href="#">Account Manage</a>
+                            </li>
+                            <li class="breadcrumb-item active" aria-current="page">Add New User</li>
                         </ol>
                     </nav>
                 </div>
@@ -33,10 +39,44 @@
         <!-- ============================================================== -->
         <div class="row">
             <div class="col-12">
-                <div class="card">
-                    <div class="card-body">
-                        This is some text within a card block.
-                    </div>
+                <div class="card card-body">
+                    <h4 class="card-title">Information</h4>
+                    <form method="POST" action="/admin/account-manage/store" class="form-horizontal m-t-30">
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input type="text" class="form-control" name="name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</span></label>
+                            <input type="email" id="email" name="email" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" class="form-control" name="password">
+                        </div>
+                        
+                        <div class="form-group row">
+                            <div class="form-group w-100 pl-2"><label>Role</label></div>
+                            <div class="col-sm-4">
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" id="customRadio1" name="role"
+                                        class="custom-control-input" value="tenant">
+                                    <label class="custom-control-label" for="customRadio1">Tenant</label>
+                                </div>
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" id="customRadio2" name="role"
+                                        class="custom-control-input" value="host">
+                                    <label class="custom-control-label" for="customRadio2">Host</label>
+                                </div>
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" id="customRadio3" name="role"
+                                        class="custom-control-input" value="admin">
+                                    <label class="custom-control-label" for="customRadio3">Admin</label>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn btn-info">Create</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -65,6 +105,3 @@
     <!-- End footer -->
     <!-- ============================================================== -->
 </div>
-<!-- ============================================================== -->
-<!-- End Page wrapper  -->
-<!-- ============================================================== -->

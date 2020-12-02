@@ -5,7 +5,7 @@
     <div class="page-breadcrumb">
         <div class="row">
             <div class="col-5 align-self-center">
-                <h4 class="page-title">Profile</h4>
+                <h4 class="page-title">Edit User Account</h4>
             </div>
             <div class="col-7 align-self-center">
                 <div class="d-flex align-items-center justify-content-end">
@@ -17,7 +17,7 @@
                             <li class="breadcrumb-item">
                                 <a href="#">Dashboard</a>
                             </li>
-                            <li class="breadcrumb-item active" aria-current="page">Profile</li>
+                            <li class="breadcrumb-item active" aria-current="page">Edit User Account</li>
                         </ol>
                     </nav>
                 </div>
@@ -40,9 +40,9 @@
             <div class="col-lg-4 col-xlg-3 col-md-5">
                 <div class="card">
                     <div class="card-body">
-                        <center class="m-t-30"> <img src="{{userData.img}}" class="rounded-circle"
+                        <center class="m-t-30"> <img src="{{user.img}}" class="rounded-circle"
                                 width="150" style="height: 150px; object-fit: cover;" />
-                            <h4 class="card-title m-t-10">{{userData.name}}</h4>
+                            <h4 class="card-title m-t-10">{{user.name}}</h4>
                             <h6 class="card-subtitle">Student of Duy Tan University</h6>
                             <div class="row text-center justify-content-md-center">
                                 
@@ -53,9 +53,9 @@
                         <hr>
                     </div>
                     <div class="card-body"> <small class="text-muted">Email address </small>
-                        <h6>{{userData.email}}</h6> <small class="text-muted p-t-30 db">Phone</small>
-                        <h6>096 547 789</h6> <small class="text-muted p-t-30 db">Address</small>
-                        <h6>26 Phan Tu, Ngu Hanh Son, Da Nang</h6>
+                        <h6>{{user.email}}</h6> <small class="text-muted p-t-30 db">Phone</small>
+                        <h6>Phone Number</h6> <small class="text-muted p-t-30 db">Address</small>
+                        <h6>Address</h6>
                         <div class="map-box">
                             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3834.3748383550246!2d108.24277994979289!3d16.046027044268456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3142176417390271%3A0x207405dd6d72212a!2zMjYgUGhhbiBU4bupLCBC4bqvYyBN4bu5IEFuLCBOZ8WpIEjDoG5oIFPGoW4sIMSQw6AgTuG6tW5nIDU1MDAwMCwgVmnhu4d0IE5hbQ!5e0!3m2!1svi!2s!4v1606642145560!5m2!1svi!2s" width="100%" height="150" frameborder="0" style="border:0" allowfullscreen></iframe>
                         </div> <small class="text-muted p-t-30 db">Social Profile</small>
@@ -71,53 +71,53 @@
             <div class="col-lg-8 col-xlg-9 col-md-7">
                 <div class="card">
                     <div class="card-body" style="padding-bottom: 71px;">
-                        <form method="POST" action="/me?_method=PUT"  class="form-horizontal form-material">
+                        <form method="POST" action="/admin/account-manage/{{user._id}}?_method=PUT" class="form-horizontal form-material" >
                             <div class="form-group">
                                 <label class="col-md-12">Full Name</label>
                                 <div class="col-md-12">
-                                    <input type="text" value="{{userData.name}}"
-                                    name="name"  class="form-control form-control-line">
+                                    <input type="text" value="{{user.name}}"
+                                       name="name" class="form-control form-control-line">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="example-email" class="col-md-12">Email</label>
                                 <div class="col-md-12">
-                                    <input type="email" value="{{userData.email}}"
-                                        class="form-control form-control-line" name="email" id="example-email" disabled>
+                                    <input type="email" value="{{user.email}}"
+                                        class="form-control form-control-line" name="email" id="example-email">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-md-12">Password</label>
                                 <div class="col-md-12">
-                                    <input type="password" value="{{userData.password}}" name="password" class="form-control form-control-line">
+                                    <input type="text" value="{{user.password}}" name="password" class="form-control form-control-line">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-md-12">Phone No</label>
                                 <div class="col-md-12">
-                                    <input type="text" name="phoneNumber" value="{{userData.phoneNumber}}"
+                                    <input type="text" placeholder="{{user.phoneNumber}}" name="phoneNumber"
                                         class="form-control form-control-line">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-md-12">Message</label>
                                 <div class="col-md-12">
-                                    <textarea rows="5" class="form-control form-control-line" name="message">{{userData.message}}</textarea>
+                                    <textarea rows="5" class="form-control form-control-line" name="message">{{user.message}}</textarea>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-12">Select Gender</label>
                                 <div class="col-sm-12">
                                     <select class="form-control form-control-line" name="gender">
-                                        <option value="choose" {{#ifCond userData.gender '==' 'choose'}} selected {{/ifCond}}>Choose</option>
-                                        <option value="male" {{#ifCond userData.gender '==' 'male'}} selected {{/ifCond}}>Male</option>
-                                        <option value="female" {{#ifCond userData.gender '==' 'female'}} selected {{/ifCond}}>Female</option>
+                                        <option value="choose" {{#ifCond user.gender '==' 'choose'}} selected {{/ifCond}}>Choose</option>
+                                        <option value="male" {{#ifCond user.gender '==' 'male'}} selected {{/ifCond}}>Male</option>
+                                        <option value="female" {{#ifCond user.gender '==' 'female'}} selected {{/ifCond}}>Female</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-12">
-                                    <button type="submit" class="btn btn-success">Update Profile</button>
+                                    <button class="btn btn-success">Update</button>
                                 </div>
                             </div>
                         </form>

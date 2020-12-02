@@ -2,13 +2,27 @@ const path = require('path');
 const express = require('express');
 const morgan = require('morgan');
 const methodOverride = require('method-override');
+const jwt = require('jsonwebtoken');
+let alert = require('alert'); 
 const handlebars = require('express-handlebars');
 const app = express();
 const port = 3000;
 
+
+var cookieParser = require('cookie-parser')
+app.use(cookieParser())
+
+
 //Database
 const db = require('./config/db');
 const New = require('./app/models/New');
+const User = require('./app/models/User.js');
+const { checkLogin, checkTenant, checkHost, checkAdmin } = require('./app/middleware/auth');
+
+const accessTokenSecret = 'phong'; 
+//middleware auth
+
+
 const { mutipleMongooseToObject } = require('./util/mongoose');
 const { mongooseToObject } = require('./util/mongoose');
 
@@ -111,7 +125,7 @@ app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'resources', 'views')); //'resources/views'
 
 
-app.get('/', function (req, res, next) {
+app.get('/', checkLogin,function (req, res, next) {
     let perPage = 6; // số lượng sản phẩm xuất hiện trên 1 page
     let page = req.params.page || 1; 
 
@@ -127,6 +141,7 @@ app.get('/', function (req, res, next) {
                     current: page, // page hiện tại
                     pages: Math.ceil(count / perPage), // tổng số các page
                     isHome: true,
+                    userData: mongooseToObject(req.data)
                 });
             });
         });
@@ -211,8 +226,6 @@ app.get('/news/post', (req, res, next) => {
 });
 
 
-
-
 app.post('/news/store', (req, res, next) => {
     let imgArray = [];
     if(req.files){
@@ -280,6 +293,7 @@ app.post('/news/store', (req, res, next) => {
 });
 
 
+
 app.get('/news/:id/edit', (req, res, next) => {
     New.findById(req.params.id)
         .then(news => res.render('news/edit', {
@@ -336,60 +350,205 @@ app.get('/news/:slug', (req, res, next) => {
 
 
 
-
-
 app.get('/features/top-up', function (req, res) {
     res.render('features/top-up');
 });
 
+app.get('/users', (req, res, next) => {
+    res.render('authen/access', {layout: false});
+})
 
 
+//Login user has been register
+app.post('/users/login', async(req, res, next) => {
 
-
-
-app.get('/me/deposit-history', function(req, res) {
-    res.render('me/deposit-history', {layout: 'dashboard.hbs'});
+    const { email, password } = req.body;
+    // Filter user from the users array by username and password
+    User.findOne({ email: email, password: password })
+        .then(data => {
+            if(data){
+                var token = jwt.sign({ _id: data._id }, accessTokenSecret)
+                res.cookie('token', token, {maxAge: 1000 * 60 * 300})
+                res.redirect('/')
+            }
+            else {
+                return res.json('Login that bai!')
+            }
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json('Loi server!');
+        })   
 });
 
-app.get('/me/payment-history', function(req, res) {
-    res.render('me/payment-history', {layout: 'dashboard.hbs'});
+app.get('/users/logout', (req, res, next) => {
+    res.clearCookie("token").redirect('/');
+
+})
+
+app.get('/users/me', checkLogin, checkAdmin, (req, res, next) => {
+    res.json('welcome')
+})
+
+//Route register user
+app.post('/users', async (req, res) => {
+    // Create a new user
+    try {
+        const user = new User(req.body)
+        await user.save()
+        alert('Sign up successful. Now, you can login !!')
+        res.redirect('/users')
+    } catch (error) {
+        console.log(error);
+        alert('Sign Up Failure !!')
+        res.redirect('/users');
+    }
+})
+
+
+
+
+
+
+
+
+app.get('/me/deposit-history', checkLogin, function(req, res) {
+    res.render('me/deposit-history', {
+        layout: 'dashboard.hbs',
+        userData: mongooseToObject(req.data)
+    });
 });
 
-app.get('/me/news-management', function(req, res, next) {
+app.get('/me/payment-history', checkLogin, function(req, res) {
+    res.render('me/payment-history', {
+        layout: 'dashboard.hbs',
+        userData: mongooseToObject(req.data)
+    });
+});
+
+app.get('/me/news-management', checkLogin, function(req, res, next) {
     New.find({})
         .then(news => {
             res.render('me/news-management', {
                 news: mutipleMongooseToObject(news),
                 layout: 'dashboard.hbs',
+                userData: mongooseToObject(req.data)
             });
         })
         .catch(next)
     
 });
 
-app.get('/me', function(req, res) {
-    res.render('me/pages-profile', {layout: 'dashboard.hbs'});
+app.get('/me', checkLogin,  function(req, res) {
+    res.render('me/pages-profile', {
+        layout: 'dashboard.hbs',
+        userData: mongooseToObject(req.data)
+    });
 });
 
 
 app.get('/dashboard/blank', function(req, res) {
     res.render('admin/blank', {layout: 'dashboard.hbs'});
 });
-app.get('/error/404', function(req, res) {
-    res.render('admin/error-404', {layout: false});
-});
+
+
 
 
 //Admin
-app.get('/admin/dashboard', function(req, res) {
-    res.render('admin/dashboard-content', {layout: 'dashboard.hbs'});
+app.get('/admin/dashboard', checkLogin, checkAdmin, function(req, res) {
+    res.render('admin/dashboard-content', {
+        layout: 'dashboard.hbs',
+        userData: mongooseToObject(req.data)
+    });
 });
 
-app.get('/admin/account-manage', function(req, res) {
-    res.render('admin/account-manage', {layout: 'dashboard.hbs'});
+app.get('/admin/account-manage', checkLogin, checkAdmin, function(req, res) {
+    User.find({})
+        .then(users => {
+            res.render('admin/account-manage', {
+                layout: 'dashboard.hbs',
+                users: mutipleMongooseToObject(users),
+                userData: mongooseToObject(req.data)
+            });
+        })
+});
+
+app.get('/admin/account-manage/:id/edit', checkLogin, checkAdmin, function(req, res, next) {
+    let userId = req.params.id;
+    User.findOne({ _id: userId })
+        .then(user => res.render('admin/edit-account' , {
+            layout: 'dashboard',
+            user: mongooseToObject(user)
+        }))
+        .catch(next)
+    
+});
+
+app.put('/admin/account-manage/:id', checkLogin, checkAdmin, function(req, res, next) {
+   const data = req.body;
+   User.updateOne({_id: req.params.id}, data)
+        .then(() => res.redirect('/admin/account-manage'))
+        .catch(next)
+    
+});
+
+app.put('/me', checkLogin, function(req, res, next) {
+    const data = req.body;
+    User.updateOne({_id: req.data.id}, data)
+         .then(() => res.redirect('/me'))
+         .catch(next)
+     
+ });
+
+app.delete('/admin/user/:id', checkLogin, checkAdmin, (req, res, next) => {
+    User.deleteOne({ _id: req.params.id })
+        .then(() => res.redirect('back'))
+        .catch(next)
+})
+
+
+
+app.get('/admin/account-manage/add-user', (req, res, next) => {
+    res.render('admin/add-user', {
+        layout: 'dashboard'
+    });
 });
 
 
+app.post('/admin/account-manage/store', (req, res, next) => {
+
+    const data = req.body;
+    const user = new User({
+        name: data.name,
+        email: data.email,
+        password: data.password,
+        role: data.role,
+    })
+
+    user.save(function (err) {
+        if (err){
+            res.send(err);
+        }
+        else {
+            alert("Successful!");
+            res.redirect('/admin/account-manage');
+        }
+    });
+    
+});
+
+
+
+
+
+
+//Error handling page
+app.get('/error/403', function(req, res) {
+    res.render('error/403-forbidden', {layout: false});
+});
+app.get('/error/404', function(req, res) {
+    res.render('error/error-404', {layout: false});
+});
 
 
 
