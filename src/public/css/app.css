@@ -55,6 +55,18 @@ html {
   scroll-behavior: smooth; }
 
 /* Style for Header */
+.dropdown-item-custom {
+  font-family: "Raleway", sans-serif;
+  font-size: 16px;
+  padding-top: 10px; }
+  .dropdown-item-custom > i {
+    padding-right: 8px;
+    color: #20ad96; }
+
+.login-item-cus {
+  color: #20ad96;
+  padding-left: 5px; }
+
 .navbar-light .navbar-nav .active > .nav-link {
   color: #fff;
   border-bottom: 3px solid #fff; }

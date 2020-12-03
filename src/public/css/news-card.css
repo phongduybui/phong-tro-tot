@@ -226,12 +226,13 @@
 .news-card {
     margin-bottom: 30px;
 }
-.alert-success {
+
+/* .alert-success {
     position: fixed;
     top: 0;
     left: 50%;
     z-index: 999999999;
-}
+} */
 
 .card-see-more > a{
    color: #20ad96;

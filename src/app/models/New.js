@@ -21,7 +21,10 @@ const overviewSche = new Schema({
 
 const New = new Schema({
   motelId: String,
-  img: Array,
+  img: {
+    type: Array,
+    default: ['/src/public/img/tro1.jpg', '/src/public/img/tro2.jpg', '/src/public/img/tro3.jpg']
+  },
   kind: String,
   title: String,
   slug: String,

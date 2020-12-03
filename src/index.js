@@ -30,7 +30,7 @@ app.use((req, res, next) => {
 const db = require('./config/db');
 const New = require('./app/models/New');
 const User = require('./app/models/User.js');
-const { checkLogin, checkTenant, checkHost, checkAdmin } = require('./app/middleware/auth');
+const { getInfo, getInfoLogin, checkLogin, checkTenant, checkHost, checkAdmin } = require('./app/middleware/auth');
 
 const accessTokenSecret = 'phong'; 
 //middleware auth
@@ -139,7 +139,10 @@ app.set('views', path.join(__dirname, 'resources', 'views')); //'resources/views
 
 
 
-app.get('/', checkLogin,function (req, res, next) {
+// app.use(checkLogin)
+
+app.get('/', getInfoLogin, function (req, res, next) {
+
     let perPage = 6; // số lượng sản phẩm xuất hiện trên 1 page
     let page = req.params.page || 1; 
 
@@ -159,19 +162,10 @@ app.get('/', checkLogin,function (req, res, next) {
                 });
             });
         });
-
-
-
-    // New.find({})
-    //     .then(news => {
-    //         res.render('home', {
-    //             news: mutipleMongooseToObject(news),
-    //             isHome: true
-    //         });
-    //     })
-    //     .catch(next);
 });
-app.get('/hot-news/:page', function (req, res, next) {
+
+
+app.get('/hot-news/:page', getInfoLogin, function (req, res, next) {
     let perPage = 6; // số lượng sản phẩm xuất hiện trên 1 page
     let page = req.params.page || 1; 
 
@@ -187,6 +181,7 @@ app.get('/hot-news/:page', function (req, res, next) {
                     current: page, // page hiện tại
                     pages: Math.ceil(count / perPage), // tổng số các page
                     isHome: true,
+                    userData: mongooseToObject(req.data)
                 });
             });
         });
@@ -194,7 +189,7 @@ app.get('/hot-news/:page', function (req, res, next) {
 
 
 
-app.get('/search-result', function(req, res, next){
+app.get('/search-result', getInfoLogin, function(req, res, next){
     if(!req.query.title){
         var kindRegex = new RegExp(req.query.kind, 'i');
         var provinceRegex = new RegExp(req.query.province, 'i');
@@ -214,7 +209,8 @@ app.get('/search-result', function(req, res, next){
         })
             .then(result => {
                 res.render('search-result', {
-                    results: mutipleMongooseToObject(result)
+                    results: mutipleMongooseToObject(result),
+                    userData: mongooseToObject(req.data)
                 })
             })
             .catch(next);
@@ -225,7 +221,8 @@ app.get('/search-result', function(req, res, next){
             { title: titleRegex })
             .then(result => {
                 res.render('search-result', {
-                    results: mutipleMongooseToObject(result)
+                    results: mutipleMongooseToObject(result),
+                    userData: mongooseToObject(req.data)
                 })
             })
             .catch(next);
@@ -235,12 +232,14 @@ app.get('/search-result', function(req, res, next){
 
 
 
-app.get('/news/post', (req, res, next) => {
-    res.render('news/post');
+app.get('/news/post', checkLogin, (req, res, next) => {
+    res.render('news/post', {
+        userData: mongooseToObject(req.data)
+    });
 });
 
 
-app.post('/news/store', (req, res, next) => {
+app.post('/news/store', checkLogin, (req, res, next) => {
     let imgArray = [];
     if(req.files){
 
@@ -264,7 +263,9 @@ app.post('/news/store', (req, res, next) => {
         
         
     }
-    console.log(imgArray)
+    if(imgArray.length == 0){
+        imgArray = ['/src/public/img/tro1.jpg', '/src/public/img/tro2.jpg', '/src/public/img/tro3.jpg']
+    }
     const data = req.body;
     const news = new New({
         motelId: '_' + Math.random().toString(36).substr(2, 5),
@@ -300,7 +301,11 @@ app.post('/news/store', (req, res, next) => {
         if (err){
             res.send(err);
         }
-        // alert("Successful!");
+        req.session.message = {
+            type: 'success',
+            intro: 'Successful posting',
+            message: '!'
+        }
         res.redirect('/news/post');
     });
     
@@ -308,15 +313,16 @@ app.post('/news/store', (req, res, next) => {
 
 
 
-app.get('/news/:id/edit', (req, res, next) => {
+app.get('/news/:id/edit', checkLogin, (req, res, next) => {
     New.findById(req.params.id)
         .then(news => res.render('news/edit', {
-            new: mongooseToObject(news)
+            new: mongooseToObject(news),
+            userData: mongooseToObject(req.data)
         }))
         .catch(next)
 })
 
-app.put('/news/:id', (req, res, next) => {
+app.put('/news/:id', checkLogin, (req, res, next) => {
     const data = req.body;
     New.updateOne({ _id: req.params.id }, {
         kind: data.kind,
@@ -352,7 +358,7 @@ app.put('/news/:id', (req, res, next) => {
         .catch(next)
 })
 
-app.delete('/news/:id', (req, res, next) => {
+app.delete('/news/:id', checkLogin, (req, res, next) => {
     New.deleteOne({ _id: req.params.id })
         .then(() => {
             req.session.message = {
@@ -365,12 +371,13 @@ app.delete('/news/:id', (req, res, next) => {
         .catch(next)
 })
 
-app.get('/news/:slug', (req, res, next) => {
+app.get('/news/:slug', getInfoLogin, (req, res, next) => {
     New.findOne({ slug: req.params.slug })
         .then(oneNew => {
             res.render('news/show', {
                 oneNew : mongooseToObject(oneNew),
-                isNewsPage: true
+                isNewsPage: true,
+                userData: mongooseToObject(req.data)
             });
         })
         .catch(next);
@@ -378,12 +385,17 @@ app.get('/news/:slug', (req, res, next) => {
 
 
 
-app.get('/features/top-up', function (req, res) {
-    res.render('features/top-up');
+app.get('/features/top-up', checkLogin, function (req, res) {
+    res.render('features/top-up', {
+        userData: mongooseToObject(req.data)
+    });
 });
 
 app.get('/users', (req, res, next) => {
-    res.render('authen/access', {layout: false});
+    res.render('authen/access', {
+        layout: false,
+        userData: mongooseToObject(req.data)
+    });
 })
 
 
@@ -416,12 +428,9 @@ app.post('/users/login', async(req, res, next) => {
 
 app.get('/users/logout', (req, res, next) => {
     res.clearCookie("token").redirect('/');
-    
 })
 
-app.get('/users/me', checkLogin, checkAdmin, (req, res, next) => {
-    res.json('welcome')
-})
+
 
 //Route register user
 app.post('/users', async (req, res) => {
@@ -461,16 +470,20 @@ app.post('/users', async (req, res) => {
 
 
 app.get('/me/deposit-history', checkLogin, function(req, res) {
+    // let isAdmin = (req.data.role === 'admin') ? true : false
     res.render('me/deposit-history', {
         layout: 'dashboard.hbs',
-        userData: mongooseToObject(req.data)
+        userData: mongooseToObject(req.data),
+        // isAdmin
     });
 });
 
 app.get('/me/payment-history', checkLogin, function(req, res) {
+    // let isAdmin = (req.data.role === 'admin') ? true : false
     res.render('me/payment-history', {
         layout: 'dashboard.hbs',
-        userData: mongooseToObject(req.data)
+        userData: mongooseToObject(req.data),
+        // isAdmin
     });
 });
 
@@ -487,17 +500,28 @@ app.get('/me/news-management', checkLogin, function(req, res, next) {
     
 });
 
-app.get('/me', checkLogin,  function(req, res) {
+app.get('/me', checkLogin, function(req, res) {
     res.render('me/pages-profile', {
         layout: 'dashboard.hbs',
         userData: mongooseToObject(req.data)
     });
 });
 
+app.put('/me', checkLogin, function(req, res, next) {
+    const data = req.body;
+    User.updateOne({_id: req.data.id}, data)
+         .then(() => {
+            req.session.message = {
+                type: 'success',
+                intro: 'Successful!',
+                message: 'Personal information has been updated.'
+            }
+            res.redirect('/me')
+         })
+         .catch(next)
+     
+ });
 
-app.get('/dashboard/blank', function(req, res) {
-    res.render('admin/blank', {layout: 'dashboard.hbs'});
-});
 
 
 
@@ -526,7 +550,8 @@ app.get('/admin/account-manage/:id/edit', checkLogin, checkAdmin, function(req, 
     User.findOne({ _id: userId })
         .then(user => res.render('admin/edit-account' , {
             layout: 'dashboard',
-            user: mongooseToObject(user)
+            user: mongooseToObject(user),
+            userData: mongooseToObject(req.data)
         }))
         .catch(next)
     
@@ -547,20 +572,7 @@ app.put('/admin/account-manage/:id', checkLogin, checkAdmin, function(req, res, 
     
 });
 
-app.put('/me', checkLogin, function(req, res, next) {
-    const data = req.body;
-    User.updateOne({_id: req.data.id}, data)
-         .then(() => {
-            req.session.message = {
-                type: 'success',
-                intro: 'Successful!',
-                message: 'Personal information has been updated.'
-            }
-            res.redirect('/me')
-         })
-         .catch(next)
-     
- });
+
 
 app.delete('/admin/user/:id', checkLogin, checkAdmin, (req, res, next) => {
     User.deleteOne({ _id: req.params.id })
@@ -577,14 +589,15 @@ app.delete('/admin/user/:id', checkLogin, checkAdmin, (req, res, next) => {
 
 
 
-app.get('/admin/account-manage/add-user', (req, res, next) => {
+app.get('/admin/account-manage/add-user', checkLogin, checkAdmin, (req, res, next) => {
     res.render('admin/add-user', {
-        layout: 'dashboard'
+        layout: 'dashboard',
+        userData: mongooseToObject(req.data)
     });
 });
 
 
-app.post('/admin/account-manage/store', (req, res, next) => {
+app.post('/admin/account-manage/store', checkLogin, checkAdmin, (req, res, next) => {
 
     const data = req.body;
     const user = new User({

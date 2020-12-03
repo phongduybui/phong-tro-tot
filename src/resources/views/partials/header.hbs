@@ -29,17 +29,25 @@
         </li>
         
         <li class="nav-item dropdown  nav-item-user">
-          <a class="nav-link dropdown-toggle nav-link-user" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+          <a class="nav-link {{#if userData}} dropdown-toggle {{/if}} nav-link-user" href="{{#if userData}}#{{else}}/users{{/if}}" {{#if userData}}id="navbarDropdown" role="button" data-toggle="dropdown"{{/if}}
             aria-haspopup="true" aria-expanded="false">
-            <img src="{{userData.img}}" alt="" class="user-img-header">
-            {{userData.name}}
+            <img src="{{#if userData}}{{userData.img}}{{else}}/src/public/img/coverlogo.png{{/if}}" alt="" class="user-img-header">
+            {{#if userData}}{{userData.name}}{{else}}Login <i class="fas fa-sign-in-alt login-item-cus"></i>{{/if}}
           </a>
+          {{#if userData}}
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="/me">Edit profile</a>
-            <a class="dropdown-item" href="/me/news-management">Manage Post</a>
+            {{#ifCond userData.role '==' 'admin'}}
+            <a class="dropdown-item dropdown-item-custom " href="/admin/dashboard"><i class="fas fa-toolbox"></i> Dashboard</a>
+            <a class="dropdown-item dropdown-item-custom" href="admin/account-manage"><i class="fas fa-users-cog"></i> Account Manage</a>
+            {{/ifCond}}
+
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="/users/logout">Logout</a>
+            <a class="dropdown-item dropdown-item-custom" href="/me"><i class="fas fa-user-circle"></i> Edit profile</a>
+            <a class="dropdown-item dropdown-item-custom" href="/me/news-management"><i class="far fa-newspaper"></i> Manage Post</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item dropdown-item-custom" href="/users/logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
           </div>
+          {{/if}}
         </li>
 
       </ul>

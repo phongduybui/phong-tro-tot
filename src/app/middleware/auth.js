@@ -28,6 +28,44 @@ const checkLogin = async(req, res, next) => {
     }
 }
 
+const getInfo = async(req, res, next) => {
+    try {
+        var token = req.cookies.token;
+        var idUser = jwt.verify(token, accessTokenSecret)
+
+        User.findOne({ _id: idUser})
+            .then(data => {
+                //Gan data cho req de route su dung vi req, res, next chung
+                req.data = data;
+                next()
+            })
+            .catch(err => {
+                res.json('Loi server');
+            })
+    }catch(error) {
+        console.log(error)
+    }
+}
+
+const getInfoLogin = async (req, res, next) => {
+    if(req.cookies.token){
+        var token = req.cookies.token;
+    
+        var idUser = jwt.verify(token, accessTokenSecret)
+
+        User.findOne({ _id: idUser})
+            .then(data => {
+                if(data){
+                    req.data = data;
+                }
+            })
+            .catch(err => {
+                res.json('Loi server');
+            })
+    }
+    next()
+}
+
 const checkTenant = async (req, res, next) => {
     let role = req.data.role;
     if(role === 'tenant' || role === 'host' || role === 'admin'){
@@ -57,6 +95,8 @@ const checkAdmin = async (req, res, next) => {
 
 
 module.exports = {
+    getInfo,
+    getInfoLogin,
     checkLogin,
     checkTenant,
     checkHost,

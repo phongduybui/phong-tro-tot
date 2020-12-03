@@ -5,7 +5,7 @@
         <nav class="sidebar-nav">
             <ul id="sidebarnav">
                 
-
+                {{#ifCond userData.role '==' 'admin'}}
                 <li class="sidebar-item">
                     <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/admin/dashboard"
                         aria-expanded="false">
@@ -20,7 +20,7 @@
                         <span class="hide-menu">Account Management</span>
                     </a>
                 </li>
-                
+                {{/ifCond}}
                 
                 <li class="sidebar-item">
                     <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/me"
