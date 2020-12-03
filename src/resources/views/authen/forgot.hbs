@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/png" href="/img/favicon.png"/>
+    <title>Forgot Password</title>
+    <link rel="stylesheet" href="/src/public/css/smart_wizard_all.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="/src/public/css/forgot.css" type="text/css">
+</head>
+<body>
+    
+    <div class="container-custom">
+        <form class="smart-wizard-form"> 
+            <div id="smartwizard">
+                <ul class="nav">
+                    <li>
+                        <a class="nav-link" href="#step-1">
+                            Step 1
+                        </a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="#step-2">
+                            Step 2
+                        </a>
+                    </li>
+                    
+                </ul>
+            
+                <div class="tab-content">
+                    <div id="step-1" class="tab-pane" role="tabpanel">
+                       
+                        <div class="form-group">
+                            <label for="email">Email address</label>
+                            <input type="email" name="email" class="form-control" aria-describedby="emailHelp" placeholder="Enter email">
+                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                        </div>
+
+                    </div>
+                    <div id="step-2" class="tab-pane" role="tabpanel">
+                        <div class="form-group">
+                            <label for="password">New password</label>
+                            <input type="password" name="password" class="form-control"  placeholder="Password">
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Confirm password</label>
+                            <input type="password" class="form-control"  placeholder="Confirm password">
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script src="/src/app/jquery-3.5.1.min.js"></script>
+    <script src="/src/app/jquery.smartWizard.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            // SmartWizard initialize
+            $('#smartwizard').smartWizard({
+                theme: 'arrows',
+                toolbarSettings: {
+                    toolbarPosition: 'bottom', // none, top, bottom, both
+                    toolbarButtonPosition: 'right', // left, right, center
+                    showNextButton: true, // show/hide a Next button
+                    showPreviousButton: true, // show/hide a Previous button
+                    toolbarExtraButtons: [
+                        $('<button></button>').text('Submit').addClass('btn btn-danger').attr('type', 'submit')
+                    ] 
+                },
+            });
+            
+        });
+    </script>
+    
+    
+</body>
+</html>

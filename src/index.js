@@ -3,14 +3,27 @@ const express = require('express');
 const morgan = require('morgan');
 const methodOverride = require('method-override');
 const jwt = require('jsonwebtoken');
-let alert = require('alert'); 
 const handlebars = require('express-handlebars');
 const app = express();
 const port = 3000;
 
 
 var cookieParser = require('cookie-parser')
+const session = require('express-session');
 app.use(cookieParser())
+app.use(session({
+    cookie: {maxAge: null},
+    secret: 'phong',
+    resave: true,
+    saveUninitialized: true
+}))
+
+//flash message middleware
+app.use((req, res, next) => {
+    res.locals.message = req.session.message
+    delete req.session.message
+    next()
+})
 
 
 //Database
@@ -123,6 +136,7 @@ app.set('view engine', 'hbs');
 
 //Config views folders
 app.set('views', path.join(__dirname, 'resources', 'views')); //'resources/views'
+
 
 
 app.get('/', checkLogin,function (req, res, next) {
@@ -286,7 +300,7 @@ app.post('/news/store', (req, res, next) => {
         if (err){
             res.send(err);
         }
-        alert("Successful!");
+        // alert("Successful!");
         res.redirect('/news/post');
     });
     
@@ -327,13 +341,27 @@ app.put('/news/:id', (req, res, next) => {
         "host.phoneNumber": data.phoneNumber,
         "host.mailHost": data.mailHost,
     })
-        .then(() => res.redirect('/me/news-management'))
+        .then(() => {
+            req.session.message = {
+                type: 'success',
+                intro: 'Successfully!',
+                message: 'News has been updated.'
+            }
+            res.redirect('/me/news-management')
+        })
         .catch(next)
 })
 
 app.delete('/news/:id', (req, res, next) => {
     New.deleteOne({ _id: req.params.id })
-        .then(() => res.redirect('back'))
+        .then(() => {
+            req.session.message = {
+                type: 'success',
+                intro: 'Deleted successfully',
+                message: '!'
+            }
+            res.redirect('back')
+        })
         .catch(next)
 })
 
@@ -372,7 +400,12 @@ app.post('/users/login', async(req, res, next) => {
                 res.redirect('/')
             }
             else {
-                return res.json('Login that bai!')
+                req.session.message = {
+                    type: 'warning',
+                    intro: 'Login failed!',
+                    message: 'Email or password incorrect.'
+                }
+                res.redirect('/users')
             }
         })
         .catch(err => {
@@ -383,7 +416,7 @@ app.post('/users/login', async(req, res, next) => {
 
 app.get('/users/logout', (req, res, next) => {
     res.clearCookie("token").redirect('/');
-
+    
 })
 
 app.get('/users/me', checkLogin, checkAdmin, (req, res, next) => {
@@ -392,17 +425,32 @@ app.get('/users/me', checkLogin, checkAdmin, (req, res, next) => {
 
 //Route register user
 app.post('/users', async (req, res) => {
-    // Create a new user
-    try {
-        const user = new User(req.body)
-        await user.save()
-        alert('Sign up successful. Now, you can login !!')
+    const data = req.body;
+    if(data.password !== data.confirm){
+        req.session.message = {
+            type: 'danger',
+            intro: 'Passwords do not match!',
+            message: 'Please make sure to insert the same password.'
+        }
         res.redirect('/users')
-    } catch (error) {
-        console.log(error);
-        alert('Sign Up Failure !!')
-        res.redirect('/users');
     }
+    else {
+        req.session.message = {
+            type: 'success',
+            intro: 'You are now registerd!',
+            message: 'Please login.'
+        }
+        try {
+            const user = new User(req.body)
+            await user.save()
+
+            res.redirect('/users')
+        } catch (error) {
+            console.log(error);
+            res.redirect('/users');
+        }
+    }
+    
 })
 
 
@@ -487,7 +535,14 @@ app.get('/admin/account-manage/:id/edit', checkLogin, checkAdmin, function(req, 
 app.put('/admin/account-manage/:id', checkLogin, checkAdmin, function(req, res, next) {
    const data = req.body;
    User.updateOne({_id: req.params.id}, data)
-        .then(() => res.redirect('/admin/account-manage'))
+        .then(() => {
+            req.session.message = {
+                type: 'success',
+                intro: 'Successfully',
+                message: 'Account information has been updated!'
+            }
+            res.redirect('/admin/account-manage')
+        })
         .catch(next)
     
 });
@@ -495,14 +550,28 @@ app.put('/admin/account-manage/:id', checkLogin, checkAdmin, function(req, res, 
 app.put('/me', checkLogin, function(req, res, next) {
     const data = req.body;
     User.updateOne({_id: req.data.id}, data)
-         .then(() => res.redirect('/me'))
+         .then(() => {
+            req.session.message = {
+                type: 'success',
+                intro: 'Successful!',
+                message: 'Personal information has been updated.'
+            }
+            res.redirect('/me')
+         })
          .catch(next)
      
  });
 
 app.delete('/admin/user/:id', checkLogin, checkAdmin, (req, res, next) => {
     User.deleteOne({ _id: req.params.id })
-        .then(() => res.redirect('back'))
+        .then(() => {
+            req.session.message = {
+                type: 'success',
+                intro: 'Deleted successfully',
+                message: '!'
+            }
+            res.redirect('back')
+        })
         .catch(next)
 })
 
@@ -530,7 +599,11 @@ app.post('/admin/account-manage/store', (req, res, next) => {
             res.send(err);
         }
         else {
-            alert("Successful!");
+            req.session.message = {
+                type: 'success',
+                intro: 'Account added successfully',
+                message: '!'
+            }
             res.redirect('/admin/account-manage');
         }
     });
@@ -539,7 +612,9 @@ app.post('/admin/account-manage/store', (req, res, next) => {
 
 
 
-
+app.get('/forgot', (req, res, next) => {
+    res.render('authen/forgot', { layout: false })
+})
 
 
 //Error handling page
