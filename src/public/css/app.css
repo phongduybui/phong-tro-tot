@@ -69,7 +69,7 @@ html {
 
 .navbar-light .navbar-nav .active > .nav-link {
   color: #fff;
-  border-bottom: 3px solid #fff; }
+  border-bottom: 2px solid #fff; }
 
 .navbar-light .navbar-nav .nav-link {
   color: #fff;
@@ -108,6 +108,9 @@ html {
   background-color: #fff !important;
   transition: all 0.3s 0s linear; }
   .bg-light .navbar-nav .active > .nav-link {
+    font-family: "Raleway", sans-serif;
+    font-weight: 500;
+    font-size: 16px;
     color: #000 !important;
     border-bottom: 2px solid #000; }
   .bg-light .nav-link {
@@ -635,9 +638,6 @@ html {
 .text-area-customize::placeholder {
   color: #484848;
   font-size: 13px; }
-
-input[type='text'] {
-  font-size: 15px; }
 
 .slider-thumbnail-img {
   margin-bottom: 30px; }
@@ -1778,6 +1778,19 @@ input[type='text'] {
     overflow: hidden;
     border-radius: 5px;
     margin-right: 20px; }
+
+.post-container input {
+  font-size: 16px;
+  color: #202124; }
+  .post-container input::placeholder {
+    font-size: 16px !important;
+    color: #202124 !important; }
+
+.post-container .form-control:focus {
+  color: #202124; }
+
+.post-container textarea.form-control {
+  color: #202124; }
 
 @media only screen and (max-width: 767px) {
   .navbar-nav {
