@@ -1,6 +1,5 @@
 const path = require('path');
 const express = require('express');
-const morgan = require('morgan');
 const methodOverride = require('method-override');
 const jwt = require('jsonwebtoken');
 var nodemailer = require('nodemailer');
@@ -76,8 +75,7 @@ app.use(express.urlencoded({
 app.use(express.json());
 app.use(flash());
 
-// HTTP logger
-// app.use(morgan('combined'));
+
 
 //Template engine
 
