@@ -30,7 +30,7 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/me/news-management"
+                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{#ifCond userData.role '==' 'admin'}}/admin/news-management{{/ifCond}}{{#ifCond userData.role '==' 'tenant'}}/me/news-management{{/ifCond}}{{#ifCond userData.role '==' 'host'}}/me/news-management{{/ifCond}}"
                         aria-expanded="false">
                         <i class="mdi mdi-transcribe-close"></i>
                         <span class="hide-menu">News Management</span>

@@ -20,6 +20,7 @@ const overviewSche = new Schema({
 
 
 const New = new Schema({
+  userId: String,
   motelId: String,
   img: {
     type: Array,

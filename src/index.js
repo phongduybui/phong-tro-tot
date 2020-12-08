@@ -3,6 +3,8 @@ const express = require('express');
 const morgan = require('morgan');
 const methodOverride = require('method-override');
 const jwt = require('jsonwebtoken');
+var nodemailer = require('nodemailer');
+var flash = require('connect-flash');
 const handlebars = require('express-handlebars');
 const app = express();
 const port = 3000;
@@ -72,6 +74,7 @@ app.use(express.urlencoded({
 }));
 //Middleware to get,post using axios/fetch/XMLHttpRequest... (gui dung js)
 app.use(express.json());
+app.use(flash());
 
 // HTTP logger
 // app.use(morgan('combined'));
@@ -268,6 +271,7 @@ app.post('/news/store', checkLogin, (req, res, next) => {
     }
     const data = req.body;
     const news = new New({
+        userId: req.data._id,
         motelId: '_' + Math.random().toString(36).substr(2, 5),
         img: imgArray,
         kind: data.kind,
@@ -488,7 +492,7 @@ app.get('/me/payment-history', checkLogin, function(req, res) {
 });
 
 app.get('/me/news-management', checkLogin, function(req, res, next) {
-    New.find({})
+    New.find({userId: req.data._id})
         .then(news => {
             res.render('me/news-management', {
                 news: mutipleMongooseToObject(news),
@@ -623,10 +627,93 @@ app.post('/admin/account-manage/store', checkLogin, checkAdmin, (req, res, next)
     
 });
 
+app.get('/admin/news-management', checkLogin, checkAdmin, function(req, res, next) {
+    New.find({})
+        .then(news => {
+            res.render('me/news-management', {
+                news: mutipleMongooseToObject(news),
+                layout: 'dashboard.hbs',
+                userData: mongooseToObject(req.data)
+            });
+        })
+        .catch(next)
+    
+});
+
 
 
 app.get('/forgot', (req, res, next) => {
     res.render('authen/forgot', { layout: false })
+})
+
+app.post('/forgot/get-email', (req, res, next) => {
+    User.find({email: req.body.email})
+        .then(user => {
+            if(user.length > 0){
+                let verifyCode = Math.floor(100000 + Math.random() * 900000);
+                var transporter = nodemailer.createTransport({
+                    service: 'gmail',
+                    auth: {
+                    user: 'phongtrotot.hotro@gmail.com',
+                    pass: 'phongtrotot'
+                    }
+                });
+                
+                var mailOptions = {
+                    from: 'phongtrotot.hotro@gmail.com',
+                    to: req.body.email,
+                    subject: 'Reset Password | by PhongTroTot ',
+                    html: `<div style="background: #E2F4FC; height: 100%; width: 100%; font-family: 'Segoe UI', sans-serif; text-align: center;"> <img src="https://i.imgur.com/ObCBMsX.png" style="margin: 20px;" > <h2 style="padding: 0 30px;">Your confirmation code is: <span style="color: red;">${verifyCode}</span></h2> <small style="border-bottom: 1px solid #ccc; margin-bottom: 18px; padding: 0 30px 18px; text-align: center; display: block; font-size: 13px;">(*) Return to <a href="http://localhost:3000/forgot#profile">the page</a>, enter this code in the confirmation code box to change your password</small> <small style="padding: 0 30px 18px; text-align: center; display: block;">All Rights Reserved by <span style="color: #22517E;">PhongTroTot</span> - Team 3 (Duy Tan University)</small> </div>`
+                };
+
+                transporter.sendMail(mailOptions, function(error, info){
+                    if (error) {
+                        console.log(error);
+                    } else {
+                        console.log('Email sent: ' + info.response);
+                        req.flash('email', req.body.email)
+                        req.flash('verifyCode', verifyCode)
+                        res.redirect('back')
+                    }
+                });
+            }
+            else {
+                req.session.message = {
+                    type: 'danger',
+                    intro: 'Failed!',
+                    message: 'This email account does not exist.'
+                }
+                res.redirect('/forgot')
+            }
+        })
+        .catch(next)
+    
+})
+
+app.put('/forgot/confirm', (req, res, next) => {
+    const data = req.body;
+    let email = req.flash('email')
+    let verifyCode = req.flash('verifyCode')
+    if(verifyCode == data.verifyCode){
+        User.updateOne({email: email}, data)
+            .then(() => {
+                req.session.message = {
+                    type: 'success',
+                    intro: 'Successfully!',
+                    message: 'Your password has been changed.'
+                }
+                res.redirect('/users')
+            })
+            .catch(next)
+    }
+    else {
+        req.session.message = {
+            type: 'danger',
+            intro: 'Failed!',
+            message: 'Confirmation code is wrong.'
+        }
+        res.redirect('/forgot')
+    }
 })
 
 

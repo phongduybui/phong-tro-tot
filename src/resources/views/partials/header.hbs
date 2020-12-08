@@ -43,7 +43,7 @@
 
             <div class="dropdown-divider"></div>
             <a class="dropdown-item dropdown-item-custom" href="/me"><i class="fas fa-user-circle"></i> Edit profile</a>
-            <a class="dropdown-item dropdown-item-custom" href="/me/news-management"><i class="far fa-newspaper"></i> Manage Post</a>
+            <a class="dropdown-item dropdown-item-custom" href="{{#ifCond userData.role '==' 'admin'}}/admin/news-management{{/ifCond}}{{#ifCond userData.role '==' 'tenant'}}/me/news-management{{/ifCond}}{{#ifCond userData.role '==' 'host'}}/me/news-management{{/ifCond}}"><i class="far fa-newspaper"></i> Manage Post</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item dropdown-item-custom" href="/users/logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
           </div>

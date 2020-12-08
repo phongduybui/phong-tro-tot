@@ -1,0 +1,233 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    min-height: 100vh !important;
+}
+
+.container-custom{
+    font-family: 'Montserrat', sans-serif;
+    width: 100%;
+    min-height: 100%;
+    background-image: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)), url('https://images.wallpaperscraft.com/image/interior_design_sofa_coffee_tables_113658_1400x1050.jpg');
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+}
+
+.form-box{
+    width: 380px;
+    height: 550px;
+    background-color:white;
+    border-radius: 20px;
+    padding-top: 1.5em;
+    position: relative;
+    margin: 40px auto 0;
+}
+
+.button-box{
+    
+    width: 60%;
+    height: 40px;
+    box-shadow: 0 0 20px 0px  rgba(140, 209, 198, 0.4);
+    border-radius: 20px;
+    position: relative;
+    margin-left: 20%;
+}
+.btn-custom {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+}
+.btn-custom:focus {
+    outline: none;
+}
+.checkbox-login {
+    font-size: 14px;
+}
+
+
+.toggle-btn{
+    width: 50%;
+    height: 100%;
+    float: left;
+    position: relative;
+    border: 0;
+    cursor: pointer;
+    background: transparent;
+    outline: none;
+    /* background: linear-gradient(to right, #ff105f, #ffad06); */
+}
+
+#btn{
+    width: 50%;
+    height: 100%;
+    border-radius: 20px;
+    position: absolute;
+    background: linear-gradient(to right, #8cd1c6, #095245);
+}
+
+
+.icon-item{
+    margin-left: 30%;
+}
+
+
+.icon-item img{
+    width: 25px;
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+    margin-left: 1em;
+    cursor: pointer;
+}
+
+.input-text{
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    width: 70%;
+    height: 40px;
+    margin-left: 15%;
+    margin-top: 25px;
+    
+}
+
+.input-text:focus{
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+}
+
+#save-pass{
+    margin-top: 3em;
+    margin-left: 15%;
+}
+
+#term{
+    margin-top: 1.8em;
+    margin-left: 15%;
+}
+
+span{
+    margin-left: 0.8em;
+}
+
+#btn-login{
+    color: #fff;
+    margin-left: 15%;
+    margin-top: 25px;
+    background: transparent;
+    outline: transparent;
+    width: 100px;
+    height: 35px;
+    border-radius: 20px;
+    border: 0;
+    cursor: pointer;
+    background: linear-gradient(to right, #8cd1c6, #095245);
+}
+
+#register{
+    display:none;
+    transform: translateY(-8%);
+}
+
+#forget-pass{
+    margin-top: 10px;
+    margin-left: 15%;
+}
+
+#forget-pass a{
+    color: black;
+    font-size: 14px;
+}
+
+#btn-register{
+    color: #fff;
+    margin-left: 15%;
+    margin-top: 10px;
+    background: transparent;
+    outline: transparent;
+    width: 100px;
+    height: 35px;
+    border-radius: 20px;
+    border: 0;
+    cursor: pointer;
+    background: linear-gradient(to right, #6ac7b7, #095245);
+}
+
+#select{
+    margin-left: 7%;
+    margin-top: 0.5em;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+}
+
+#p{
+    margin-left: 22%;
+    margin-top: 1em;
+}
+
+#who{
+    margin-left: 15%;
+}
+
+.radio{
+    margin-left: 1em;
+    margin-top: 1.8em;
+}
+.login-another {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    
+}
+.login-another > a {
+    margin: 4px 0;
+    
+}
+.fb-login {
+    background-color: #3B5998;
+    color: white;
+    padding: 7px;
+    border-radius: 5px;
+    text-decoration: none;
+    width: 270px;
+    font-size: 14px;
+}
+
+.google-login {
+    background-color: #dd4b39;
+    color: white;
+    padding: 7px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 14px;
+}
+.fb-login:hover {
+    color: #fff;
+    background-color: #0d3679; 
+}
+.google-login:hover {
+    color: #fff;
+    background-color: #c24635; 
+}
+.first {
+    margin-top: 40px;
+}
+input::placeholder {
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 13px;
+}
+.button-login {
+    color: #fff;
+}
+.alert-custom {
+   margin: 0;
+   text-align: center;
+}

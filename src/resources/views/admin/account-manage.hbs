@@ -24,7 +24,7 @@
             </div>
         </div>
         {{#if message}}
-        <div class="row w-100">
+        <div class="w-100">
             <div class=" w-100 alert-custom alert alert-{{message.type}}" >
                 <button type="button" class="close" data-dismiss="alert">&times;</button>
                 <strong>{{message.intro}}</strong> {{message.message}}
@@ -75,7 +75,7 @@
                                 <tr>
                                     <th scope="row">{{sum @index 1}}</th>
                                     <td>{{this.name}}</td>
-                                    <td>{{this.email}}</td>
+                                    <td style="max-width: 180px;">{{this.email}}</td>
                                     <td>{{this.password}}</td>
                                     <td style="max-width: 230px;">{{this.createdAt}}</td>
                                     <td>{{this.role}}</td>
