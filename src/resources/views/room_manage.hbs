@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/room_manage.css">
+
+
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+</head>
+<body>
+    <div class="container1">
+        <div class="center">
+        <h2 style="margin-bottom: 30px; text-align: center; font-weight: 400;">INFORMATION MANAGEMENT OF CHILDREN</h2>
+            <table class="table table-striped custab table-hover">
+                <thead>
+                <button style="margin: 0 0 5px 0;" data-toggle="modal" data-target="#squarespaceModal" class="btn btn-danger center-block">Add <i class="fas fa-home"></i></button>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Tên trọ</th>
+                        <th scope="col">Tên chủ trọ</th>
+                        <th scope="col">Địa chỉ</th>
+                        <th scope="col">SĐT</th>
+                        <th scope="col">Số phòng</th>
+                        <th scope="col">Phòng trống</th>
+                        <th scope="col">Chỉnh sửa</th>
+                        <th scope="col">Quản lý</th>
+                    </tr>
+                </thead>
+                {{#each manage}}
+                    <tbody>
+                        <tr>
+                            <td>{{sum @index 1}}</td>
+                            <td>{{this.name_inn}}</td>
+                            <td>{{this.name_owner}}</td>
+                            <td>{{this.address}}</td>
+                            <td>{{this.phone}}</td>
+                            <td>{{this.room_number}}</td>
+                            <td>{{this.room_empty}}</td>
+                            <td>
+                                <a href="/manage/room_manage/{{this._id}}/edit"><button class="btn btn-primary center-block"><i class="fas fa-pencil-alt"></i></button> </a>
+                                <a href="" data-id="{{this._id}}" data-toggle="modal" data-target="#delete-course-modal"><button class="btn btn-danger center-block">&#10007;</button></a>
+                            </td>
+                            <td><a href="/manage/room_manage/function">Chi tiết</a></td>
+                        </tr>
+                    </tbody>
+                {{/each}}
+            </table>
+
+            {{!-- Modal --}}
+            <div class="modal fade" id="squarespaceModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header" style="text-align: center;">
+                            <h4 class="modal-title" id="lineModalLabel" >ENTER INFORTION</h4>
+                        </div>
+                        <div class="modal-body">
+                            
+                            <!-- content goes here -->
+                            <form method="POST" action="" id="configform">
+                                <div class="form-group">
+                                    <label for="name_inn">Tên trọ</label>
+                                    <input type="text" class="form-control" id="exampleInputEmail1" name="name_inn">
+                                </div>
+                                <div class="form-group">
+                                    <label for="name_owner">Tên chủ trọ</label>
+                                    <input type="text" class="form-control" id="exampleInputEmail1" name="name_owner">
+                                </div>
+                                <div class="form-group">
+                                    <label for="address">Địa chỉ</label>
+                                    <input type="text" class="form-control" id="exampleInputEmail1" name="address">
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone">SĐT</label>
+                                    <input type="text" class="form-control" id="exampleInputEmail1" name="phone">
+                                </div>
+                                <div class="form-group">
+                                    <label for="room_number">Số phòng</label>
+                                    <input type="text" class="form-control" id="exampleInputEmail1" name="room_number">
+                                </div>
+                                <div class="form-group">
+                                    <label for="room_empty">Phòng trống</label>
+                                    <input type="text" class="form-control" id="exampleInputEmail1" name="room_empty">
+                                </div>
+                                <button type="submit" class="btn btn-primary">Thêm</button>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <div class="btn-group btn-group-justified" role="group" aria-label="group button">
+                                <div class="btn-group" role="group">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal"  role="button">Close</button>
+                                    <button type="button" class="btn btn-default" id="configreset">Reset</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            {{!-- Delete --}}
+            <div class="modal" tabindex="-1" id="delete-course-modal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Delete Room</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Do you want delete room?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" id="btn-delete-room">Delete</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                    </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+        </div>
+    </div>
+    
+    {{!-- Form delete --}}
+    <form method="POST" name="delete-room-form"></form>
+
+    <script src="/src/app/jquery-3.5.1.min.js"></script>
+    <script>
+        
+        $(document).ready(function () {
+            $('#configreset').click(function(){
+                $('#configform')[0].reset();
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', function(){
+
+            var btnDeleteRoom = document.getElementById('btn-delete-room');
+            var roomId;
+            var deleteForm = document.forms['delete-room-form'];
+
+            $('#delete-course-modal').on('show.bs.modal', function (event) {
+                var button = $(event.relatedTarget);
+                roomId = button.data('id');
+                console.log(roomId);
+            })
+
+            btnDeleteRoom.onclick = function(){
+                deleteForm.action = '/manage/room_manage/' + roomId + '?_method=DELETE';
+                deleteForm.submit();
+            }
+            
+        });
+    </script>
+
+</body>
+</html>

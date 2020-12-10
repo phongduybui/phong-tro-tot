@@ -31,6 +31,8 @@ app.use((req, res, next) => {
 const db = require('./config/db');
 const New = require('./app/models/New');
 const User = require('./app/models/User.js');
+const Manage = require('./app/models/Manage');
+const Tenant = require('./app/models/Tenant');
 const { getInfo, getInfoLogin, checkLogin, checkTenant, checkHost, checkAdmin } = require('./app/middleware/auth');
 
 const accessTokenSecret = 'phong'; 
@@ -129,7 +131,10 @@ app.engine('hbs', handlebars({
         formatDate: function(date){
             return new Date().toLocaleString();
            
-        }
+        },
+        multiply: (a, b) => a * b,
+        summ: (a, b, c) => a + b + c,
+        minus: (a,b) => a-b,
     }    
 }));
 app.set('view engine', 'hbs');
@@ -139,8 +144,257 @@ app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'resources', 'views')); //'resources/views'
 
 
+app.get('/manage/room_manage/function/check-camera', (req, res, next)=>{
+    res.render('tenants/camera');
+})
 
-// app.use(checkLogin)
+app.get('/manage/price', checkLogin, (req, res)=>{
+    res.render('price', {
+        userData: mongooseToObject(req.data)
+    });
+})
+
+app.get('/manage/room_manage/function/invoice/:id/input', (req, res, next)=>{
+    Tenant.findById(req.params.id)
+        .then(tenant=>res.render('tenants/input', {
+            tenant: mongooseToObject(tenant)
+        }))
+
+        .catch(next);
+})
+
+app.put('/manage/room_manage/function/invoice/:id', (req, res, next)=>{
+    Tenant.updateOne({_id: req.params.id}, req.body)
+        .then(()=>{
+            res.redirect('/manage/room_manage/function/invoice');
+        })
+
+        .catch(next);
+})
+
+
+app.get('/manage/room_manage/function/invoice/:id/see-invoice/:email', (req, res, next)=>{
+    Tenant.findById(req.params.id)
+        .then(tenant=>{
+            req.flash('tenant1', tenant)
+            res.render('tenants/see-invoice', {
+            tenant: mongooseToObject(tenant)
+        })})
+        .catch(next);
+
+
+        // console.log(req.params.email);
+        var transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+                user: 'phongtrotot.hotro@gmail.com',
+                pass: 'phongtrotot'
+            }
+        });
+
+        var mailOptions = {
+            from: 'phongtrotot.hotro@gmail.com',
+            to: req.params.email,
+            subject: 'PTT - Invoice ',
+            html: `
+                <div class="card" style="width: 900px; border: 1px solid rgb(112, 111, 111); height:600px;"> <div class="card-header" style="width:98%; height: 5%; border-bottom: 1px solid rgb(112, 111, 111); padding-top: 1em; padding-left: 1em; background-color: rgb(241, 241, 241);"> Invoice <strong>--/--/--</strong> <span style="float: right; padding-right: 1em;"> <strong >Status:</strong> Pending</span> </div><div class="card-body" style="margin-left: 2em;"> <div class="row mb-4"> <div class="col-sm-6" style="width: 50%;float:left;"> <h4 class="mb-3">From:</h4> <strong>Webz Poland</strong> <p>Madalinskiego 8 <br>71-101 Szczecin, Poland <br>Email: info@webz.com.pl <br>Phone: +48 444 666 3333</p></div><div class="col-sm-6" style="width:50%; float:left;"> <h4 class="mb-3">To:</h4> <strong>Webz Poland</strong> <p>Madalinskiego 8 <br>71-101 Szczecin, Poland <br>Email: info@webz.com.pl <br>Phone: +48 444 666 3333</p></div></div><div class="table-responsive-sm"> <table class="table table-striped" style="border-top: 1px solid black;width: 820px; border-bottom: 1px solid black;"> <thead> <tr> <th class="center" style="border-bottom: 1px solid black;">#</th> <th style="border-bottom: 1px solid black;">Item</th> <th style="border-bottom: 1px solid black;">Month</th> <th class="right" style="border-bottom: 1px solid black;">Unit Cost</th> <th class="center" style="border-bottom: 1px solid black;">Amount</th> <th class="right" style="border-bottom: 1px solid black;">Total</th> </tr></thead> <tbody> <tr> <td class="center">1</td><td class="left strong">-</td><td class="left">-</td><td class="right">-</td><td class="center">-</td><td class="right">-</td></tr><tr> <td class="center">2</td><td class="left">-</td><td class="left">-</td><td class="right">-</td><td class="center">-</td><td class="right">-</td></tr><tr> <td class="center">3</td><td class="left">-</td><td class="left">-</td><td class="right">-</td><td class="center">-</td><td class="right">-</td></tr><tr> <td class="center">4</td><td class="left">-</td><td class="left">-</td><td class="right">-</td><td class="center">-</td><td class="right">-</td></tr></tbody> </table> </div><div class="row"> <div class="col-lg-4 col-sm-5"> </div><div class="col-lg-4 col-sm-5 ml-auto"> <table class="table table-clear" style="float: right;margin-right: 10em;"> <tbody> <tr> <td class="left"> <strong>Subtotal</strong> </td><td class="right">-</td></tr><tr> <td class="left"> <strong>Discount (20%)</strong> </td><td class="right">-</td></tr><tr> <td class="left"> <strong>VAT (10%)</strong> </td><td class="right">-</td></tr><tr> <td class="left"> <strong>Total</strong> </td><td class="right"> <strong>-</strong> </td></tr></tbody> </table> </div></div></div></div>
+            `,
+            
+        };
+
+        transporter.sendMail(mailOptions, function(error, info){
+                    if (error) {
+                        console.log(error);
+                    } else {
+                        console.log('Email sent: ' + info.response);
+                        req.flash('email', req.body.email)
+                        req.flash('verifyCode', verifyCode)
+                        res.redirect('back')
+                    }
+                });
+        
+})
+
+app.get('/manage/room_manage/function/invoice/:id/see-invoice', (req, res, next)=>{
+    Tenant.findById(req.params.id)
+        .then(tenant=>res.render('tenants/see-invoice', {
+            tenant: mongooseToObject(tenant)
+        }))
+        .catch(next);
+})
+
+app.get('/manage/room_manage/function/invoice', (req, res, next)=>{
+    
+    Tenant.find({})
+        .then(tenant=>{
+            res.render('tenants/invoice', {
+                tenant: mutipleMongooseToObject(tenant)
+            });
+        })
+        .catch(next);
+
+    // res.render('tenants/invoice');
+})
+
+app.get('/manage/room_manage/function/declare', (req, res, next)=>{
+    Tenant.find({})
+        .then(tenant=>{
+            res.render('tenants/declare', {
+                tenant: mutipleMongooseToObject(tenant)
+            });
+        })
+        .catch(next);
+})
+
+app.get('/manage/room_manage/function/declare/:id/contract', (req, res, next)=>{
+    Tenant.findById(req.params.id)
+        .then(tenant=>res.render('tenants/contract', {
+            tenant: mongooseToObject(tenant)
+        }))
+        .catch(next);
+})
+
+app.get('/manage/room_manage/function/declare/:id/input-contract', (req, res, next)=>{
+    Tenant.findById(req.params.id)
+        .then(tenant=>res.render('tenants/input-contract', {
+            tenant: mongooseToObject(tenant)
+        }))
+        .catch(next);
+})
+
+app.put('/manage/room_manage/function/declare/:id', (req, res, next)=>{
+    Tenant.updateOne({_id: req.params.id}, req.body)
+        .then(()=>{
+            res.redirect('/manage/room_manage/function/declare');
+        })
+
+        .catch(next);
+})
+
+app.get('/manage/room_manage/function/tenant/:id/edit-tenant', (req, res, next)=>{
+    Tenant.findById(req.params.id)
+        .then(tenant=>res.render('tenants/edit-tenant', {
+            tenant: mongooseToObject(tenant)
+        }))
+        .catch(next);
+})
+
+app.put('/manage/room_manage/function/tenant/:id', (req, res, next)=>{
+    Tenant.updateOne({_id: req.params.id}, req.body)
+        .then(()=>{
+            res.redirect('/manage/room_manage/function/tenant');
+        })
+
+        .catch(next);
+})
+
+//Delete
+app.delete('/manage/room_manage/function/tenant/:id', (req, res, next)=>{
+    Tenant.deleteOne({_id: req.params.id})
+        .then(()=>res.redirect('back'))
+        .catch(next);
+})
+
+// Post tenant
+
+app.post('/manage/room_manage/function/tenant', (req, res, next)=>{
+    const formData = req.body;
+    const tenant = new Tenant(formData);
+    tenant.save()
+        //Điều hướng trang web
+        .then(()=>res.redirect('/manage/room_manage/function/tenant'))
+        .catch(err=>{
+        });
+})
+
+app.get('/manage/room_manage/function/manage-room-status',checkLogin , (req, res, next)=>{
+    res.render('tenants/manage-room-status', {
+        userData: mongooseToObject(req.data)
+    });
+})
+
+app.get('/manage/room_manage/function', checkLogin, (req, res)=>{
+    res.render('function', {
+        userData: mongooseToObject(req.data)
+    });
+})
+
+app.get('/manage/room_manage',checkLogin, (req, res, next)=>{
+    Manage.find({})
+        .then(manage=>{
+            res.render('room_manage',{
+                manage: mutipleMongooseToObject(manage)
+            });
+        })
+        .catch(next)
+})
+
+
+//Lấy thông tin từ modal lưu vào cơ sở dữ liệu
+app.post('/manage/room_manage', (req, res, next)=>{
+    const formData = req.body;
+    const manage = new Manage(formData);
+    manage.save()
+        //Điều hướng trang web
+        .then(()=>res.redirect('/manage/room_manage'))
+        .catch(err=>{
+        });
+})
+app.get('/manage/room_manage/function/tenant', (req, res, next)=>{
+    
+    Tenant.find({})
+        .then(tenant=>{
+            res.render('tenants/tenant', {
+                tenant: mutipleMongooseToObject(tenant)
+            });
+        })
+        .catch(next);
+})
+
+// Edit room
+app.get('/manage/room_manage/:id/edit', (req, res, next)=>{
+    Manage.findById(req.params.id)
+        .then(manage=>res.render('tenants/edit', {
+            manage: mongooseToObject(manage)
+        }))
+
+        .catch(next);
+})
+
+//Update room
+app.put('/manage/room_manage/:id', (req, res, next)=>{
+    Manage.updateOne({_id: req.params.id}, req.body)
+        .then(()=>{
+            res.redirect('/manage/room_manage');
+        })
+
+        .catch(next);
+})
+
+
+app.delete('/manage/room_manage/:id', (req, res, next)=>{
+    Manage.deleteOne({_id: req.params.id})
+        .then(()=>res.redirect('back'))
+        .catch(next);
+})
+
+
+
+
+
+
+app.get('/manage', checkLogin, (req, res)=>{
+    res.render('manage', {
+        userData: mongooseToObject(req.data)
+    });
+})
+
+
+app.get('/about', getInfoLogin, (req, res)=>{
+    res.render('about', {
+        userData: mongooseToObject(req.data)
+    });
+})
 
 app.get('/', getInfoLogin, function (req, res, next) {
 
