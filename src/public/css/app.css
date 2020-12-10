@@ -55,6 +55,9 @@ html {
   scroll-behavior: smooth; }
 
 /* Style for Header */
+.navbar-brand {
+  max-width: 187px; }
+
 .dropdown-item-custom {
   font-family: "Raleway", sans-serif;
   font-size: 16px;

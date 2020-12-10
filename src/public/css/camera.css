@@ -63,10 +63,10 @@
 .col-lg-5{
     /* width: 150px; */
     height: 310px;
-    border: 1px dashed rgb(107, 107, 107);
+    /* border: 1px dashed rgb(107, 107, 107); */
     margin-top: 2em;
     margin-left: 2em;
-    box-shadow: 3px 3px 3px 3px rgb(216, 213, 213);
+    /* box-shadow: 3px 3px 3px 3px rgb(216, 213, 213); */
 }
 
 .fas{
