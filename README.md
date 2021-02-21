@@ -6,9 +6,7 @@
 - NodeJs using Express
 #### Frontend:
 - HTML, CSS, SCSS
-- Javascript
-- Lib: Jquery
-- Template engine: Handlebars
+- Javascript (jQuery)
 #### Database
 - MongoDB
 - Mongoose
