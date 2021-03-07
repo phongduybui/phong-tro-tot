@@ -1,4 +1,4 @@
-# Website Phong Tro Tot
+# Website Phòng Trọ Tốt v1.0
 ---
 ### Technology used:
 ---
@@ -14,4 +14,8 @@
 ### Features:
 - Help tenants search for motel, hostel, acommodation,...
 - Help hosts manage their hostel, motel or accommodation,...
+
+### How to use:
+``npm install``
+``npm start``
 
